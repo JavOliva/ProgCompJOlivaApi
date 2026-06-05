@@ -8,7 +8,10 @@ services:
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      # Host port 55432 -> container 5432. Avoids clashing with a local Postgres on 5432.
+      # The API and reset job reach Postgres over the compose network (host "postgres":5432),
+      # so this host mapping only affects external access (e.g. a DB GUI on localhost:55432).
+      - "55432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:
