@@ -19,3 +19,8 @@ obj/
 # OS files
 .DS_Store
 Thumbs.db
+# Claude Code personal settings
+.claude/settings.local.json
+
+# Runtime-generated / seeded static assets (organization logos copied into wwwroot on startup)
+ProgCompJOlivaApi/wwwroot/organizations/
