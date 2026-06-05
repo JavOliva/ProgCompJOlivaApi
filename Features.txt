@@ -1,0 +1,44 @@
+Database
+- User
+    - ID
+    - Nickname
+    - Names
+    - Surnames
+    - Email 
+    - Telegram 
+    - Organizations
+    - Eligible for ICPC (yes/no)
+    - Eligible for IOI (yes/no)
+    - Eligible for ICPC woman's team (yes/no)
+    - Year of birth
+    - Year where he started advanced studies 
+    - Codeforces Nickname 
+    - Atcoder Nickname 
+    - Cses Id
+    - Leetcode?
+    - Codechef?
+    - Luogu?
+- Judge
+    - ID
+    - Judge Name
+    - Url
+
+- Problem
+- Contest
+- Training
+- Teams 
+- ContestNames
+
+Authentication 
+- Four types of users.
+    - User
+        - Can use normal webapp, get users data.
+    - Coach
+        - Manages a set of users, set of trainings. 
+    - Admin
+        - Everything
+    - NotAUser
+        - Not authenticated user. Can see public data.
+
+Ratings
+- List of ratings per judge

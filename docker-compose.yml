@@ -1,0 +1,56 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: progcomp-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  db-reset:
+    image: postgres:18
+    container_name: progcomp_backend-reset
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: admin123
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_ADMIN_USER: postgres
+      APP_DB_NAME: progcomp_backend
+      APP_DB_USER: progcomp_user
+      APP_DB_PASSWORD: prograbonita
+    volumes:
+      - ./docker/postgres/reset-db.sh:/reset-db.sh:ro
+    entrypoint: ["/bin/bash", "/reset-db.sh"]
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: progcomp-api
+    depends_on: 
+      db-reset:
+        condition: service_completed_successfully
+    environment:
+      ASPNETCORE_ENVIRONMENT: Docker
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings_DefaultConnection: Host=postgres;Port=5432;Database=progcomp_backend;Username=progcomp_user;Password=prograbonita;GSS Encryption Mode=Disable
+    ports:
+      - "5029:8080"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
