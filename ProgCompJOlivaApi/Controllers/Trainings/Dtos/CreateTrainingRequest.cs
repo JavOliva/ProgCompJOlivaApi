@@ -9,4 +9,10 @@ public class CreateTrainingRequest
     public bool IsPublic { get; set; } = true;
 
     public bool IsActive { get; set; } = true;
+
+    /// <summary>
+    /// Optional contests to add at creation, in the given order. May be empty to create an
+    /// empty training and add contests later.
+    /// </summary>
+    public List<Guid> ContestIds { get; set; } = [];
 }
