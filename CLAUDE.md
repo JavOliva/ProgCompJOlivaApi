@@ -31,12 +31,16 @@ ProgCompJOlivaApi/
 - DB tables are snake_case; migrations auto-apply on startup (`db.Database.Migrate()`).
 - Users are soft-deleted (`IsActive` / `DeletedAtUtc`), not removed.
 - Per-judge ratings are cached on `User` and refreshed by `PeriodicWorker` every minute.
+- Shell scripts are LF-only (`.gitattributes`): `docker/postgres/*.sh` are bind-mounted into
+  Linux containers, so CRLF breaks them. Don't introduce CRLF.
 
 ## Run
 
-- Docker: `docker compose up --build` → API at http://localhost:5029
-- Local: `cd ProgCompJOlivaApi && dotnet run`
-- Dev seed users have password `123456` (admins: `JOliva`, `MrYhatoh`).
+- Docker: `docker compose up --build` → API at http://localhost:5029 (Postgres published on
+  host port **55432** to avoid clashing with a local Postgres on 5432).
+- Local: `cd ProgCompJOlivaApi && dotnet run` (needs Postgres on `localhost:5432`).
+- Dev seed users have password `123456` (admins: `JOliva`, `MrYhatoh`). The Docker DB seeds
+  users/orgs but no problems/contests — create those via the API.
 
 ## Current context
 
