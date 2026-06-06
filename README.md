@@ -43,7 +43,7 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Contest management** | Search, detail, create-from-list, add / remove / reorder problems (Admin) |
 | **Training management** | Search, detail, create-from-list, add / remove / reorder contests (Admin) |
 | **Standings** | Per-contest standings and global per-training standings (solved per contest + total) |
-| **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`) — the source list for future problem imports |
+| **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`); auto-populated when a Codeforces task is created — the source list for future problem imports |
 | **Navigation context** | `GET /api/me/navigation-context` — drives the frontend menu/permissions |
 | **Codeforces ratings sync** | Live via official Codeforces API |
 | **AtCoder ratings sync** | Live via HTML scraping (Chile-filtered rankings) |
@@ -403,6 +403,10 @@ with the `contests` order.
 A registry of Codeforces gyms to use as problem sources. Each gym records **how** it should be
 fetched (`fetchMethod`, a string enum — currently only `Standings`). This maintains the list
 only; importing problems from the gyms is not implemented yet. **All endpoints are Admin-only.**
+
+Creating a Codeforces task (`POST /api/problem/codeforces`) automatically registers that task's
+gym (`contestId`) here with `Standings` if it isn't already present — so the gym list stays in
+sync with the tasks. Existing gyms are left as-is (a disabled gym stays disabled).
 
 | Method | Path | Description |
 |---|---|---|

@@ -62,7 +62,8 @@ _Last reflects: 39 endpoints across 9 controllers; verified end-to-end on Postgr
   add/remove/reorder contests, global standings (`GET /api/training/{id}/standings`,
   solved-per-contest + total). Slugs auto-generated.
 - **Codeforces gyms:** `CodeforcesGym` registry (`GymContestId`, `FetchMethod` enum stored as
-  string — only `Standings`, `Enabled`) with admin CRUD at `/api/codeforces-gym`. Registry
+  string — only `Standings`, `Enabled`) with admin CRUD at `/api/codeforces-gym`. Creating a
+  Codeforces task auto-registers its gym here (idempotent; existing gyms untouched). Registry
   only — no importer/fetching yet (deliberately deferred).
 - **Stub:** CSES / LeetCode / CodeChef / Luogu rating clients return `0`; no Coach role, Teams,
   or real ICPC/IOI eligibility.
