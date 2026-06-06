@@ -15,6 +15,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<TrainingContest> TrainingContests => Set<TrainingContest>();
     public DbSet<UserProblemStatus> UserProblemStatuses => Set<UserProblemStatus>();
     public DbSet<Topic> Topics => Set<Topic>();
+    public DbSet<CodeforcesGym> CodeforcesGyms => Set<CodeforcesGym>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -202,6 +203,25 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
             // A contest appears at most once per training.
             entity.HasIndex(x => new { x.TrainingId, x.ContestId })
+                .IsUnique();
+        });
+
+        modelBuilder.Entity<CodeforcesGym>(entity =>
+        {
+            entity.ToTable("codeforces_gyms");
+
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Name)
+                .HasMaxLength(200);
+
+            // Stored as the enum name (e.g. "Standings") rather than an int.
+            entity.Property(x => x.FetchMethod)
+                .HasConversion<string>()
+                .HasMaxLength(50)
+                .IsRequired();
+
+            entity.HasIndex(x => x.GymContestId)
                 .IsUnique();
         });
 
