@@ -193,6 +193,10 @@ public class ProblemController(AppDbContext db) : ControllerBase
         await AssignTopicsAsync(problem, request.Topics, ct);
 
         db.Problems.Add(problem);
+
+        // Auto-register the gym this task comes from, so the gym list stays in sync with tasks.
+        await EnsureGymRegisteredAsync(request.ContestId, ct);
+
         await db.SaveChangesAsync(ct);
 
         return CreatedAtAction(nameof(GetById), new { id = problem.Id }, new { id = problem.Id });
@@ -410,6 +414,32 @@ public class ProblemController(AppDbContext db) : ControllerBase
         await db.SaveChangesAsync(ct);
 
         return Ok(new { problemId = id, userNickname = targetNickname, isSolved = status.IsSolved });
+    }
+
+    /// <summary>
+    /// Registers a Codeforces gym (by its contest id) with the default <see cref="GymFetchMethod.Standings"/>
+    /// fetch method if it isn't already in the registry. No-ops for non-positive ids or gyms that
+    /// already exist. The new row is saved together with the problem by the caller.
+    /// </summary>
+    private async Task EnsureGymRegisteredAsync(int gymContestId, CancellationToken ct)
+    {
+        if (gymContestId <= 0)
+            return;
+
+        var alreadyRegistered = await db.CodeforcesGyms.AnyAsync(g => g.GymContestId == gymContestId, ct);
+        if (alreadyRegistered)
+            return;
+
+        var now = DateTime.UtcNow;
+        db.CodeforcesGyms.Add(new CodeforcesGym
+        {
+            Id = Guid.NewGuid(),
+            GymContestId = gymContestId,
+            FetchMethod = GymFetchMethod.Standings,
+            Enabled = true,
+            CreatedAtUtc = now,
+            UpdatedAtUtc = now
+        });
     }
 
     private static string? NormalizeOptional(string? value)
