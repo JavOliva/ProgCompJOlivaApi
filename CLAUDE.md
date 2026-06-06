@@ -44,10 +44,11 @@ ProgCompJOlivaApi/
 
 ## Current context
 
-_Last reflects: 33 endpoints across 8 controllers; verified end-to-end on PostgreSQL 18._
+_Last reflects: 39 endpoints across 9 controllers; verified end-to-end on PostgreSQL 18._
 
 > Branch `feature/tasks-contests-trainings-standings` adds problem metadata, solve tracking,
-> full contest/training management and standings (all built and runtime-verified).
+> full contest/training management and standings, plus a Codeforces gym registry (all built
+> and runtime-verified).
 
 - **Ready:** auth/login, user CRUD (soft-delete), public rankings, organization CRUD + logo
   upload, navigation-context, Codeforces + AtCoder ratings sync, background worker, Docker.
@@ -60,6 +61,9 @@ _Last reflects: 33 endpoints across 8 controllers; verified end-to-end on Postgr
 - **Trainings:** search/list (replaces the old placeholder), detail, create-from-list, `PATCH`,
   add/remove/reorder contests, global standings (`GET /api/training/{id}/standings`,
   solved-per-contest + total). Slugs auto-generated.
+- **Codeforces gyms:** `CodeforcesGym` registry (`GymContestId`, `FetchMethod` enum stored as
+  string — only `Standings`, `Enabled`) with admin CRUD at `/api/codeforces-gym`. Registry
+  only — no importer/fetching yet (deliberately deferred).
 - **Stub:** CSES / LeetCode / CodeChef / Luogu rating clients return `0`; no Coach role, Teams,
   or real ICPC/IOI eligibility.
 - **Conventions added this branch:** reorder endpoints take the full ordered id list

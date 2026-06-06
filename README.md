@@ -43,6 +43,7 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Contest management** | Search, detail, create-from-list, add / remove / reorder problems (Admin) |
 | **Training management** | Search, detail, create-from-list, add / remove / reorder contests (Admin) |
 | **Standings** | Per-contest standings and global per-training standings (solved per contest + total) |
+| **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`) — the source list for future problem imports |
 | **Navigation context** | `GET /api/me/navigation-context` — drives the frontend menu/permissions |
 | **Codeforces ratings sync** | Live via official Codeforces API |
 | **AtCoder ratings sync** | Live via HTML scraping (Chile-filtered rankings) |
@@ -397,6 +398,25 @@ position, problemCount }], rows: [{ nickname, fullName, university, perContest: 
 solved }], total }] }`, sorted by `total` desc then nickname. Each row's `perContest` lines up
 with the `contests` order.
 
+### Codeforces gyms — `/api/codeforces-gym`
+
+A registry of Codeforces gyms to use as problem sources. Each gym records **how** it should be
+fetched (`fetchMethod`, a string enum — currently only `Standings`). This maintains the list
+only; importing problems from the gyms is not implemented yet. **All endpoints are Admin-only.**
+
+| Method | Path | Description |
+|---|---|---|
+| `GET` | `/api/codeforces-gym` | List gyms (`onlyEnabled`, `search` by name or gym id) |
+| `GET` | `/api/codeforces-gym/{id}` | Gym detail |
+| `GET` | `/api/codeforces-gym/fetch-methods` | Available fetch-method names (for a dropdown) |
+| `POST` | `/api/codeforces-gym` | Register a gym |
+| `PATCH` | `/api/codeforces-gym/{id}` | Edit a gym (partial) |
+| `DELETE` | `/api/codeforces-gym/{id}` | Remove a gym |
+
+**Create** `{ "gymContestId": 100001, "name": "…", "fetchMethod": "Standings", "enabled": true }`
+— `gymContestId` must be positive and unique (`409` on duplicate); `fetchMethod` defaults to
+`Standings` and is validated (`400` on unknown value); `name` is optional.
+
 ---
 
 ## Data model
@@ -414,6 +434,8 @@ PostgreSQL via EF Core. Tables use snake_case names. Key entities:
   `ContestProblemId`, `Difficulty`, `TagsJson`, `StatementPath`, `Keywords` (`text[]`), and a
   many-to-many `Topics`. Indexed on `Judge`, `Difficulty`, `ExternalId`.
 - **Topic** (`topics`) — `Name` (unique); many-to-many with problems via `problem_topics`.
+- **CodeforcesGym** (`codeforces_gyms`) — `GymContestId` (unique), `Name`, `FetchMethod`
+  (`GymFetchMethod` enum stored as string), `Enabled`. Registry of gym problem sources.
 - **Contest** (`contests`) and **ContestProblem** (`contest_problems`) — contest with an
   ordered list of problems.
 - **Training** (`trainings`) and **TrainingContest** (`training_contests`) — training with
@@ -497,5 +519,5 @@ These are real, verified observations from the current code — worth fixing:
 
 ---
 
-_Generated from source on 2026-06-05. Endpoint count: 33 across 8 controllers (Auth, Me, Users,
-Organizations, Problems, Topics, Contests, Trainings)._
+_Generated from source on 2026-06-05. Endpoint count: 39 across 9 controllers (Auth, Me, Users,
+Organizations, Problems, Topics, Contests, Trainings, CodeforcesGyms)._
