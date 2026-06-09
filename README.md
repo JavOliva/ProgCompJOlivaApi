@@ -45,6 +45,7 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Standings** | Per-contest standings and global per-training standings (solved per contest + total) |
 | **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`); auto-populated when a Codeforces task is created — the source list for future problem imports |
 | **CSES solved scraper** | Scrapes a user's solved CSES tasks via a service-account session cookie; `GET /api/cses/user/{id}/solved`. Task ids match CSES `Problem.ExternalId` |
+| **CSES problemset auto-import** | On every startup a background service adds any CSES problems missing from the DB (scraped from the public list); idempotent |
 | **Navigation context** | `GET /api/me/navigation-context` — drives the frontend menu/permissions |
 | **Codeforces ratings sync** | Live via official Codeforces API |
 | **AtCoder ratings sync** | Live via HTML scraping (Chile-filtered rankings) |
@@ -497,6 +498,12 @@ Each judge implements `IJudgeClient` (`GetUsersRatings(handles, ct) → Dictiona
 
 Each step is wrapped in try/catch so a failure in one judge doesn't stop the others or the
 worker. (Other judges are stubs, so their ratings stay at 0.)
+
+`CsesProblemImportService` is a separate one-shot hosted service that runs **once at each
+startup**: it scrapes the public CSES problemset list and inserts any tasks missing from the
+`problems` table (matched by `ExternalId` among CSES problems). It's idempotent — existing
+problems are untouched — and failures (e.g. CSES unreachable) are logged and swallowed so they
+never block or crash startup.
 
 ---
 

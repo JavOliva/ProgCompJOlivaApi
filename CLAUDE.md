@@ -19,7 +19,8 @@ ProgCompJOlivaApi/
 ├── Controllers/   # endpoints by area, each with a Dtos/ subfolder
 ├── Models/        # EF Core entities
 ├── Data/          # AppDbContext + DbDevSeeder
-├── Services/      # JwtTokenService, PasswordService, PeriodicWorker (background ratings sync)
+├── Services/      # JwtTokenService, PasswordService, PeriodicWorker (ratings sync),
+│                  #   CsesProblemImportService (startup CSES problem import)
 ├── JudgeClients/  # one client per online judge (IJudgeClient)
 └── Program.cs     # composition root
 ```
@@ -70,6 +71,9 @@ _Last reflects: 40 endpoints across 10 controllers; verified end-to-end on Postg
   via user-secrets / `Cses__SessionCookie` env, never committed). Endpoint
   `GET /api/cses/user/{id}/solved` (Admin). Ids match CSES `Problem.ExternalId`. Not yet wired
   to `UserProblemStatus` (offered next step).
+- **CSES problemset auto-import:** `CsesProblemImportService` (hosted, one-shot per startup)
+  scrapes the public CSES list (`CsesProblemsetScraper`) and inserts any missing CSES problems.
+  Idempotent; CSES outages are logged and swallowed (never block startup).
 - **Stub:** CSES / LeetCode / CodeChef / Luogu *rating* clients return `0`; no Coach role, Teams,
   or real ICPC/IOI eligibility.
 - **Conventions added this branch:** reorder endpoints take the full ordered id list
