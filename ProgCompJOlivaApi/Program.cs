@@ -31,6 +31,8 @@ public class Program
 
         builder.Services.AddHostedService<PeriodicWorker>();
 
+        builder.Services.AddHostedService<CsesProblemImportService>();
+
         builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
         builder.Services.AddScoped<PasswordService>();
