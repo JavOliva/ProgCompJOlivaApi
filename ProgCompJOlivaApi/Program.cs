@@ -14,7 +14,12 @@ public class Program
 {
     public static async Task Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        // Bare "ADDCODEFORCES" flag toggles the one-shot gym import. Strip it before building
+        // configuration so the command-line provider doesn't reject the unkeyed token.
+        var addCodeforces = args.Any(a => string.Equals(a.TrimStart('-'), "ADDCODEFORCES", StringComparison.OrdinalIgnoreCase));
+        var builderArgs = args.Where(a => !string.Equals(a.TrimStart('-'), "ADDCODEFORCES", StringComparison.OrdinalIgnoreCase)).ToArray();
+
+        var builder = WebApplication.CreateBuilder(builderArgs);
 
         builder.Services.AddControllers();
 
@@ -32,6 +37,13 @@ public class Program
         builder.Services.AddHostedService<PeriodicWorker>();
 
         builder.Services.AddHostedService<CsesProblemImportService>();
+
+        // Periodically sync solved problems from the registered Codeforces gyms.
+        builder.Services.AddHostedService<CodeforcesSolveSyncService>();
+
+        // One-shot gym import, only when started with the ADDCODEFORCES flag.
+        if (addCodeforces)
+            builder.Services.AddHostedService<CodeforcesContestImportService>();
 
         builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
