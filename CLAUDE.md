@@ -19,9 +19,9 @@ ProgCompJOlivaApi/
 ├── Controllers/   # endpoints by area, each with a Dtos/ subfolder
 ├── Models/        # EF Core entities
 ├── Data/          # AppDbContext + DbDevSeeder
-├── Services/      # JwtTokenService, PasswordService, PeriodicWorker (ratings sync),
-│                  #   CsesProblemImportService, CodeforcesContestImportService (ADDCODEFORCES),
-│                  #   CodeforcesSolveSyncService (5-min gym solve sync)
+├── Services/      # JwtTokenService, PasswordService, PeriodicWorker (AtCoder ratings, 1 min),
+│                  #   CsesProblemImportService (startup CSES import),
+│                  #   CodeforcesWorker (all CF: ratings + gym solve sync, 5 min; ADDCODEFORCES import)
 ├── JudgeClients/  # one client per online judge (IJudgeClient)
 └── Program.cs     # composition root
 ```
@@ -68,11 +68,12 @@ _Last reflects: 40 endpoints across 10 controllers; verified end-to-end on Postg
 - **Codeforces gyms:** `CodeforcesGym` registry (`GymContestId`, `FetchMethod` enum stored as
   string — only `Standings`, `Enabled`) with admin CRUD at `/api/codeforces-gym`. Creating a
   Codeforces task auto-registers its gym here (idempotent; existing gyms untouched).
-- **Codeforces import/sync:** `CodeforcesClient` does signed `contest.standings`; key/secret from
-  config (`Codeforces:Key/Secret`), all CF calls throttled ≥5s apart process-wide.
-  `CodeforcesContestImportService` (only when started with the `ADDCODEFORCES` flag) imports a
-  fixed set of gym contests (problems + gym registration). `CodeforcesSolveSyncService` runs every
-  5 min, marking `UserProblemStatus` solved from gym standings by Codeforces handle (solved-only).
+- **Codeforces worker:** `CodeforcesWorker` is the single owner of all CF API access (they share
+  the server IP / one rate budget). One 5-min loop does ratings refresh + gym solve sync (marks
+  `UserProblemStatus` by handle, solved-only); the `ADDCODEFORCES` flag adds a one-shot gym import
+  (problems + gym registration) first. `CodeforcesClient` does signed `contest.standings`,
+  key/secret from config (`Codeforces:Key/Secret`), all CF calls throttled ≥5s apart process-wide
+  with retry on transient 5xx/429. AtCoder ratings stay in `PeriodicWorker` (1 min).
 - **CSES solved scraper:** `CsesSolvedScraper` (DI singleton) scrapes a user's solved CSES task
   ids from `/problemset/user/{id}/` using a service-account cookie (`Cses:SessionCookie` — set
   via user-secrets / `Cses__SessionCookie` env, never committed). Endpoint

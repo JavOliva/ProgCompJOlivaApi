@@ -46,12 +46,11 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`); auto-populated when a Codeforces task is created — the source list for future problem imports |
 | **CSES solved scraper** | Scrapes a user's solved CSES tasks via a service-account session cookie; `GET /api/cses/user/{id}/solved`. Task ids match CSES `Problem.ExternalId` |
 | **CSES problemset auto-import** | On every startup a background service adds any CSES problems missing from the DB (scraped from the public list); idempotent |
-| **Codeforces gym import** | One-shot startup import (only with the `ADDCODEFORCES` flag): registers configured gym contests and inserts their problems via signed `contest.standings` |
-| **Codeforces solve sync** | Background service (every 5 min) that marks problems solved in `UserProblemStatus` from each enabled gym's standings, by user Codeforces handle |
+| **Codeforces worker** | One coordinated worker (every 5 min) owns all CF access: ratings refresh + gym solve sync (marks `UserProblemStatus` by handle); plus a one-shot gym import with the `ADDCODEFORCES` flag. Shared ≥5s rate gate + transient-error retry |
 | **Navigation context** | `GET /api/me/navigation-context` — drives the frontend menu/permissions |
 | **Codeforces ratings sync** | Live via official Codeforces API |
 | **AtCoder ratings sync** | Live via HTML scraping (Chile-filtered rankings) |
-| **Background ratings worker** | Refreshes Codeforces + AtCoder ratings every minute |
+| **Background ratings worker** | AtCoder ratings every minute (`PeriodicWorker`); Codeforces ratings via `CodeforcesWorker` (every 5 min) |
 | **PostgreSQL persistence** | EF Core, auto-migrate on startup, dev seeder |
 | **Docker / docker-compose** | Postgres + DB reset + API, one-command bring-up |
 
@@ -491,15 +490,9 @@ Each judge implements `IJudgeClient` (`GetUsersRatings(handles, ct) → Dictiona
 
 ## Background jobs
 
-`PeriodicWorker` (a hosted `BackgroundService`) runs **every 1 minute** and:
-
-1. Loads all users with a `CodeforcesHandle`, fetches ratings from the Codeforces API, and
-   updates `CodeforcesRating`.
-2. Loads all users with an `AtcoderHandle`, scrapes AtCoder rankings, and updates
-   `AtcoderRating`.
-
-Each step is wrapped in try/catch so a failure in one judge doesn't stop the others or the
-worker. (Other judges are stubs, so their ratings stay at 0.)
+`PeriodicWorker` (a hosted `BackgroundService`) runs **every 1 minute** and refreshes **AtCoder**
+ratings (scraped from the Chile-filtered rankings). It's wrapped in try/catch so a failure doesn't
+stop the worker. (Codeforces lives in its own worker — see below; other judges are stubs.)
 
 `CsesProblemImportService` is a separate one-shot hosted service that runs **once at each
 startup**: it scrapes the public CSES problemset list and inserts any tasks missing from the
@@ -507,20 +500,26 @@ startup**: it scrapes the public CSES problemset list and inserts any tasks miss
 problems are untouched — and failures (e.g. CSES unreachable) are logged and swallowed so they
 never block or crash startup.
 
-### Codeforces gym import & solve sync
+### Codeforces worker
+
+**`CodeforcesWorker`** is the **single owner of all Codeforces API access** — because every
+request leaves from the same server IP (one CF rate-limit budget), ratings and solve-sync run in
+one coordinated loop instead of competing background jobs. All CF calls go through a process-wide
+gate: **one at a time, ≥5s apart** (measured after each response), and transient responses
+(500/502/503/504/429 — Codeforces behind Cloudflare 502s intermittently) are **retried up to 4×**.
 
 Configure credentials via `Codeforces:Key` / `Codeforces:Secret` (user-secrets or the
-`Codeforces__Key` / `Codeforces__Secret` env vars — **never commit them**). All Codeforces API
-calls are throttled process-wide to **≥5s apart** (one call at a time, measured after each
-response), shared across every caller so the limit can't be breached collectively.
+`Codeforces__Key` / `Codeforces__Secret` env vars — **never commit them**). Ratings work without
+credentials; gym problem/solve sync (signed `contest.standings`) needs them.
 
-- **`CodeforcesContestImportService`** — a one-shot startup importer registered **only when the
-  API is started with the `ADDCODEFORCES` flag** (e.g. `dotnet run -- ADDCODEFORCES`). For each
-  configured gym contest it fetches problems via signed `contest.standings`, registers the gym,
-  and inserts any missing problems. Idempotent.
-- **`CodeforcesSolveSyncService`** — runs every **5 minutes** (starting after the previous run
-  finishes). For each enabled gym in the registry it fetches standings for the users' Codeforces
-  handles and marks solved problems in `UserProblemStatus` (sets solved only; never un-solves).
+Each cycle (**every 5 minutes**, after the previous finishes) the worker:
+1. Refreshes `CodeforcesRating` for users with a handle (`user.info`).
+2. For each enabled gym in the registry, fetches standings for the users' handles and marks solved
+   problems in `UserProblemStatus` (sets solved only; never un-solves).
+
+When the API is started with the **`ADDCODEFORCES` flag** (e.g. `dotnet run -- ADDCODEFORCES`),
+the worker first runs a one-shot import of the configured gym contests: registering each gym and
+inserting its problems via signed `contest.standings`. Idempotent.
 
 ---
 
