@@ -44,6 +44,7 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Training management** | Search, detail, create-from-list, add / remove / reorder contests (Admin) |
 | **Standings** | Per-contest standings and global per-training standings (solved per contest + total) |
 | **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`); auto-populated when a Codeforces task is created — the source list for future problem imports |
+| **CSES solved scraper** | Scrapes a user's solved CSES tasks via a service-account session cookie; `GET /api/cses/user/{id}/solved`. Task ids match CSES `Problem.ExternalId` |
 | **Navigation context** | `GET /api/me/navigation-context` — drives the frontend menu/permissions |
 | **Codeforces ratings sync** | Live via official Codeforces API |
 | **AtCoder ratings sync** | Live via HTML scraping (Chile-filtered rankings) |
@@ -421,6 +422,21 @@ sync with the tasks. Existing gyms are left as-is (a disabled gym stays disabled
 — `gymContestId` must be positive and unique (`409` on duplicate); `fetchMethod` defaults to
 `Standings` and is validated (`400` on unknown value); `name` is optional.
 
+### CSES — `/api/cses`
+
+CSES shows solved tasks only to a logged-in session, but a logged-in account can view any
+user's statistics page — so the backend uses **one service-account session cookie** to scrape
+any user. Configure it via `Cses:SessionCookie` (the `PHPSESSID` value) in user-secrets or the
+`Cses__SessionCookie` env var — **never commit it**.
+
+| Method | Path | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/cses/user/{csesUserId}/solved` | Admin | Solved CSES task ids for that CSES user |
+
+Response: `{ csesUserId, solvedCount, taskIds: [] }`. The ids match `Problem.ExternalId` for
+CSES problems, so they can drive `UserProblemStatus`. Returns `502` if the cookie is missing
+or has expired.
+
 ---
 
 ## Data model
@@ -460,7 +476,7 @@ Each judge implements `IJudgeClient` (`GetUsersRatings(handles, ct) → Dictiona
 |---|---|---|
 | **Codeforces** | ✅ implemented | Official API (`user.info`) |
 | **AtCoder** | ✅ implemented | HTML scraping of Chile-filtered rankings (HtmlAgilityPack) |
-| CSES | ⛔ stub | returns 0 (scraper empty) |
+| CSES | 🟡 ratings stub (returns 0); **solved-tasks scraper implemented** (`CsesSolvedScraper`, service-account cookie) |
 | LeetCode | ⛔ stub | returns 0 |
 | CodeChef | ⛔ stub | returns 0 |
 | Luogu | ⛔ stub | returns 0 |
@@ -523,5 +539,5 @@ These are real, verified observations from the current code — worth fixing:
 
 ---
 
-_Generated from source on 2026-06-05. Endpoint count: 39 across 9 controllers (Auth, Me, Users,
-Organizations, Problems, Topics, Contests, Trainings, CodeforcesGyms)._
+_Generated from source on 2026-06-05. Endpoint count: 40 across 10 controllers (Auth, Me, Users,
+Organizations, Problems, Topics, Contests, Trainings, CodeforcesGyms, Cses)._

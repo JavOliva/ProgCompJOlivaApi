@@ -44,7 +44,7 @@ ProgCompJOlivaApi/
 
 ## Current context
 
-_Last reflects: 39 endpoints across 9 controllers; verified end-to-end on PostgreSQL 18._
+_Last reflects: 40 endpoints across 10 controllers; verified end-to-end on PostgreSQL 18._
 
 > Branch `feature/tasks-contests-trainings-standings` adds problem metadata, solve tracking,
 > full contest/training management and standings, plus a Codeforces gym registry (all built
@@ -65,7 +65,12 @@ _Last reflects: 39 endpoints across 9 controllers; verified end-to-end on Postgr
   string — only `Standings`, `Enabled`) with admin CRUD at `/api/codeforces-gym`. Creating a
   Codeforces task auto-registers its gym here (idempotent; existing gyms untouched). Registry
   only — no importer/fetching yet (deliberately deferred).
-- **Stub:** CSES / LeetCode / CodeChef / Luogu rating clients return `0`; no Coach role, Teams,
+- **CSES solved scraper:** `CsesSolvedScraper` (DI singleton) scrapes a user's solved CSES task
+  ids from `/problemset/user/{id}/` using a service-account cookie (`Cses:SessionCookie` — set
+  via user-secrets / `Cses__SessionCookie` env, never committed). Endpoint
+  `GET /api/cses/user/{id}/solved` (Admin). Ids match CSES `Problem.ExternalId`. Not yet wired
+  to `UserProblemStatus` (offered next step).
+- **Stub:** CSES / LeetCode / CodeChef / Luogu *rating* clients return `0`; no Coach role, Teams,
   or real ICPC/IOI eligibility.
 - **Conventions added this branch:** reorder endpoints take the full ordered id list
   (`Common/OrderedIdsRequest`); list endpoints return `Common/PagedResult<T>`; judge strings
