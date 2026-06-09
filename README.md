@@ -46,6 +46,8 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`); auto-populated when a Codeforces task is created — the source list for future problem imports |
 | **CSES solved scraper** | Scrapes a user's solved CSES tasks via a service-account session cookie; `GET /api/cses/user/{id}/solved`. Task ids match CSES `Problem.ExternalId` |
 | **CSES problemset auto-import** | On every startup a background service adds any CSES problems missing from the DB (scraped from the public list); idempotent |
+| **Codeforces gym import** | One-shot startup import (only with the `ADDCODEFORCES` flag): registers configured gym contests and inserts their problems via signed `contest.standings` |
+| **Codeforces solve sync** | Background service (every 5 min) that marks problems solved in `UserProblemStatus` from each enabled gym's standings, by user Codeforces handle |
 | **Navigation context** | `GET /api/me/navigation-context` — drives the frontend menu/permissions |
 | **Codeforces ratings sync** | Live via official Codeforces API |
 | **AtCoder ratings sync** | Live via HTML scraping (Chile-filtered rankings) |
@@ -475,15 +477,15 @@ Each judge implements `IJudgeClient` (`GetUsersRatings(handles, ct) → Dictiona
 
 | Judge | Status | Source |
 |---|---|---|
-| **Codeforces** | ✅ implemented | Official API (`user.info`) |
+| **Codeforces** | ✅ implemented | Official API: `user.info` (ratings) + signed `contest.standings` (gym problems & solves). Key/secret from config; all calls throttled ≥5s apart |
 | **AtCoder** | ✅ implemented | HTML scraping of Chile-filtered rankings (HtmlAgilityPack) |
 | CSES | 🟡 ratings stub (returns 0); **solved-tasks scraper implemented** (`CsesSolvedScraper`, service-account cookie) |
 | LeetCode | ⛔ stub | returns 0 |
 | CodeChef | ⛔ stub | returns 0 |
 | Luogu | ⛔ stub | returns 0 |
 
-> The Codeforces client currently holds API key/secret inline — move these to configuration
-> before deploying.
+> The Codeforces API key/secret now come from configuration (`Codeforces:Key` / `Codeforces:Secret`
+> via user-secrets or env vars), not source.
 
 ---
 
@@ -504,6 +506,21 @@ startup**: it scrapes the public CSES problemset list and inserts any tasks miss
 `problems` table (matched by `ExternalId` among CSES problems). It's idempotent — existing
 problems are untouched — and failures (e.g. CSES unreachable) are logged and swallowed so they
 never block or crash startup.
+
+### Codeforces gym import & solve sync
+
+Configure credentials via `Codeforces:Key` / `Codeforces:Secret` (user-secrets or the
+`Codeforces__Key` / `Codeforces__Secret` env vars — **never commit them**). All Codeforces API
+calls are throttled process-wide to **≥5s apart** (one call at a time, measured after each
+response), shared across every caller so the limit can't be breached collectively.
+
+- **`CodeforcesContestImportService`** — a one-shot startup importer registered **only when the
+  API is started with the `ADDCODEFORCES` flag** (e.g. `dotnet run -- ADDCODEFORCES`). For each
+  configured gym contest it fetches problems via signed `contest.standings`, registers the gym,
+  and inserts any missing problems. Idempotent.
+- **`CodeforcesSolveSyncService`** — runs every **5 minutes** (starting after the previous run
+  finishes). For each enabled gym in the registry it fetches standings for the users' Codeforces
+  handles and marks solved problems in `UserProblemStatus` (sets solved only; never un-solves).
 
 ---
 
@@ -536,8 +553,9 @@ These are real, verified observations from the current code — worth fixing:
 3. **`ModifyUser` ignores `Password`, `DateOfBirth`, `CsesId`, and `Roles`** even though the
    DTO accepts them — they're never applied.
 4. **`icpcEligible` is hard-coded `true`** in the rankings response; there's no eligibility logic.
-5. **Secrets in source:** JWT signing key (appsettings) and Codeforces API key/secret
-   (client) should move to user-secrets / environment variables.
+5. **Secrets in source:** the JWT signing key still lives in appsettings — move it to
+   user-secrets / environment variables. (Codeforces key/secret and the CSES cookie are
+   already config-only.)
 6. **CORS is wide open** (`AllowAnyOrigin/Header/Method`) — scope it for production.
 
 > Fixed on branch `feature/tasks-contests-trainings-standings`: the `NavigtationItemDto`

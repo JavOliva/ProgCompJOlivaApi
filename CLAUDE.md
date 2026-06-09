@@ -20,7 +20,8 @@ ProgCompJOlivaApi/
 ├── Models/        # EF Core entities
 ├── Data/          # AppDbContext + DbDevSeeder
 ├── Services/      # JwtTokenService, PasswordService, PeriodicWorker (ratings sync),
-│                  #   CsesProblemImportService (startup CSES problem import)
+│                  #   CsesProblemImportService, CodeforcesContestImportService (ADDCODEFORCES),
+│                  #   CodeforcesSolveSyncService (5-min gym solve sync)
 ├── JudgeClients/  # one client per online judge (IJudgeClient)
 └── Program.cs     # composition root
 ```
@@ -41,7 +42,9 @@ ProgCompJOlivaApi/
   host port **55432** to avoid clashing with a local Postgres on 5432).
 - Local: `cd ProgCompJOlivaApi && dotnet run` (needs Postgres on `localhost:5432`).
 - Dev seed users have password `123456` (admins: `JOliva`, `MrYhatoh`). The Docker DB seeds
-  users/orgs but no problems/contests — create those via the API.
+  users/orgs and (on startup) all CSES problems; create contests/trainings via the API.
+- `dotnet run -- ADDCODEFORCES` (or add the flag to the container command) triggers the one-shot
+  Codeforces gym import on that startup. Needs `Codeforces:Key/Secret` configured.
 
 ## Current context
 
@@ -64,8 +67,12 @@ _Last reflects: 40 endpoints across 10 controllers; verified end-to-end on Postg
   solved-per-contest + total). Slugs auto-generated.
 - **Codeforces gyms:** `CodeforcesGym` registry (`GymContestId`, `FetchMethod` enum stored as
   string — only `Standings`, `Enabled`) with admin CRUD at `/api/codeforces-gym`. Creating a
-  Codeforces task auto-registers its gym here (idempotent; existing gyms untouched). Registry
-  only — no importer/fetching yet (deliberately deferred).
+  Codeforces task auto-registers its gym here (idempotent; existing gyms untouched).
+- **Codeforces import/sync:** `CodeforcesClient` does signed `contest.standings`; key/secret from
+  config (`Codeforces:Key/Secret`), all CF calls throttled ≥5s apart process-wide.
+  `CodeforcesContestImportService` (only when started with the `ADDCODEFORCES` flag) imports a
+  fixed set of gym contests (problems + gym registration). `CodeforcesSolveSyncService` runs every
+  5 min, marking `UserProblemStatus` solved from gym standings by Codeforces handle (solved-only).
 - **CSES solved scraper:** `CsesSolvedScraper` (DI singleton) scrapes a user's solved CSES task
   ids from `/problemset/user/{id}/` using a service-account cookie (`Cses:SessionCookie` — set
   via user-secrets / `Cses__SessionCookie` env, never committed). Endpoint
