@@ -1,3 +1,4 @@
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -158,29 +159,43 @@ public class CodeforcesClient : IJudgeClient
         return new string(buffer);
     }
 
+    private const int MaxAttempts = 4;
+
     private async Task<string> RateLimitedGetStringAsync(string url, CancellationToken ct)
     {
         await Gate.WaitAsync(ct);
         try
         {
-            var wait = MinInterval - (DateTime.UtcNow - _lastCallUtc);
-            if (wait > TimeSpan.Zero)
-                await Task.Delay(wait, ct);
-
-            try
+            // Codeforces (behind Cloudflare) returns transient 5xx/429 fairly often, so retry a
+            // few times. The rate gap below also spaces retries by >=5s.
+            for (var attempt = 1; ; attempt++)
             {
-                using var response = await _httpClient.GetAsync(url, ct);
-                var body = await response.Content.ReadAsStringAsync(ct);
+                var wait = MinInterval - (DateTime.UtcNow - _lastCallUtc);
+                if (wait > TimeSpan.Zero)
+                    await Task.Delay(wait, ct);
 
-                if (!response.IsSuccessStatusCode)
-                    throw new HttpRequestException($"Codeforces returned {(int)response.StatusCode} ({response.StatusCode}). Body: {body}", null, response.StatusCode);
+                HttpRequestException? failure = null;
+                try
+                {
+                    using var response = await _httpClient.GetAsync(url, ct);
+                    var body = await response.Content.ReadAsStringAsync(ct);
+                    _lastCallUtc = DateTime.UtcNow; // measure the gap from the end of this call
 
-                return body;
-            }
-            finally
-            {
-                // Measure the gap from the end of this call, per the 5s-after-response rule.
-                _lastCallUtc = DateTime.UtcNow;
+                    if (response.IsSuccessStatusCode)
+                        return body;
+
+                    // Give up only on non-transient statuses or after the last attempt.
+                    if (attempt >= MaxAttempts || !IsTransient(response.StatusCode))
+                        failure = new HttpRequestException($"Codeforces returned {(int)response.StatusCode} ({response.StatusCode}). Body: {body}", null, response.StatusCode);
+                }
+                catch (HttpRequestException) when (attempt < MaxAttempts && !ct.IsCancellationRequested)
+                {
+                    // Network-level transient error (reset/timeout); retry after the rate gap.
+                    _lastCallUtc = DateTime.UtcNow;
+                }
+
+                if (failure != null)
+                    throw failure;
             }
         }
         finally
@@ -188,4 +203,11 @@ public class CodeforcesClient : IJudgeClient
             Gate.Release();
         }
     }
+
+    private static bool IsTransient(HttpStatusCode code)
+        => code is HttpStatusCode.InternalServerError
+            or HttpStatusCode.BadGateway
+            or HttpStatusCode.ServiceUnavailable
+            or HttpStatusCode.GatewayTimeout
+            or HttpStatusCode.TooManyRequests;
 }

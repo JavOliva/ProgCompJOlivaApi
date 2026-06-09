@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProgCompJOlivaApi.Data;
 using ProgCompJOlivaApi.JudgeClients.AtcoderClient;
-using ProgCompJOlivaApi.JudgeClients.CodeforcesClient;
 
 namespace ProgCompJOlivaApi.Services;
 
+/// <summary>
+/// Refreshes AtCoder ratings every minute. Codeforces lives in <see cref="CodeforcesWorker"/>
+/// (separate site/IP, separate rate budget).
+/// </summary>
 public class PeriodicWorker(IServiceScopeFactory scopeFactory, ILogger<PeriodicWorker> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -17,49 +20,6 @@ public class PeriodicWorker(IServiceScopeFactory scopeFactory, ILogger<PeriodicW
         {
             try
             {
-                logger.LogInformation("Running periodic job at {time}", DateTime.UtcNow);
-
-                using var scope = scopeFactory.CreateScope();
-
-                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                var codeforces = new CodeforcesClient();
-
-                var users = await db.Users
-                    .Where(u => u.CodeforcesHandle != null)
-                    .ToListAsync(stoppingToken);
-
-                var handles = users
-                    .Select(u => u.CodeforcesHandle!)
-                    .ToList();
-
-                if (handles.Count == 0)
-                    continue;
-
-                var cfUsers = await codeforces.GetUsersInfoAsync(handles, ct: stoppingToken);
-
-                foreach (var user in users)
-                {
-                    var cf = cfUsers.FirstOrDefault(x => x.Handle == user.CodeforcesHandle);
-
-                    if (cf != null)
-                    {
-                        user.CodeforcesRating = cf.Rating ?? 0;
-                    }
-                }
-
-                await db.SaveChangesAsync(stoppingToken);
-
-                logger.LogInformation("Periodic job finished for Codeforces Ratings.");
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Error in periodic job when fetching Codeforces Ratings.");
-            }
-
-            try
-            {
-                logger.LogInformation("Running periodic job at {time}", DateTime.UtcNow);
-
                 using var scope = scopeFactory.CreateScope();
 
                 var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();

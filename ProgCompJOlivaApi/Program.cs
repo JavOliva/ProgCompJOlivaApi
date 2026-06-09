@@ -38,12 +38,13 @@ public class Program
 
         builder.Services.AddHostedService<CsesProblemImportService>();
 
-        // Periodically sync solved problems from the registered Codeforces gyms.
-        builder.Services.AddHostedService<CodeforcesSolveSyncService>();
-
-        // One-shot gym import, only when started with the ADDCODEFORCES flag.
-        if (addCodeforces)
-            builder.Services.AddHostedService<CodeforcesContestImportService>();
+        // Single owner of all Codeforces API access (ratings + gym solve sync, and the one-shot
+        // ADDCODEFORCES import) so calls from this server's IP share one coordinated rate budget.
+        builder.Services.AddHostedService(sp => new CodeforcesWorker(
+            sp.GetRequiredService<IServiceScopeFactory>(),
+            sp.GetRequiredService<IConfiguration>(),
+            sp.GetRequiredService<ILogger<CodeforcesWorker>>(),
+            importOnStartup: addCodeforces));
 
         builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
