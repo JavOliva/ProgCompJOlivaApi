@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ProgCompJOlivaApi.Data;
 using ProgCompJOlivaApi.JudgeClients.CodeforcesClient;
+using ProgCompJOlivaApi.JudgeClients.CsesClient;
 using ProgCompJOlivaApi.Models;
 using ProgCompJOlivaApi.Services;
 
@@ -35,6 +36,8 @@ public class Program
         builder.Services.AddScoped<PasswordService>();
 
         builder.Services.AddScoped<JwtTokenService>();
+
+        builder.Services.AddSingleton<CsesSolvedScraper>();
 
         var jwtSection = builder.Configuration.GetSection("Jwt");
         var keyBytes = Encoding.UTF8.GetBytes(jwtSection["Key"]!);
