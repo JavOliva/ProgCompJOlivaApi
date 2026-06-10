@@ -78,6 +78,20 @@ public class Program
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.FromMinutes(1)
                 };
+
+                // Only access tokens may be used as bearer credentials. Refresh tokens are valid
+                // signed JWTs with the same issuer/audience, so without this they would also
+                // authenticate — and they live far longer. Reject anything that isn't an access token.
+                options.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        if (context.Principal?.FindFirst("token_use")?.Value != "access")
+                            context.Fail("Not an access token.");
+
+                        return Task.CompletedTask;
+                    }
+                };
             });
 
         builder.Services.AddAuthorization();
@@ -102,7 +116,13 @@ public class Program
             app.MapOpenApi();
         }
 
-        app.UseHttpsRedirection();
+        // In local dev the SPA talks to the plain-HTTP endpoint. Redirecting to HTTPS (whose dev
+        // cert is often untrusted) breaks cross-origin fetches with net::ERR_EMPTY_RESPONSE.
+        // TLS is terminated by the reverse proxy in production, so only redirect outside dev.
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseHttpsRedirection();
+        }
 
         app.UseStaticFiles();
 
