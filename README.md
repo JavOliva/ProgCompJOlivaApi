@@ -551,11 +551,15 @@ These are real, verified observations from the current code — worth fixing:
    ([UserController.cs:122](ProgCompJOlivaApi/Controllers/Users/UserController.cs#L122)).
 3. **`ModifyUser` ignores `Password`, `DateOfBirth`, `CsesId`, and `Roles`** even though the
    DTO accepts them — they're never applied.
-4. **`icpcEligible` is hard-coded `true`** in the rankings response; there's no eligibility logic.
-5. **Secrets in source:** the JWT signing key still lives in appsettings — move it to
+4. **Login ignores `SessionDuration`.** It's parsed into `SessionDurationDays` but never used —
+   `JwtTokenService.CreateAccessToken` always applies `Jwt:AccessTokenMinutes` (30 min)
+   ([JwtTokenService.cs:17](ProgCompJOlivaApi/Services/JwtTokenService.cs#L17)). Every token
+   expires after 30 minutes, so authenticated requests start returning `401` mid-session.
+5. **`icpcEligible` is hard-coded `true`** in the rankings response; there's no eligibility logic.
+6. **Secrets in source:** the JWT signing key still lives in appsettings — move it to
    user-secrets / environment variables. (Codeforces key/secret and the CSES cookie are
    already config-only.)
-6. **CORS is wide open** (`AllowAnyOrigin/Header/Method`) — scope it for production.
+7. **CORS is wide open** (`AllowAnyOrigin/Header/Method`) — scope it for production.
 
 > Fixed on branch `feature/tasks-contests-trainings-standings`: the `NavigtationItemDto`
 > compile-breaking typo, and the `GET /api/training` placeholder (now a real search endpoint).

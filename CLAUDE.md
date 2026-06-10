@@ -91,6 +91,8 @@ _Last reflects: 40 endpoints across 10 controllers; verified end-to-end on Postg
   live in `Controllers/Constants.cs` (`Judges`); "task" == the `Problem` entity.
 - **Known bugs (pre-existing):** `RestoreUser` sets `IsActive=false` (doesn't restore);
   `ModifyUser` nickname-uniqueness check tests the old nickname and ignores
-  `Password`/`DateOfBirth`/`CsesId`/`Roles`. See README "Known issues".
+  `Password`/`DateOfBirth`/`CsesId`/`Roles`; login ignores `SessionDuration` —
+  `JwtTokenService` always uses `Jwt:AccessTokenMinutes` (30 min), so every token expires after
+  30 min and authenticated calls then 401. See README "Known issues".
 
 > When you add, remove, or change code, update the lists above so this stays accurate.
