@@ -63,7 +63,8 @@ _Last reflects: 40 endpoints across 10 controllers; verified end-to-end on Postg
   paging), `GET /api/problem/{id}`, per-judge create (`/codeforces`, `/atcoder`, `/cses`),
   `PATCH /api/problem/{id}`, solve toggle `PUT /api/problem/{id}/solved`. Topics at `GET /api/topic`.
 - **Contests:** search/list, detail, create-from-list, `PATCH`, add/remove/reorder problems,
-  standings (`GET /api/contest/{id}/standings`).
+  standings (`GET /api/contest/{id}/standings` — ordered `problems` + one row per user with ≥1
+  solve, listing the problem ids they solved).
 - **Trainings:** search/list (replaces the old placeholder), detail, create-from-list, `PATCH`,
   add/remove/reorder contests, global standings (`GET /api/training/{id}/standings`,
   solved-per-contest + total). Slugs auto-generated.

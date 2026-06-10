@@ -392,8 +392,11 @@ Defaults to the caller; only an Admin may set it for another user via `userNickn
 | `PUT` | `/api/contest/{id}/problems/order` | Admin | Reorder: `{ orderedIds: [] }` (permutation of current) |
 | `GET` | `/api/contest/{id}/standings` | Authenticated | Per-user solved counts for this contest |
 
-**Contest standings** response: `{ contestId, contestName, problemCount, rows: [{ nickname,
-fullName, university, solvedCount, solvedProblemIds }] }`, sorted by `solvedCount` desc then nickname.
+**Contest standings** response: `{ contestId, contestName, problems: [{ problemId, position,
+title, judge }], rows: [{ nickname, fullName, university, solvedCount, solvedProblemIds }] }`.
+`problems` is the contest's problem set ordered by position; `rows` has **one entry only per user
+who solved ≥1 problem** (active users), each listing the `solvedProblemIds` they solved, sorted by
+`solvedCount` desc then nickname.
 
 ### Trainings — `/api/training`
 
