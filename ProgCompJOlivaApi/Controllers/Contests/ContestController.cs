@@ -302,25 +302,43 @@ public class ContestController(AppDbContext db) : ControllerBase
         var contest = await db.Contests
             .AsNoTracking()
             .Where(c => c.Id == id)
-            .Select(c => new { c.Id, c.Name, ProblemIds = c.ContestProblems.Select(cp => cp.ProblemId).ToList() })
+            .Select(c => new
+            {
+                c.Id,
+                c.Name,
+                Problems = c.ContestProblems
+                    .OrderBy(cp => cp.Position)
+                    .Select(cp => new ContestStandingProblemDto
+                    {
+                        ProblemId = cp.ProblemId,
+                        Position = cp.Position,
+                        Title = cp.Problem.Title,
+                        Judge = cp.Problem.Judge
+                    })
+                    .ToList()
+            })
             .FirstOrDefaultAsync(ct);
 
         if (contest is null)
             return NotFound(new { error = "Contest not found." });
 
-        var solved = await db.UserProblemStatuses
-            .AsNoTracking()
-            .Where(s => s.IsSolved && contest.ProblemIds.Contains(s.ProblemId))
-            .Select(s => new { s.UserId, s.ProblemId })
-            .ToListAsync(ct);
+        var problemIds = contest.Problems.Select(p => p.ProblemId).ToList();
 
-        var solvedByUser = solved
+        // Solves for this contest's problems, grouped by user.
+        var solvedByUser = (await db.UserProblemStatuses
+            .AsNoTracking()
+            .Where(s => s.IsSolved && problemIds.Contains(s.ProblemId))
+            .Select(s => new { s.UserId, s.ProblemId })
+            .ToListAsync(ct))
             .GroupBy(s => s.UserId)
             .ToDictionary(g => g.Key, g => g.Select(x => x.ProblemId).ToList());
 
+        // Only active users who solved at least one problem of this contest.
+        var solverIds = solvedByUser.Keys.ToList();
+
         var users = await db.Users
             .AsNoTracking()
-            .Where(u => u.IsActive)
+            .Where(u => u.IsActive && solverIds.Contains(u.Id))
             .Select(u => new
             {
                 u.Id,
@@ -333,7 +351,7 @@ public class ContestController(AppDbContext db) : ControllerBase
         var rows = users
             .Select(u =>
             {
-                var solvedIds = solvedByUser.TryGetValue(u.Id, out var ids) ? ids : [];
+                var solvedIds = solvedByUser[u.Id];
                 return new ContestStandingRowDto
                 {
                     Nickname = u.Nickname,
@@ -351,7 +369,7 @@ public class ContestController(AppDbContext db) : ControllerBase
         {
             ContestId = contest.Id,
             ContestName = contest.Name,
-            ProblemCount = contest.ProblemIds.Count,
+            Problems = contest.Problems,
             Rows = rows
         });
     }
