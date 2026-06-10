@@ -16,10 +16,13 @@ public class Program
     {
         // Bare "ADDCODEFORCES" flag toggles the one-shot gym import. Strip it before building
         // configuration so the command-line provider doesn't reject the unkeyed token.
-        var addCodeforces = args.Any(a => string.Equals(a.TrimStart('-'), "ADDCODEFORCES", StringComparison.OrdinalIgnoreCase));
+        var addCodeforcesFlag = args.Any(a => string.Equals(a.TrimStart('-'), "ADDCODEFORCES", StringComparison.OrdinalIgnoreCase));
         var builderArgs = args.Where(a => !string.Equals(a.TrimStart('-'), "ADDCODEFORCES", StringComparison.OrdinalIgnoreCase)).ToArray();
 
         var builder = WebApplication.CreateBuilder(builderArgs);
+
+        // Also honour the toggle via env/config (e.g. ADDCODEFORCES=true), e.g. for Docker.
+        var addCodeforces = addCodeforcesFlag || builder.Configuration.GetValue<bool>("ADDCODEFORCES");
 
         builder.Services.AddControllers();
 

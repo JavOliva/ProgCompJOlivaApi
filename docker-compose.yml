@@ -51,6 +51,12 @@ services:
       ASPNETCORE_ENVIRONMENT: Docker
       ASPNETCORE_URLS: http://+:8080
       ConnectionStrings_DefaultConnection: Host=postgres;Port=5432;Database=progcomp_backend;Username=progcomp_user;Password=prograbonita;GSS Encryption Mode=Disable
+      # Optional integrations, passed through from the host environment (empty if unset).
+      Codeforces__Key: ${Codeforces__Key:-}
+      Codeforces__Secret: ${Codeforces__Secret:-}
+      Cses__SessionCookie: ${Cses__SessionCookie:-}
+      # Set ADDCODEFORCES=true to run the one-shot gym import on this startup.
+      ADDCODEFORCES: ${ADDCODEFORCES:-}
     ports:
       - "5029:8080"
     restart: unless-stopped
