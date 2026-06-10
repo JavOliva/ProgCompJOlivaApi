@@ -11,7 +11,7 @@ namespace ProgCompJOlivaApi.Controllers.Topics;
 public class TopicController(AppDbContext db) : ControllerBase
 {
     /// <summary>Lists all topics with how many problems each one has, for filter UIs.</summary>
-    [Authorize]
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<List<TopicDto>>> GetAll(CancellationToken ct = default)
     {

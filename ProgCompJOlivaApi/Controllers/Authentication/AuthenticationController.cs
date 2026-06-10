@@ -29,7 +29,15 @@ public class AuthenticationController(AppDbContext db, PasswordService passwordS
         if (!Enum.TryParse<SessionDurationDays>(request.SessionDuration, ignoreCase: true, out var sessionDuration))
             return BadRequest(new { error = "Invalid session duration." });
 
-        var (accessToken, accessTokenExpiresAtUtc) = jwtTokenService.CreateAccessToken(user);
+        var lifetime = sessionDuration switch
+        {
+            SessionDurationDays.One => TimeSpan.FromDays(1),
+            SessionDurationDays.Thirty => TimeSpan.FromDays(30),
+            SessionDurationDays.Forever => TimeSpan.FromDays(3650), // ~10 years; JWTs can't truly never expire
+            _ => TimeSpan.FromDays(1)
+        };
+
+        var (accessToken, accessTokenExpiresAtUtc) = jwtTokenService.CreateAccessToken(user, lifetime);
 
         await db.SaveChangesAsync(ct);
 

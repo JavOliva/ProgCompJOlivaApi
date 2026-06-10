@@ -8,16 +8,15 @@ namespace ProgCompJOlivaApi.Services;
 
 public class JwtTokenService(IConfiguration configuration)
 {
-    public (string token, DateTime expiresAtUtc) CreateAccessToken(User user)
+    public (string token, DateTime expiresAtUtc) CreateAccessToken(User user, TimeSpan lifetime)
     {
         var jwtSection = configuration.GetSection("Jwt");
         var key = jwtSection["Key"]!;
         var issuer = jwtSection["Issuer"]!;
         var audience = jwtSection["Audience"]!;
-        var accessTokenMinutes = int.Parse(jwtSection["AccessTokenMinutes"]!);
 
         var now = DateTime.UtcNow;
-        var expires = now.AddMinutes(accessTokenMinutes);
+        var expires = now.Add(lifetime);
 
         var claims = new List<Claim>
         {

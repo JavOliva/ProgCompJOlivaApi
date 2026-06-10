@@ -18,7 +18,7 @@ public class ProblemController(AppDbContext db) : ControllerBase
     /// Fast task search for building contests. Filterable by free text (title / external id /
     /// topic / keyword), judge, topic and difficulty range; paginated and sortable.
     /// </summary>
-    [Authorize]
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<PagedResult<ProblemListItemDto>>> Search(
         [FromQuery] string? search,
@@ -113,7 +113,7 @@ public class ProblemController(AppDbContext db) : ControllerBase
         });
     }
 
-    [Authorize]
+    [AllowAnonymous]
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<ProblemDetailDto>> GetById(Guid id, CancellationToken ct = default)
     {
