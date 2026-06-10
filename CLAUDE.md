@@ -43,8 +43,10 @@ ProgCompJOlivaApi/
 - Local: `cd ProgCompJOlivaApi && dotnet run` (needs Postgres on `localhost:5432`).
 - Dev seed users have password `123456` (admins: `JOliva`, `MrYhatoh`). The Docker DB seeds
   users/orgs and (on startup) all CSES problems; create contests/trainings via the API.
-- `dotnet run -- ADDCODEFORCES` (or add the flag to the container command) triggers the one-shot
-  Codeforces gym import on that startup. Needs `Codeforces:Key/Secret` configured.
+- `dotnet run -- ADDCODEFORCES` (CLI flag) or `ADDCODEFORCES=true` (env/config) triggers the
+  one-shot Codeforces gym import on that startup. Needs `Codeforces:Key/Secret` configured.
+- `docker-compose.yml` passes `Codeforces__Key/Secret`, `Cses__SessionCookie` and `ADDCODEFORCES`
+  through to the `api` container from the host environment (empty defaults; secrets never committed).
 
 ## Current context
 
