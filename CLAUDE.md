@@ -89,10 +89,11 @@ _Last reflects: 40 endpoints across 10 controllers; verified end-to-end on Postg
 - **Conventions added this branch:** reorder endpoints take the full ordered id list
   (`Common/OrderedIdsRequest`); list endpoints return `Common/PagedResult<T>`; judge strings
   live in `Controllers/Constants.cs` (`Judges`); "task" == the `Problem` entity.
+- **Auth:** task browse is public (`GET /api/problem`, `/api/problem/{id}`, `/api/topic` are
+  `[AllowAnonymous]`); create/update/solve stay protected. Login honours `SessionDuration`
+  (`One`=1d, `Thirty`=30d, `Forever`=10y) via `JwtTokenService.CreateAccessToken(user, lifetime)`.
 - **Known bugs (pre-existing):** `RestoreUser` sets `IsActive=false` (doesn't restore);
   `ModifyUser` nickname-uniqueness check tests the old nickname and ignores
-  `Password`/`DateOfBirth`/`CsesId`/`Roles`; login ignores `SessionDuration` —
-  `JwtTokenService` always uses `Jwt:AccessTokenMinutes` (30 min), so every token expires after
-  30 min and authenticated calls then 401. See README "Known issues".
+  `Password`/`DateOfBirth`/`CsesId`/`Roles`. See README "Known issues".
 
 > When you add, remove, or change code, update the lists above so this stays accurate.

@@ -327,8 +327,8 @@ Logo constraints: `.jpg` / `.jpeg` / `.png`, up to **2 MB**. Files are stored un
 
 | Method | Path | Auth | Description |
 |---|---|---|---|
-| `GET` | `/api/problem` | Authenticated | Search/list tasks (see query params below) |
-| `GET` | `/api/problem/{id}` | Authenticated | Task detail |
+| `GET` | `/api/problem` | _public_ | Search/list tasks (see query params below) |
+| `GET` | `/api/problem/{id}` | _public_ | Task detail |
 | `POST` | `/api/problem/codeforces` | Admin | Create a Codeforces task |
 | `POST` | `/api/problem/atcoder` | Admin | Create an AtCoder task |
 | `POST` | `/api/problem/cses` | Admin | Create a CSES task |
@@ -361,7 +361,7 @@ Defaults to the caller; only an Admin may set it for another user via `userNickn
 
 #### Topics — `/api/topic`
 
-`GET /api/topic` (Authenticated) → `[{ id, name, problemCount }]`, for filter UIs.
+`GET /api/topic` (_public_) → `[{ id, name, problemCount }]`, for filter UIs.
 
 ### Contests — `/api/contest`
 
@@ -551,19 +551,16 @@ These are real, verified observations from the current code — worth fixing:
    ([UserController.cs:122](ProgCompJOlivaApi/Controllers/Users/UserController.cs#L122)).
 3. **`ModifyUser` ignores `Password`, `DateOfBirth`, `CsesId`, and `Roles`** even though the
    DTO accepts them — they're never applied.
-4. **Login ignores `SessionDuration`.** It's parsed into `SessionDurationDays` but never used —
-   `JwtTokenService.CreateAccessToken` always applies `Jwt:AccessTokenMinutes` (30 min)
-   ([JwtTokenService.cs:17](ProgCompJOlivaApi/Services/JwtTokenService.cs#L17)). Every token
-   expires after 30 minutes, so authenticated requests start returning `401` mid-session.
-5. **`icpcEligible` is hard-coded `true`** in the rankings response; there's no eligibility logic.
-6. **Secrets in source:** the JWT signing key still lives in appsettings — move it to
+4. **`icpcEligible` is hard-coded `true`** in the rankings response; there's no eligibility logic.
+5. **Secrets in source:** the JWT signing key still lives in appsettings — move it to
    user-secrets / environment variables. (Codeforces key/secret and the CSES cookie are
    already config-only.)
-7. **CORS is wide open** (`AllowAnyOrigin/Header/Method`) — scope it for production.
+6. **CORS is wide open** (`AllowAnyOrigin/Header/Method`) — scope it for production.
 
 > Fixed on branch `feature/tasks-contests-trainings-standings`: the `NavigtationItemDto`
-> compile-breaking typo, and the `GET /api/training` placeholder (now a real search endpoint).
-> The `RestoreUser` / `ModifyUser` bugs above are still open (out of scope for that branch).
+> compile-breaking typo; the `GET /api/training` placeholder (now a real search endpoint); and
+> login now honours `SessionDuration` (One=1d / Thirty=30d / Forever=10y) instead of a hardcoded
+> 30-minute token. The `RestoreUser` / `ModifyUser` bugs above are still open.
 
 ---
 
