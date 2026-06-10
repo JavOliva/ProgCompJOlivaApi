@@ -90,8 +90,12 @@ _Last reflects: 40 endpoints across 10 controllers; verified end-to-end on Postg
   (`Common/OrderedIdsRequest`); list endpoints return `Common/PagedResult<T>`; judge strings
   live in `Controllers/Constants.cs` (`Judges`); "task" == the `Problem` entity.
 - **Auth:** task browse is public (`GET /api/problem`, `/api/problem/{id}`, `/api/topic` are
-  `[AllowAnonymous]`); create/update/solve stay protected. Login honours `SessionDuration`
-  (`One`=1d, `Thirty`=30d, `Forever`=10y) via `JwtTokenService.CreateAccessToken(user, lifetime)`.
+  `[AllowAnonymous]`); create/update/solve stay protected. Login returns a 1h access token +
+  refresh token (lifetime = `SessionDuration`: `One`=1d, `Thirty`=30d, `Forever`=10y);
+  `POST /api/auth/refresh` swaps a refresh token for a new access token. Tokens carry
+  `token_use=access|refresh`; refresh tokens are rejected as bearer creds (JwtBearer
+  `OnTokenValidated`) and access tokens rejected at `/refresh`. Stateless (no revocation).
+  Dev skips HTTPS redirection (plain-HTTP SPA).
 - **Known bugs (pre-existing):** `RestoreUser` sets `IsActive=false` (doesn't restore);
   `ModifyUser` nickname-uniqueness check tests the old nickname and ignores
   `Password`/`DateOfBirth`/`CsesId`/`Roles`. See README "Known issues".

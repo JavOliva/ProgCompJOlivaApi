@@ -33,7 +33,7 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 
 | Feature | Notes |
 |---|---|
-| **JWT authentication** | `POST /api/auth/login`, HMAC-SHA256, configurable expiry, role claims |
+| **JWT authentication** | `POST /api/auth/login`, HMAC-SHA256, role claims; 1-hour access token + refresh token (`POST /api/auth/refresh`), refresh lifetime = `SessionDuration` |
 | **User management** | Create, modify, soft-delete users (Admin only) |
 | **User rankings** | Public endpoint, sorted by Codeforces rating |
 | **Organization management** | Create / modify universities incl. logo upload (Admin only) |
@@ -205,7 +205,7 @@ All request/response bodies are JSON unless noted (organization endpoints use
 
 #### `POST /api/auth/login` — _anonymous_
 
-Authenticate and receive a JWT.
+Authenticate and receive a short-lived **access token** plus a long-lived **refresh token**.
 
 Request:
 ```json
@@ -221,9 +221,25 @@ Response `200`:
 {
   "accessToken": "eyJ...",
   "accessTokenExpiresAtUtc": "2026-06-05T12:30:00Z",
+  "refreshToken": "eyJ...",
+  "refreshTokenExpiresAtUtc": "2026-06-06T11:30:00Z",
   "roles": ["Admin"]
 }
 ```
+
+- **Access token** lasts **1 hour** — send it as `Authorization: Bearer <accessToken>`.
+- **Refresh token** lasts the requested `sessionDuration` (`One`=1 day, `Thirty`=30 days,
+  `Forever`=10 years). Keep it; use it to get new access tokens.
+
+#### `POST /api/auth/refresh` — _anonymous_
+
+Exchange a valid refresh token for a fresh access token. Request `{ "refreshToken": "eyJ..." }`;
+response is the same shape as login (a new `accessToken`, the same refresh token echoed back).
+Returns `401` if the refresh token is missing, expired, or not a refresh token.
+
+> Tokens are tagged `token_use=access|refresh` and kept separate: a refresh token is **rejected
+> as a bearer credential**, and an access token is rejected at `/refresh`. Tokens are stateless
+> signed JWTs (no server-side revocation), so a leaked refresh token is valid until it expires.
 
 ### Me — `/api/me`
 
@@ -559,8 +575,9 @@ These are real, verified observations from the current code — worth fixing:
 
 > Fixed on branch `feature/tasks-contests-trainings-standings`: the `NavigtationItemDto`
 > compile-breaking typo; the `GET /api/training` placeholder (now a real search endpoint); and
-> login now honours `SessionDuration` (One=1d / Thirty=30d / Forever=10y) instead of a hardcoded
-> 30-minute token. The `RestoreUser` / `ModifyUser` bugs above are still open.
+> the 30-minute hardcoded session — login now issues a 1-hour access token plus a refresh token
+> whose lifetime is the requested `SessionDuration` (One=1d / Thirty=30d / Forever=10y). The
+> `RestoreUser` / `ModifyUser` bugs above are still open.
 
 ---
 
