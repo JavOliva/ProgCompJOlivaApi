@@ -43,7 +43,8 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Contest management** | Search, detail, create-from-list, add / remove / reorder problems (Admin) |
 | **Training management** | Search, detail, create-from-list, add / remove / reorder contests (Admin) |
 | **Standings** | Per-contest standings and global per-training standings (solved per contest + total) |
-| **Codeforces gym registry** | Admin CRUD list of gyms, each with a fetch-method enum (`Standings`); auto-populated when a Codeforces task is created — the source list for future problem imports |
+| **Codeforces gym registry** | Admin CRUD list of gyms; `POST /api/codeforces-gym/{id}/import` adds a gym **and** imports its problems + starts standings tracking |
+| **Problem statements** | Public statement view (`GET /api/problem/statement`); CSES scraped at startup (reliable), Codeforces in the background (needs a session cookie — best-effort) |
 | **CSES solved scraper** | Scrapes a user's solved CSES tasks via a service-account session cookie; `GET /api/cses/user/{id}/solved`. Task ids match CSES `Problem.ExternalId` |
 | **CSES problemset auto-import** | On every startup a background service adds any CSES problems missing from the DB (scraped from the public list); idempotent |
 | **Codeforces worker** | One coordinated worker (every 5 min) owns all CF access: ratings refresh + gym solve sync (marks `UserProblemStatus` by handle); plus a one-shot gym import with the `ADDCODEFORCES` flag. Shared ≥5s rate gate + transient-error retry |
@@ -345,11 +346,19 @@ Logo constraints: `.jpg` / `.jpeg` / `.png`, up to **2 MB**. Files are stored un
 |---|---|---|---|
 | `GET` | `/api/problem` | _public_ | Search/list tasks (see query params below) |
 | `GET` | `/api/problem/{id}` | _public_ | Task detail |
+| `GET` | `/api/problem/statement?judge=&externalId=` | _public_ | Problem statement HTML (MathJax) |
+| `GET` | `/api/problem/{id}/statement` | _public_ | Problem statement HTML by id |
 | `POST` | `/api/problem/codeforces` | Admin | Create a Codeforces task |
 | `POST` | `/api/problem/atcoder` | Admin | Create an AtCoder task |
 | `POST` | `/api/problem/cses` | Admin | Create a CSES task |
 | `PATCH` | `/api/problem/{id}` | Admin | Update metadata (partial) |
 | `PUT` | `/api/problem/{id}/solved` | Authenticated | Record solved status |
+
+**Statements** (`GET …/statement`) return `{ judge, externalId, title, html }` where `html` is an
+HTML fragment with MathJax delimiters (`\(…\)` / `\[…\]`) and absolute image URLs. `404` until the
+statement has been scraped (CSES at startup; Codeforces in the background — see
+[the frontend guide](docs/frontend/problem-statements-and-gyms.md)). Problem list items carry a
+`hasStatement` flag.
 
 **Search query params:** `search` (matches title / external id / topic / keyword, case-insensitive),
 `judge`, `topic`, `minDifficulty`, `maxDifficulty`, `onlyActive` (default `true`),
@@ -423,19 +432,22 @@ with the `contests` order.
 ### Codeforces gyms — `/api/codeforces-gym`
 
 A registry of Codeforces gyms to use as problem sources. Each gym records **how** it should be
-fetched (`fetchMethod`, a string enum — currently only `Standings`). This maintains the list
-only; importing problems from the gyms is not implemented yet. **All endpoints are Admin-only.**
+fetched (`fetchMethod`, a string enum — currently only `Standings`). **All endpoints are Admin-only.**
 
-Creating a Codeforces task (`POST /api/problem/codeforces`) automatically registers that task's
-gym (`contestId`) here with `Standings` if it isn't already present — so the gym list stays in
-sync with the tasks. Existing gyms are left as-is (a disabled gym stays disabled).
+The main entry point is **import**: `POST /api/codeforces-gym/{gymContestId}/import` registers the
+gym (enabled, so the solve sync starts tracking it) **and** imports its problems via the Codeforces
+API in one call (idempotent — re-importing only adds new problems). Response:
+`{ gymContestId, name, addedProblems, totalProblems, gymWasNew }`. It makes one rate-limited
+Codeforces call, so it can take a few seconds; `502` on Codeforces errors / missing credentials.
+Creating a Codeforces task also auto-registers its gym (without importing).
 
 | Method | Path | Description |
 |---|---|---|
+| `POST` | `/api/codeforces-gym/{gymContestId}/import` | **Add a gym + import its problems** |
 | `GET` | `/api/codeforces-gym` | List gyms (`onlyEnabled`, `search` by name or gym id) |
 | `GET` | `/api/codeforces-gym/{id}` | Gym detail |
 | `GET` | `/api/codeforces-gym/fetch-methods` | Available fetch-method names (for a dropdown) |
-| `POST` | `/api/codeforces-gym` | Register a gym |
+| `POST` | `/api/codeforces-gym` | Register a gym (no import) |
 | `PATCH` | `/api/codeforces-gym/{id}` | Edit a gym (partial) |
 | `DELETE` | `/api/codeforces-gym/{id}` | Remove a gym |
 
