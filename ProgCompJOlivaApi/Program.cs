@@ -46,6 +46,7 @@ public class Program
         builder.Services.AddHostedService(sp => new CodeforcesWorker(
             sp.GetRequiredService<IServiceScopeFactory>(),
             sp.GetRequiredService<IConfiguration>(),
+            sp.GetRequiredService<IWebHostEnvironment>(),
             sp.GetRequiredService<ILogger<CodeforcesWorker>>(),
             importOnStartup: addCodeforces));
 
@@ -54,6 +55,8 @@ public class Program
         builder.Services.AddScoped<PasswordService>();
 
         builder.Services.AddScoped<JwtTokenService>();
+
+        builder.Services.AddScoped<CodeforcesGymImporter>();
 
         builder.Services.AddSingleton<CsesSolvedScraper>();
 

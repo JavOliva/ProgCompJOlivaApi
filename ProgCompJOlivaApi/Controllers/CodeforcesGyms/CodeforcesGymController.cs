@@ -4,19 +4,54 @@ using Microsoft.EntityFrameworkCore;
 using ProgCompJOlivaApi.Controllers.CodeforcesGyms.Dtos;
 using ProgCompJOlivaApi.Data;
 using ProgCompJOlivaApi.Models;
+using ProgCompJOlivaApi.Services;
 
 namespace ProgCompJOlivaApi.Controllers.CodeforcesGyms;
 
 /// <summary>
-/// Admin management of the Codeforces gym list — the set of gyms the system may pull problems
-/// from, and how each one is fetched (<see cref="GymFetchMethod"/>). Fetching itself is not
-/// implemented here; this only maintains the registry.
+/// Admin management of the Codeforces gym list — the set of gyms the system pulls problems from
+/// and fetches standings for. <see cref="ImportGym"/> registers a gym and imports its problems in
+/// one step; the rest is plain CRUD over the registry.
 /// </summary>
 [ApiController]
 [Route("api/codeforces-gym")]
 [Authorize(Roles = Constants.AdminRole)]
-public class CodeforcesGymController(AppDbContext db) : ControllerBase
+public class CodeforcesGymController(AppDbContext db, CodeforcesGymImporter importer) : ControllerBase
 {
+    /// <summary>
+    /// Adds a Codeforces gym by id: registers it (enabled, so the solve sync starts tracking it)
+    /// and imports its problems via the Codeforces API. Idempotent — re-importing only adds new
+    /// problems. This makes one rate-limited Codeforces call, so the request may take a few seconds.
+    /// </summary>
+    [HttpPost("{gymContestId:int}/import")]
+    public async Task<IActionResult> ImportGym(int gymContestId, CancellationToken ct = default)
+    {
+        if (gymContestId <= 0)
+            return BadRequest(new { error = "Gym contest id must be a positive integer." });
+
+        try
+        {
+            var result = await importer.ImportAsync(gymContestId, ct);
+            return Ok(new
+            {
+                gymContestId = result.GymContestId,
+                name = result.Name,
+                addedProblems = result.AddedProblems,
+                totalProblems = result.TotalProblems,
+                gymWasNew = result.GymWasNew
+            });
+        }
+        catch (InvalidOperationException ex)
+        {
+            // Missing credentials, or Codeforces returned an error/transient failure.
+            return StatusCode(StatusCodes.Status502BadGateway, new { error = ex.Message });
+        }
+        catch (HttpRequestException ex)
+        {
+            return StatusCode(StatusCodes.Status502BadGateway, new { error = $"Failed to reach Codeforces: {ex.Message}" });
+        }
+    }
+
     /// <summary>Lists the available fetch strategies (enum names), for selection UIs.</summary>
     [HttpGet("fetch-methods")]
     public ActionResult<List<string>> GetFetchMethods()

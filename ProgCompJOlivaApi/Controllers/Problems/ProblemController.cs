@@ -1,16 +1,18 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProgCompJOlivaApi.Controllers.Common;
 using ProgCompJOlivaApi.Controllers.Problems.Dtos;
 using ProgCompJOlivaApi.Data;
 using ProgCompJOlivaApi.Models;
+using ProgCompJOlivaApi.Utility;
 
 namespace ProgCompJOlivaApi.Controllers.Problems;
 
 [ApiController]
 [Route("api/problem")]
-public class ProblemController(AppDbContext db) : ControllerBase
+public class ProblemController(AppDbContext db, IWebHostEnvironment env) : ControllerBase
 {
     private const int MaxPageSize = 200;
 
@@ -144,6 +146,66 @@ public class ProblemController(AppDbContext db) : ControllerBase
             return NotFound(new { error = "Problem not found." });
 
         return Ok(problem);
+    }
+
+    /// <summary>
+    /// Returns a problem's statement (HTML fragment with MathJax delimiters) by judge + external
+    /// id. Public — no authentication required.
+    /// </summary>
+    [AllowAnonymous]
+    [HttpGet("statement")]
+    public async Task<ActionResult<ProblemStatementDto>> GetStatement([FromQuery] string judge, [FromQuery] string externalId, CancellationToken ct = default)
+    {
+        if (string.IsNullOrWhiteSpace(judge) || string.IsNullOrWhiteSpace(externalId))
+            return BadRequest(new { error = "judge and externalId are required." });
+
+        var problem = await db.Problems
+            .AsNoTracking()
+            .Where(p => p.Judge == judge.Trim() && p.ExternalId == externalId.Trim())
+            .Select(p => new { p.Judge, p.ExternalId, p.Title, p.StatementPath })
+            .FirstOrDefaultAsync(ct);
+
+        if (problem is null)
+            return NotFound(new { error = "Problem not found." });
+
+        var html = await StatementStore.ReadAsync(env, problem.StatementPath, ct);
+        if (html is null)
+            return NotFound(new { error = "Statement not available for this problem yet." });
+
+        return Ok(new ProblemStatementDto
+        {
+            Judge = problem.Judge,
+            ExternalId = problem.ExternalId,
+            Title = problem.Title,
+            Html = html
+        });
+    }
+
+    /// <summary>Returns a problem's statement by its id. Public — no authentication required.</summary>
+    [AllowAnonymous]
+    [HttpGet("{id:guid}/statement")]
+    public async Task<ActionResult<ProblemStatementDto>> GetStatementById(Guid id, CancellationToken ct = default)
+    {
+        var problem = await db.Problems
+            .AsNoTracking()
+            .Where(p => p.Id == id)
+            .Select(p => new { p.Judge, p.ExternalId, p.Title, p.StatementPath })
+            .FirstOrDefaultAsync(ct);
+
+        if (problem is null)
+            return NotFound(new { error = "Problem not found." });
+
+        var html = await StatementStore.ReadAsync(env, problem.StatementPath, ct);
+        if (html is null)
+            return NotFound(new { error = "Statement not available for this problem yet." });
+
+        return Ok(new ProblemStatementDto
+        {
+            Judge = problem.Judge,
+            ExternalId = problem.ExternalId,
+            Title = problem.Title,
+            Html = html
+        });
     }
 
     [Authorize(Roles = Constants.AdminRole)]

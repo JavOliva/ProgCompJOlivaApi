@@ -56,6 +56,7 @@ services:
       # Optional integrations, passed through from the host environment (empty if unset).
       Codeforces__Key: ${Codeforces__Key:-}
       Codeforces__Secret: ${Codeforces__Secret:-}
+      Codeforces__SessionCookie: ${Codeforces__SessionCookie:-}
       Cses__SessionCookie: ${Cses__SessionCookie:-}
       # Set ADDCODEFORCES=true to run the one-shot gym import on this startup.
       ADDCODEFORCES: ${ADDCODEFORCES:-}

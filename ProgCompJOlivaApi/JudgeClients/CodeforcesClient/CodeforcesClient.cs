@@ -34,6 +34,9 @@ public class CodeforcesClient : IJudgeClient
         _key = key;
         _secret = secret;
         _httpClient.BaseAddress = new Uri(_address);
+        // A browser-like UA helps the HTML pages (problem statements) get past Cloudflare; harmless
+        // for the JSON API.
+        _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36");
     }
 
     public Task ConnectAsync() => Task.CompletedTask;
@@ -161,7 +164,14 @@ public class CodeforcesClient : IJudgeClient
 
     private const int MaxAttempts = 4;
 
-    private async Task<string> RateLimitedGetStringAsync(string url, CancellationToken ct)
+    /// <summary>
+    /// Rate-limited GET of an arbitrary Codeforces page (e.g. a gym problem statement page), with
+    /// an optional session cookie. Shares the same process-wide ≥5s gate as the API calls.
+    /// </summary>
+    public Task<string> GetPageHtmlAsync(string url, string? sessionCookie, CancellationToken ct = default)
+        => RateLimitedGetStringAsync(url, ct, sessionCookie);
+
+    private async Task<string> RateLimitedGetStringAsync(string url, CancellationToken ct, string? cookie = null)
     {
         await Gate.WaitAsync(ct);
         try
@@ -177,7 +187,11 @@ public class CodeforcesClient : IJudgeClient
                 HttpRequestException? failure = null;
                 try
                 {
-                    using var response = await _httpClient.GetAsync(url, ct);
+                    using var request = new HttpRequestMessage(HttpMethod.Get, url);
+                    if (!string.IsNullOrWhiteSpace(cookie))
+                        request.Headers.Add("Cookie", cookie);
+
+                    using var response = await _httpClient.SendAsync(request, ct);
                     var body = await response.Content.ReadAsStringAsync(ct);
                     _lastCallUtc = DateTime.UtcNow; // measure the gap from the end of this call
 

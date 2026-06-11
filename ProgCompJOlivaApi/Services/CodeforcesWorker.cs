@@ -1,9 +1,10 @@
-using System.Text.Json;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using ProgCompJOlivaApi.Controllers;
 using ProgCompJOlivaApi.Data;
 using ProgCompJOlivaApi.JudgeClients.CodeforcesClient;
 using ProgCompJOlivaApi.Models;
+using ProgCompJOlivaApi.Utility;
 
 namespace ProgCompJOlivaApi.Services;
 
@@ -17,10 +18,14 @@ namespace ProgCompJOlivaApi.Services;
 public class CodeforcesWorker(
     IServiceScopeFactory scopeFactory,
     IConfiguration configuration,
+    IWebHostEnvironment env,
     ILogger<CodeforcesWorker> logger,
     bool importOnStartup) : BackgroundService
 {
     private static readonly TimeSpan Interval = TimeSpan.FromMinutes(5);
+
+    // How many Codeforces problem statements to backfill per cycle (each is a rate-limited fetch).
+    private const int StatementsPerCycle = 15;
 
     // Gym contests imported once when the ADDCODEFORCES flag is present.
     private static readonly long[] ImportContestIds = [567665, 567946, 567947, 568427];
@@ -39,7 +44,7 @@ public class CodeforcesWorker(
 
         if (importOnStartup)
         {
-            try { await ImportGymsAsync(client, hasCreds, ct); }
+            try { await ImportGymsAsync(hasCreds, ct); }
             catch (OperationCanceledException) { return; }
             catch (Exception ex) { logger.LogError(ex, "ADDCODEFORCES import failed."); }
         }
@@ -57,6 +62,16 @@ public class CodeforcesWorker(
                 try { await SyncGymSolvesAsync(client, ct); }
                 catch (OperationCanceledException) { break; }
                 catch (Exception ex) { logger.LogError(ex, "Codeforces solve sync failed."); }
+            }
+
+            // Problem statements (HTML scrape) — needs a logged-in session cookie (gym pages 403
+            // otherwise). Skipped entirely when no cookie is configured.
+            var statementCookie = configuration["Codeforces:SessionCookie"];
+            if (!string.IsNullOrWhiteSpace(statementCookie))
+            {
+                try { await SyncStatementsAsync(client, statementCookie, ct); }
+                catch (OperationCanceledException) { break; }
+                catch (Exception ex) { logger.LogError(ex, "Codeforces statement sync failed."); }
             }
 
             try { await Task.Delay(Interval, ct); }
@@ -238,9 +253,70 @@ public class CodeforcesWorker(
         return changed;
     }
 
+    // ---- Statement backfill (HTML scrape, needs a session cookie) -------------------------
+
+    private async Task SyncStatementsAsync(CodeforcesClient client, string cookie, CancellationToken ct)
+    {
+        using var scope = scopeFactory.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        var pending = await db.Problems
+            .Where(p => p.Judge == Judges.Codeforces
+                        && p.StatementPath == null
+                        && p.ContestId != null
+                        && p.ContestProblemId != null)
+            .OrderBy(p => p.CreatedAtUtc)
+            .Take(StatementsPerCycle)
+            .Select(p => new { p.Id, p.ExternalId, GymId = p.ContestId!.Value, Index = p.ContestProblemId! })
+            .ToListAsync(ct);
+
+        if (pending.Count == 0)
+            return;
+
+        int fetched = 0, failed = 0;
+
+        foreach (var p in pending)
+        {
+            if (ct.IsCancellationRequested)
+                break;
+
+            try
+            {
+                var url = $"https://codeforces.com/gym/{p.GymId}/problem/{p.Index}";
+                var html = await client.GetPageHtmlAsync(url, cookie, ct); // rate-limited >=5s
+                var fragment = CodeforcesStatementScraper.Extract(html);
+
+                if (fragment is null)
+                {
+                    failed++;
+                    continue;
+                }
+
+                var relative = await StatementStore.SaveAsync(env, Judges.Codeforces, p.ExternalId, fragment, ct);
+                await db.Problems
+                    .Where(x => x.Id == p.Id)
+                    .ExecuteUpdateAsync(s => s
+                        .SetProperty(x => x.StatementPath, relative)
+                        .SetProperty(x => x.UpdatedAtUtc, DateTime.UtcNow), ct);
+                fetched++;
+            }
+            catch (OperationCanceledException)
+            {
+                break;
+            }
+            catch (Exception ex)
+            {
+                failed++;
+                logger.LogDebug(ex, "Codeforces statement fetch failed for {External}.", p.ExternalId);
+            }
+        }
+
+        logger.LogInformation("Codeforces statements: fetched={Fetched}, failed={Failed}.", fetched, failed);
+    }
+
     // ---- One-shot gym import (ADDCODEFORCES) ----------------------------------------------
 
-    private async Task ImportGymsAsync(CodeforcesClient client, bool hasCreds, CancellationToken ct)
+    private async Task ImportGymsAsync(bool hasCreds, CancellationToken ct)
     {
         if (!hasCreds)
         {
@@ -257,16 +333,14 @@ public class CodeforcesWorker(
 
             try
             {
-                var standings = await client.GetContestStandingsAsync(contestId, handles: null, showUnofficial: false, ct);
-
                 using var scope = scopeFactory.CreateScope();
-                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                var gymImporter = scope.ServiceProvider.GetRequiredService<CodeforcesGymImporter>();
 
-                var added = await ImportContestAsync(db, contestId, standings, ct);
+                var result = await gymImporter.ImportAsync((int)contestId, ct);
 
                 logger.LogInformation(
                     "ADDCODEFORCES: gym {Gym} ({Name}): added {Added} problem(s) of {Total}.",
-                    contestId, standings.Contest?.Name ?? "?", added, standings.Problems.Count);
+                    contestId, result.Name ?? "?", result.AddedProblems, result.TotalProblems);
             }
             catch (Exception ex)
             {
@@ -275,61 +349,5 @@ public class CodeforcesWorker(
         }
 
         logger.LogInformation("ADDCODEFORCES import finished.");
-    }
-
-    private static async Task<int> ImportContestAsync(AppDbContext db, long contestId, CodeforcesStandings standings, CancellationToken ct)
-    {
-        var gymId = (int)contestId;
-
-        if (!await db.CodeforcesGyms.AnyAsync(g => g.GymContestId == gymId, ct))
-        {
-            var ts = DateTime.UtcNow;
-            db.CodeforcesGyms.Add(new CodeforcesGym
-            {
-                Id = Guid.NewGuid(),
-                GymContestId = gymId,
-                Name = standings.Contest?.Name,
-                FetchMethod = GymFetchMethod.Standings,
-                Enabled = true,
-                CreatedAtUtc = ts,
-                UpdatedAtUtc = ts
-            });
-        }
-
-        var existingIndexes = (await db.Problems
-            .Where(p => p.Judge == Judges.Codeforces && p.ContestId == gymId)
-            .Select(p => p.ContestProblemId)
-            .ToListAsync(ct))
-            .Where(x => x != null)
-            .ToHashSet();
-
-        var now = DateTime.UtcNow;
-        var added = 0;
-
-        foreach (var problem in standings.Problems)
-        {
-            if (existingIndexes.Contains(problem.Index))
-                continue;
-
-            db.Problems.Add(new Problem
-            {
-                Id = Guid.NewGuid(),
-                Judge = Judges.Codeforces,
-                ContestId = gymId,
-                ContestProblemId = problem.Index,
-                ExternalId = $"{gymId}/problem/{problem.Index}",
-                Title = problem.Name,
-                Url = $"https://codeforces.com/gym/{gymId}/problem/{problem.Index}",
-                Difficulty = problem.Rating,
-                TagsJson = problem.Tags.Count > 0 ? JsonSerializer.Serialize(problem.Tags) : null,
-                IsActive = true,
-                CreatedAtUtc = now,
-                UpdatedAtUtc = now
-            });
-            added++;
-        }
-
-        await db.SaveChangesAsync(ct);
-        return added;
     }
 }

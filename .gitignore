@@ -24,3 +24,6 @@ Thumbs.db
 
 # Runtime-generated / seeded static assets (organization logos copied into wwwroot on startup)
 ProgCompJOlivaApi/wwwroot/organizations/
+
+# Scraped problem statements (fetched at runtime into wwwroot)
+ProgCompJOlivaApi/wwwroot/statements/
