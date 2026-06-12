@@ -41,12 +41,20 @@ public class Program
 
         builder.Services.AddHostedService<CsesProblemImportService>();
 
+        // CSES "rating" = number of solved problems, refreshed periodically.
+        builder.Services.AddHostedService<CsesWorker>();
+
+        // Turn SeedData/standings/*.dat into stored ICPC standings JSON at startup.
+        builder.Services.AddHostedService<IcpcStandingsSeedService>();
+
+        // Load SeedData/oci-standings/*.json into stored OCI standings at startup.
+        builder.Services.AddHostedService<OciStandingsSeedService>();
+
         // Single owner of all Codeforces API access (ratings + gym solve sync, and the one-shot
         // ADDCODEFORCES import) so calls from this server's IP share one coordinated rate budget.
         builder.Services.AddHostedService(sp => new CodeforcesWorker(
             sp.GetRequiredService<IServiceScopeFactory>(),
             sp.GetRequiredService<IConfiguration>(),
-            sp.GetRequiredService<IWebHostEnvironment>(),
             sp.GetRequiredService<ILogger<CodeforcesWorker>>(),
             importOnStartup: addCodeforces));
 

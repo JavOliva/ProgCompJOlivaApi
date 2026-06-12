@@ -312,8 +312,11 @@ public class ContestController(AppDbContext db) : ControllerBase
                     {
                         ProblemId = cp.ProblemId,
                         Position = cp.Position,
+                        Judge = cp.Problem.Judge,
                         Title = cp.Problem.Title,
-                        Judge = cp.Problem.Judge
+                        Url = cp.Problem.Url,
+                        ExternalId = cp.Problem.ExternalId,
+                        Difficulty = cp.Problem.Difficulty
                     })
                     .ToList()
             })

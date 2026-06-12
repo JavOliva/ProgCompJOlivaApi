@@ -9,25 +9,22 @@ using ProgCompJOlivaApi.Utility;
 namespace ProgCompJOlivaApi.Services;
 
 /// <summary>
-/// Runs once at startup. First inserts any CSES problems missing from the database (scraped from
-/// the public list), then backfills statements: for every CSES problem without a stored statement
-/// it fetches the task page, stores the statement HTML, and records its <c>StatementPath</c>.
-/// Everything is idempotent and failures are logged and swallowed so they never block startup.
+/// Runs once at startup. Inserts any CSES problems missing from the database (scraped from the
+/// public list), then makes sure every problem (any judge) has an empty statement folder reserved
+/// (<see cref="StatementStore"/>) with its path recorded in <c>StatementPath</c>. Idempotent;
+/// failures are logged and swallowed so they never block startup.
 /// </summary>
 public class CsesProblemImportService(
     IServiceScopeFactory scopeFactory,
     IWebHostEnvironment env,
     ILogger<CsesProblemImportService> logger) : BackgroundService
 {
-    // Polite spacing between CSES page fetches.
-    private static readonly TimeSpan StatementDelay = TimeSpan.FromSeconds(1);
-
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         try
         {
             await ImportProblemsAsync(stoppingToken);
-            await FetchMissingStatementsAsync(stoppingToken);
+            await EnsureStatementFoldersAsync(stoppingToken);
         }
         catch (OperationCanceledException)
         {
@@ -80,6 +77,7 @@ public class CsesProblemImportService(
                 ExternalId = p.TaskId,
                 Title = p.Title,
                 Url = p.Url,
+                StatementPath = StatementStore.EnsureFolder(env, Judges.Cses, p.TaskId),
                 IsActive = true,
                 CreatedAtUtc = now,
                 UpdatedAtUtc = now
@@ -98,60 +96,31 @@ public class CsesProblemImportService(
         logger.LogInformation("CSES import: added {Added} new problem(s) ({Total} listed).", toAdd.Count, problems.Count);
     }
 
-    private async Task FetchMissingStatementsAsync(CancellationToken ct)
+    /// <summary>Reserves an empty statement folder for every problem that doesn't have one yet.</summary>
+    private async Task EnsureStatementFoldersAsync(CancellationToken ct)
     {
         using var scope = scopeFactory.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
         var pending = await db.Problems
-            .Where(p => p.Judge == Judges.Cses && p.StatementPath == null)
-            .Select(p => new { p.Id, p.ExternalId })
+            .Where(p => p.StatementPath == null)
+            .Select(p => new { p.Id, p.Judge, p.ExternalId })
             .ToListAsync(ct);
 
         if (pending.Count == 0)
             return;
-
-        logger.LogInformation("CSES import: fetching {Count} missing statement(s).", pending.Count);
-
-        int fetched = 0, failed = 0;
 
         foreach (var p in pending)
         {
             if (ct.IsCancellationRequested)
                 break;
 
-            try
-            {
-                var html = await CsesStatementScraper.GetStatementHtmlAsync(p.ExternalId, ct);
-                if (html is null)
-                {
-                    failed++;
-                }
-                else
-                {
-                    var relative = await StatementStore.SaveAsync(env, Judges.Cses, p.ExternalId, html, ct);
-                    await db.Problems
-                        .Where(x => x.Id == p.Id)
-                        .ExecuteUpdateAsync(s => s
-                            .SetProperty(x => x.StatementPath, relative)
-                            .SetProperty(x => x.UpdatedAtUtc, DateTime.UtcNow), ct);
-                    fetched++;
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                break;
-            }
-            catch (Exception ex)
-            {
-                failed++;
-                logger.LogDebug(ex, "CSES import: statement fetch failed for task {Task}.", p.ExternalId);
-            }
-
-            try { await Task.Delay(StatementDelay, ct); }
-            catch (OperationCanceledException) { break; }
+            var relative = StatementStore.EnsureFolder(env, p.Judge, p.ExternalId);
+            await db.Problems
+                .Where(x => x.Id == p.Id)
+                .ExecuteUpdateAsync(s => s.SetProperty(x => x.StatementPath, relative), ct);
         }
 
-        logger.LogInformation("CSES import: statements fetched={Fetched}, failed={Failed}.", fetched, failed);
+        logger.LogInformation("Statement folders reserved for {Count} problem(s).", pending.Count);
     }
 }

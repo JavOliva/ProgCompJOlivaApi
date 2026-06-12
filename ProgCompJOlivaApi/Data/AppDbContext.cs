@@ -13,6 +13,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<ContestProblem> ContestProblems => Set<ContestProblem>();
     public DbSet<Training> Trainings => Set<Training>();
     public DbSet<TrainingContest> TrainingContests => Set<TrainingContest>();
+    public DbSet<TrainingParticipant> TrainingParticipants => Set<TrainingParticipant>();
     public DbSet<UserProblemStatus> UserProblemStatuses => Set<UserProblemStatus>();
     public DbSet<Topic> Topics => Set<Topic>();
     public DbSet<CodeforcesGym> CodeforcesGyms => Set<CodeforcesGym>();
@@ -203,6 +204,27 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 
             // A contest appears at most once per training.
             entity.HasIndex(x => new { x.TrainingId, x.ContestId })
+                .IsUnique();
+        });
+
+        modelBuilder.Entity<TrainingParticipant>(entity =>
+        {
+            entity.ToTable("training_participants");
+
+            entity.HasKey(x => x.Id);
+
+            entity.HasOne(x => x.Training)
+                .WithMany(t => t.Participants)
+                .HasForeignKey(x => x.TrainingId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // A user participates at most once per training.
+            entity.HasIndex(x => new { x.TrainingId, x.UserId })
                 .IsUnique();
         });
 

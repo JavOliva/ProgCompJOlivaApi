@@ -1,9 +1,11 @@
 using System.Text.Json;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using ProgCompJOlivaApi.Controllers;
 using ProgCompJOlivaApi.Data;
 using ProgCompJOlivaApi.JudgeClients.CodeforcesClient;
 using ProgCompJOlivaApi.Models;
+using ProgCompJOlivaApi.Utility;
 
 namespace ProgCompJOlivaApi.Services;
 
@@ -13,7 +15,7 @@ namespace ProgCompJOlivaApi.Services;
 /// are de-duplicated by (gym, index) — re-importing the same gym is idempotent. All Codeforces
 /// calls go through <see cref="CodeforcesClient"/>'s process-wide ≥5s gate.
 /// </summary>
-public class CodeforcesGymImporter(AppDbContext db, IConfiguration configuration)
+public class CodeforcesGymImporter(AppDbContext db, IConfiguration configuration, IWebHostEnvironment env)
 {
     public record Result(int GymContestId, string? Name, int AddedProblems, int TotalProblems, bool GymWasNew);
 
@@ -73,17 +75,19 @@ public class CodeforcesGymImporter(AppDbContext db, IConfiguration configuration
             if (existingIndexes.Contains(problem.Index))
                 continue;
 
+            var externalId = $"{gymContestId}/problem/{problem.Index}";
             db.Problems.Add(new Problem
             {
                 Id = Guid.NewGuid(),
                 Judge = Judges.Codeforces,
                 ContestId = gymContestId,
                 ContestProblemId = problem.Index,
-                ExternalId = $"{gymContestId}/problem/{problem.Index}",
+                ExternalId = externalId,
                 Title = problem.Name,
                 Url = $"https://codeforces.com/gym/{gymContestId}/problem/{problem.Index}",
                 Difficulty = problem.Rating,
                 TagsJson = problem.Tags.Count > 0 ? JsonSerializer.Serialize(problem.Tags) : null,
+                StatementPath = StatementStore.EnsureFolder(env, Judges.Codeforces, externalId),
                 IsActive = true,
                 CreatedAtUtc = now,
                 UpdatedAtUtc = now

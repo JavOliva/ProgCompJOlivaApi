@@ -27,6 +27,9 @@
     </ItemGroup>
 
 	<ItemGroup>
+		<!-- .json under SeedData is already a default Content item; drop the default so the glob below
+		     (which also copies .dat seeds) doesn't double-include it. -->
+		<Content Remove="SeedData\**\*.json" />
 		<Content Include="SeedData\**\*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

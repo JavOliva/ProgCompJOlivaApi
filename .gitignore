@@ -27,3 +27,9 @@ ProgCompJOlivaApi/wwwroot/organizations/
 
 # Scraped problem statements (fetched at runtime into wwwroot)
 ProgCompJOlivaApi/wwwroot/statements/
+
+# ICPC standings JSON generated from .dat seeds/uploads at runtime
+ProgCompJOlivaApi/wwwroot/standings/
+
+# OCI standings JSON seeded/uploaded at runtime
+ProgCompJOlivaApi/wwwroot/oci-standings/

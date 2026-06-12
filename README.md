@@ -44,7 +44,6 @@ Legend: ✅ ready · 🟡 partial / placeholder · ⛔ stub (not implemented)
 | **Training management** | Search, detail, create-from-list, add / remove / reorder contests (Admin) |
 | **Standings** | Per-contest standings and global per-training standings (solved per contest + total) |
 | **Codeforces gym registry** | Admin CRUD list of gyms; `POST /api/codeforces-gym/{id}/import` adds a gym **and** imports its problems + starts standings tracking |
-| **Problem statements** | Public statement view (`GET /api/problem/statement`); CSES scraped at startup (reliable), Codeforces in the background (needs a session cookie — best-effort) |
 | **CSES solved scraper** | Scrapes a user's solved CSES tasks via a service-account session cookie; `GET /api/cses/user/{id}/solved`. Task ids match CSES `Problem.ExternalId` |
 | **CSES problemset auto-import** | On every startup a background service adds any CSES problems missing from the DB (scraped from the public list); idempotent |
 | **Codeforces worker** | One coordinated worker (every 5 min) owns all CF access: ratings refresh + gym solve sync (marks `UserProblemStatus` by handle); plus a one-shot gym import with the `ADDCODEFORCES` flag. Shared ≥5s rate gate + transient-error retry |
@@ -346,19 +345,14 @@ Logo constraints: `.jpg` / `.jpeg` / `.png`, up to **2 MB**. Files are stored un
 |---|---|---|---|
 | `GET` | `/api/problem` | _public_ | Search/list tasks (see query params below) |
 | `GET` | `/api/problem/{id}` | _public_ | Task detail |
-| `GET` | `/api/problem/statement?judge=&externalId=` | _public_ | Problem statement HTML (MathJax) |
-| `GET` | `/api/problem/{id}/statement` | _public_ | Problem statement HTML by id |
 | `POST` | `/api/problem/codeforces` | Admin | Create a Codeforces task |
 | `POST` | `/api/problem/atcoder` | Admin | Create an AtCoder task |
 | `POST` | `/api/problem/cses` | Admin | Create a CSES task |
 | `PATCH` | `/api/problem/{id}` | Admin | Update metadata (partial) |
 | `PUT` | `/api/problem/{id}/solved` | Authenticated | Record solved status |
 
-**Statements** (`GET …/statement`) return `{ judge, externalId, title, html }` where `html` is an
-HTML fragment with MathJax delimiters (`\(…\)` / `\[…\]`) and absolute image URLs. `404` until the
-statement has been scraped (CSES at startup; Codeforces in the background — see
-[the frontend guide](docs/frontend/problem-statements-and-gyms.md)). Problem list items carry a
-`hasStatement` flag.
+Each problem reserves an (empty) statement folder at `StatementPath` (`/statements/{judge}/{externalId}/`,
+served from `wwwroot`) for future statement content; nothing is fetched yet.
 
 **Search query params:** `search` (matches title / external id / topic / keyword, case-insensitive),
 `judge`, `topic`, `minDifficulty`, `maxDifficulty`, `onlyActive` (default `true`),
@@ -509,7 +503,7 @@ Each judge implements `IJudgeClient` (`GetUsersRatings(handles, ct) → Dictiona
 |---|---|---|
 | **Codeforces** | ✅ implemented | Official API: `user.info` (ratings) + signed `contest.standings` (gym problems & solves). Key/secret from config; all calls throttled ≥5s apart |
 | **AtCoder** | ✅ implemented | HTML scraping of Chile-filtered rankings (HtmlAgilityPack) |
-| CSES | 🟡 ratings stub (returns 0); **solved-tasks scraper implemented** (`CsesSolvedScraper`, service-account cookie) |
+| CSES | ✅ rating = **number of solved problems** (`CsesWorker`, every 10 min, via `CsesSolvedScraper` + service-account cookie); 0 until the cookie is configured |
 | LeetCode | ⛔ stub | returns 0 |
 | CodeChef | ⛔ stub | returns 0 |
 | Luogu | ⛔ stub | returns 0 |

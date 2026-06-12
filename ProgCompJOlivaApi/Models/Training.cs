@@ -21,4 +21,6 @@ public class Training
     public List<TrainingContest> TrainingContests { get; set; } = [];
 
     public List<User> Users { get; set; } = [];
+
+    public List<TrainingParticipant> Participants { get; set; } = [];
 }

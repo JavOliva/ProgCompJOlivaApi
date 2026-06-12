@@ -15,4 +15,10 @@ public class CreateTrainingRequest
     /// empty training and add contests later.
     /// </summary>
     public List<Guid> ContestIds { get; set; } = [];
+
+    /// <summary>
+    /// Optional participant nicknames (case-insensitive, matched against active users) to enroll
+    /// at creation. Unknown/inactive nicknames cause a 400.
+    /// </summary>
+    public List<string> ParticipantNicknames { get; set; } = [];
 }

@@ -1,0 +1,1859 @@
+{
+ "contest": "Clasificatoria Regional 2023",
+ "type": "regional",
+ "year": 2023,
+ "problems": [
+  {
+   "name": "piratas",
+   "maxScore": 100
+  },
+  {
+   "name": "papas",
+   "maxScore": 100
+  },
+  {
+   "name": "paltas",
+   "maxScore": 100
+  },
+  {
+   "name": "poleras",
+   "maxScore": 100
+  }
+ ],
+ "rows": [
+  {
+   "rank": 1,
+   "sede": "Online",
+   "username": "hyang",
+   "user": "Han Yu Yang Wang",
+   "scores": [
+    100,
+    100,
+    100,
+    60
+   ],
+   "global": 360,
+   "qualified": true
+  },
+  {
+   "rank": 2,
+   "sede": "Santiago - UTFSM",
+   "username": "fpinhao",
+   "user": "Francisco Manuel Ignacio Pinhao Valenzuela",
+   "scores": [
+    100,
+    100,
+    35,
+    30
+   ],
+   "global": 265,
+   "qualified": true
+  },
+  {
+   "rank": 3,
+   "sede": "Santiago - UTFSM",
+   "username": "evivallo",
+   "user": "Enzo Maximiliano Vivallo Flores",
+   "scores": [
+    100,
+    100,
+    35,
+    10
+   ],
+   "global": 245,
+   "qualified": true
+  },
+  {
+   "rank": 4,
+   "sede": "Valparaíso",
+   "username": "afernandez",
+   "user": "Amelia Sofía Fernández Seguel",
+   "scores": [
+    100,
+    100,
+    35,
+    10
+   ],
+   "global": 245,
+   "qualified": true
+  },
+  {
+   "rank": 5,
+   "sede": "Santiago - UTFSM",
+   "username": "nschnitzler",
+   "user": "Nicolás Andrés Schnitzler Pradenas",
+   "scores": [
+    100,
+    100,
+    35,
+    0
+   ],
+   "global": 235,
+   "qualified": true
+  },
+  {
+   "rank": 6,
+   "sede": "Valparaíso",
+   "username": "muribe",
+   "user": "Matias Alberto Uribe Cortes",
+   "scores": [
+    100,
+    100,
+    35,
+    0
+   ],
+   "global": 235,
+   "qualified": true
+  },
+  {
+   "rank": 7,
+   "sede": "Online",
+   "username": "dalcota",
+   "user": "Diana Belén Alcota Varas",
+   "scores": [
+    100,
+    45,
+    35,
+    10
+   ],
+   "global": 190,
+   "qualified": true
+  },
+  {
+   "rank": 8,
+   "sede": "Rancagua",
+   "username": "pvillegas",
+   "user": "Pedro Ignacio Villegas Baeza",
+   "scores": [
+    96,
+    45,
+    35,
+    10
+   ],
+   "global": 186,
+   "qualified": true
+  },
+  {
+   "rank": 9,
+   "sede": "Chillán",
+   "username": "fmunoz",
+   "user": "Francisco Mateo Muñoz Montecino",
+   "scores": [
+    100,
+    30,
+    35,
+    10
+   ],
+   "global": 175,
+   "qualified": true
+  },
+  {
+   "rank": 10,
+   "sede": "Santiago - UTFSM",
+   "username": "jmunoz",
+   "user": "Julio Alejandro Muñoz Aliaga",
+   "scores": [
+    100,
+    30,
+    35,
+    10
+   ],
+   "global": 175,
+   "qualified": true
+  },
+  {
+   "rank": 11,
+   "sede": "Concepción",
+   "username": "eoliva",
+   "user": "Ema Francisca de Lourdes Oliva Silva",
+   "scores": [
+    100,
+    30,
+    35,
+    10
+   ],
+   "global": 175,
+   "qualified": true
+  },
+  {
+   "rank": 12,
+   "sede": "Online",
+   "username": "rguarda",
+   "user": "Rafael Andrés Guarda Jiménez",
+   "scores": [
+    100,
+    15,
+    35,
+    10
+   ],
+   "global": 160,
+   "qualified": true
+  },
+  {
+   "rank": 13,
+   "sede": "Santiago - UTFSM",
+   "username": "nolavarria",
+   "user": "Nicolás Emilio Olavarría Rojas",
+   "scores": [
+    100,
+    15,
+    35,
+    10
+   ],
+   "global": 160,
+   "qualified": true
+  },
+  {
+   "rank": 14,
+   "sede": "Santiago - UTFSM",
+   "username": "fcastro",
+   "user": "Fernanda Antonia Castro Contreras",
+   "scores": [
+    100,
+    15,
+    35,
+    10
+   ],
+   "global": 160,
+   "qualified": true
+  },
+  {
+   "rank": 15,
+   "sede": "Santiago - UTFSM",
+   "username": "iurbina",
+   "user": "Ignacia Antonia Urbina Gálvez",
+   "scores": [
+    11,
+    100,
+    35,
+    10
+   ],
+   "global": 156,
+   "qualified": true
+  },
+  {
+   "rank": 16,
+   "sede": "Santiago - UGM",
+   "username": "anavarro",
+   "user": "Antonio Navarro Aragón",
+   "scores": [
+    100,
+    45,
+    0,
+    10
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 17,
+   "sede": "Santiago - UTFSM",
+   "username": "grivas",
+   "user": "Gonzalo Antonio Rivas Valenzuela",
+   "scores": [
+    100,
+    15,
+    35,
+    0
+   ],
+   "global": 150,
+   "qualified": true
+  },
+  {
+   "rank": 18,
+   "sede": "La Serena",
+   "username": "pgonzalez",
+   "user": "Pablo Arturo González Hidalgo",
+   "scores": [
+    100,
+    0,
+    35,
+    10
+   ],
+   "global": 145,
+   "qualified": true
+  },
+  {
+   "rank": 19,
+   "sede": "Santiago - UTFSM",
+   "username": "msegovia",
+   "user": "Matías Ignacio Segovia Gómez",
+   "scores": [
+    100,
+    0,
+    35,
+    0
+   ],
+   "global": 135,
+   "qualified": true
+  },
+  {
+   "rank": 20,
+   "sede": "Santiago - UTFSM",
+   "username": "jsanmartin",
+   "user": "José Antonio San Martín Contreras",
+   "scores": [
+    100,
+    0,
+    35,
+    0
+   ],
+   "global": 135,
+   "qualified": true
+  },
+  {
+   "rank": 21,
+   "sede": "Rancagua",
+   "username": "aorellana",
+   "user": "Alejandro Osvaldo Orellana Martinez",
+   "scores": [
+    85,
+    0,
+    35,
+    0
+   ],
+   "global": 120,
+   "qualified": true
+  },
+  {
+   "rank": 22,
+   "sede": "Chillán",
+   "username": "msanchez",
+   "user": "Maximiliano Agustin Sánchez Almeyda",
+   "scores": [
+    100,
+    15,
+    0,
+    0
+   ],
+   "global": 115,
+   "qualified": true
+  },
+  {
+   "rank": 23,
+   "sede": "Chillán",
+   "username": "aaedo",
+   "user": "Aarón Exequiel Aedo Jimenez",
+   "scores": [
+    100,
+    0,
+    0,
+    10
+   ],
+   "global": 110,
+   "qualified": true
+  },
+  {
+   "rank": 24,
+   "sede": "Chillán",
+   "username": "jtorres",
+   "user": "José Antonio Torres Rojas",
+   "scores": [
+    100,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": true
+  },
+  {
+   "rank": 25,
+   "sede": "Concepción",
+   "username": "briquelme",
+   "user": "Belén Anahis Riquelme Cisternas",
+   "scores": [
+    100,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": true
+  },
+  {
+   "rank": 26,
+   "sede": "Chillán",
+   "username": "jjunemann",
+   "user": "Jose Benjamin Junemann Vielma",
+   "scores": [
+    96,
+    0,
+    0,
+    0
+   ],
+   "global": 96,
+   "qualified": true
+  },
+  {
+   "rank": 27,
+   "sede": "Santiago - UTFSM",
+   "username": "rparra",
+   "user": "Romina Antonia Parra Acevedo",
+   "scores": [
+    15,
+    60,
+    0,
+    0
+   ],
+   "global": 75,
+   "qualified": true
+  },
+  {
+   "rank": 28,
+   "sede": "Arica",
+   "username": "joahidalgo",
+   "user": "Joaquín Ignacio Hidalgo Campos",
+   "scores": [
+    74,
+    0,
+    0,
+    0
+   ],
+   "global": 74,
+   "qualified": true
+  },
+  {
+   "rank": 29,
+   "sede": "Santiago - UTFSM",
+   "username": "bperez",
+   "user": "Benjamin Jesus Perez Acevedo",
+   "scores": [
+    74,
+    0,
+    0,
+    0
+   ],
+   "global": 74,
+   "qualified": true
+  },
+  {
+   "rank": 30,
+   "sede": "Santiago - UGM",
+   "username": "ejofre",
+   "user": "Elmer Luciano Jofré Ulloa",
+   "scores": [
+    74,
+    0,
+    0,
+    0
+   ],
+   "global": 74,
+   "qualified": true
+  },
+  {
+   "rank": 31,
+   "sede": "Santiago - UTFSM",
+   "username": "gacevedo",
+   "user": "Gonzalo Maximiliano Acevedo Reyes",
+   "scores": [
+    0,
+    30,
+    35,
+    0
+   ],
+   "global": 65,
+   "qualified": false
+  },
+  {
+   "rank": 32,
+   "sede": "Valparaíso",
+   "username": "eduran",
+   "user": "Esteban Durán Muñoz",
+   "scores": [
+    11,
+    0,
+    35,
+    0
+   ],
+   "global": 46,
+   "qualified": false
+  },
+  {
+   "rank": 33,
+   "sede": "Santiago - UTFSM",
+   "username": "mparra",
+   "user": "Maria Jose Parra Miranda",
+   "scores": [
+    11,
+    0,
+    35,
+    0
+   ],
+   "global": 46,
+   "qualified": true
+  },
+  {
+   "rank": 34,
+   "sede": "Valparaíso",
+   "username": "vcid",
+   "user": "Valeria Cid",
+   "scores": [
+    0,
+    0,
+    35,
+    0
+   ],
+   "global": 35,
+   "qualified": true
+  },
+  {
+   "rank": 35,
+   "sede": "Santiago - UGM",
+   "username": "grelos",
+   "user": "Gabriela Relos",
+   "scores": [
+    0,
+    0,
+    35,
+    0
+   ],
+   "global": 35,
+   "qualified": true
+  },
+  {
+   "rank": 36,
+   "sede": "Online",
+   "username": "cdelcampo",
+   "user": "Cristian Andres Del Campo Parra",
+   "scores": [
+    22,
+    0,
+    0,
+    0
+   ],
+   "global": 22,
+   "qualified": false
+  },
+  {
+   "rank": 37,
+   "sede": "Temuco",
+   "username": "criquelme",
+   "user": "Camila Andrea Riquelme Araneda",
+   "scores": [
+    7,
+    0,
+    0,
+    10
+   ],
+   "global": 17,
+   "qualified": true
+  },
+  {
+   "rank": 38,
+   "sede": "La Serena",
+   "username": "jgodoy",
+   "user": "Javier Ignacio Godoy Sepúlveda",
+   "scores": [
+    0,
+    15,
+    0,
+    0
+   ],
+   "global": 15,
+   "qualified": false
+  },
+  {
+   "rank": 39,
+   "sede": "Chillán",
+   "username": "egarcia",
+   "user": "Edgard Antonio García Vergara",
+   "scores": [
+    7,
+    0,
+    0,
+    0
+   ],
+   "global": 7,
+   "qualified": false
+  },
+  {
+   "rank": 40,
+   "sede": "Chillán",
+   "username": "jconcha",
+   "user": "Jose Matias Concha Acuña",
+   "scores": [
+    7,
+    0,
+    0,
+    0
+   ],
+   "global": 7,
+   "qualified": false
+  },
+  {
+   "rank": 41,
+   "sede": "Santiago - UGM",
+   "username": "jrodriguez",
+   "user": "Juana Catalina Rodríguez Rubiano",
+   "scores": [
+    4,
+    0,
+    0,
+    0
+   ],
+   "global": 4,
+   "qualified": false
+  },
+  {
+   "rank": 42,
+   "sede": "Puerto Montt",
+   "username": "aortega",
+   "user": "Anastasia Carolina Ortega Villarroel Ortega Villarroel",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 43,
+   "sede": "Rancagua",
+   "username": "mgonzalez",
+   "user": "Marco Antonio González Murillo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 44,
+   "sede": "Puerto Montt",
+   "username": "pvasquez",
+   "user": "Pablo Oscar Ekaitz Vásquez Muñoz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 45,
+   "sede": "Arica",
+   "username": "szarate",
+   "user": "Sebastian Andres Zarate Abarza",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 46,
+   "sede": "Santiago - UTFSM",
+   "username": "pleon",
+   "user": "Pedro Roberto León González",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 47,
+   "sede": "Santiago - UTFSM",
+   "username": "mgadansky",
+   "user": "Mijal Gadansky Yagoda",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 48,
+   "sede": "Chillán",
+   "username": "alira",
+   "user": "Angel Eduardo Lira Cadenas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 49,
+   "sede": "Santiago - UGM",
+   "username": "dgutierrez",
+   "user": "Daniela Alejandra Gutierrez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 50,
+   "sede": "Chillán",
+   "username": "bfuentealba",
+   "user": "Benjamin Edgardo Andres Fuentealba Contreras",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 51,
+   "sede": "Santiago - UGM",
+   "username": "dcancino",
+   "user": "Daniella Andrea Cancino Arenas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 52,
+   "sede": "Santiago - UTFSM",
+   "username": "cperez",
+   "user": "Camila Jesús Pérez Ruz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 53,
+   "sede": "Rancagua",
+   "username": "rmarcano",
+   "user": "Rebeca Alexandra Marcano Albornoz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 54,
+   "sede": "Santiago - UTFSM",
+   "username": "acruces",
+   "user": "Aylin Cruces Rodriguez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 55,
+   "sede": "Valparaíso",
+   "username": "glezana",
+   "user": "Gaspar Andres Lezana von Johnn",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 56,
+   "sede": "Chillán",
+   "username": "jortiz",
+   "user": "Javiera Antonia Ortiz Oyarce",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 57,
+   "sede": "Santiago - UGM",
+   "username": "cguzman",
+   "user": "Catalina Belén Guzmán Díaz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 58,
+   "sede": "Santiago - UTFSM",
+   "username": "mhurtado",
+   "user": "Matias Ignacio Hurtado Dinamarca",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 59,
+   "sede": "Santiago - UTFSM",
+   "username": "lcatalan",
+   "user": "Lórien Esperanza Catalán Núñez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 60,
+   "sede": "Santiago - UGM",
+   "username": "apareja",
+   "user": "Antonia Camila Pareja Urzúa",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 61,
+   "sede": "Santiago - UTFSM",
+   "username": "nsegura",
+   "user": "Nicolas Newen Segura Osorio",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 62,
+   "sede": "Santiago - UTFSM",
+   "username": "bpena",
+   "user": "Braulio Peña",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 63,
+   "sede": "Santiago - UGM",
+   "username": "rreyes",
+   "user": "Rosio Victoria Esperanza Reyes Cruz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 64,
+   "sede": "Online",
+   "username": "jriquelme",
+   "user": "Javiera Camila Riquelme Guevara",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 65,
+   "sede": "Concepción",
+   "username": "joshidalgo",
+   "user": "José Julián Hidalgo Lagos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 66,
+   "sede": "Santiago - UTFSM",
+   "username": "jlara",
+   "user": "Josefina Esperanza Lara Hidalgo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 67,
+   "sede": "Santiago - UGM",
+   "username": "aalvarez",
+   "user": "Antonia Alvarez De Araya Guerra",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 68,
+   "sede": "Online",
+   "username": "acuevas",
+   "user": "Alondra Stefani Cuevas Guzmán",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 69,
+   "sede": "Concepción",
+   "username": "acastro",
+   "user": "Alexander Castro",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 70,
+   "sede": "Santiago - UTFSM",
+   "username": "fsilva",
+   "user": "Francisco Silva",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 71,
+   "sede": "Chillán",
+   "username": "krivas",
+   "user": "Kleidy Milanie Rivas Ramírez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 72,
+   "sede": "Santiago - UGM",
+   "username": "jrovetta",
+   "user": "Julianna Rovetta",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 73,
+   "sede": "Concepción",
+   "username": "acornejo",
+   "user": "Asunción Cornejo Burgos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 74,
+   "sede": "Concepción",
+   "username": "dcid",
+   "user": "David Efrain Cid Zapata",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 75,
+   "sede": "Santiago - UTFSM",
+   "username": "bfaican",
+   "user": "Brithany Scarleth Faicán Yangua",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 76,
+   "sede": "Valparaíso",
+   "username": "mgallardo",
+   "user": "Matias Ignacio Gallardo Gorostiaga",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 77,
+   "sede": "Rancagua",
+   "username": "mjara",
+   "user": "Malcolm Efrain Jara Escobar",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 78,
+   "sede": "La Serena",
+   "username": "abarraza",
+   "user": "Alonso Javier Barraza galves",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 79,
+   "sede": "Concepción",
+   "username": "msanhueza",
+   "user": "Marvin Milovan Sanhueza Gayoso",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 80,
+   "sede": "Chillán",
+   "username": "cavilez",
+   "user": "Camila Daniela Avilez Chaparro",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 81,
+   "sede": "Santiago - UTFSM",
+   "username": "dsanchez",
+   "user": "Diego Alejandro Sanchez Guevara",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 82,
+   "sede": "Rancagua",
+   "username": "lmolina",
+   "user": "Luis Alberto Molina Lizana",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 83,
+   "sede": "Santiago - UTFSM",
+   "username": "fmolina",
+   "user": "Facundo Nahuel Molina Gomez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 84,
+   "sede": "Santiago - UTFSM",
+   "username": "fbravo",
+   "user": "Francisca Alejandra Bravo Moran",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 85,
+   "sede": "Santiago - UGM",
+   "username": "alizama",
+   "user": "Amelia Alexa Lizama Hernández",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 86,
+   "sede": "Online",
+   "username": "mhenriste",
+   "user": "Midlee Henriste",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 87,
+   "sede": "Online",
+   "username": "mdiaz",
+   "user": "Maximiliano Antonio Díaz Hervia",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 88,
+   "sede": "Santiago - UGM",
+   "username": "mrivera",
+   "user": "Martina Denisse Rivera Medel",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 89,
+   "sede": "Santiago - UTFSM",
+   "username": "nsotomayor",
+   "user": "Nicolás Ignacio Sotomayor Vásquez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 90,
+   "sede": "Chillán",
+   "username": "mgarrido",
+   "user": "Mauren Danae Garrido Córdova",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 91,
+   "sede": "Online",
+   "username": "aibanez",
+   "user": "Ailyn Carolina Ibáñez Vega",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 92,
+   "sede": "Santiago - UGM",
+   "username": "mzuniga",
+   "user": "Matías Andrés Zuñiga Contreras",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 93,
+   "sede": "Concepción",
+   "username": "scarilao",
+   "user": "Sayen Carilao Azócar",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 94,
+   "sede": "Santiago - UTFSM",
+   "username": "emadariaga",
+   "user": "Esteban Alejandro Madariaga Neculqueo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 95,
+   "sede": "Talca",
+   "username": "rherrera",
+   "user": "Rodolfo Sebastian Herrera Hernandez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 96,
+   "sede": "Online",
+   "username": "aramirez",
+   "user": "Alonso Agustín Ramírez Flores",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 97,
+   "sede": "Temuco",
+   "username": "amardones",
+   "user": "Aschley Jazmine Mardones Moena",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 98,
+   "sede": "Arica",
+   "username": "hpari",
+   "user": "Hasley Michelle Pari Llanos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 99,
+   "sede": "Concepción",
+   "username": "dagonzalez",
+   "user": "Daniel Gonzalez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 100,
+   "sede": "Rancagua",
+   "username": "jarriagada",
+   "user": "Joaquin Ignacio Arriagada Caroca",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 101,
+   "sede": "Talca",
+   "username": "ccarrero",
+   "user": "Cristina De Los Ángeles Carrero Villasmil",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 102,
+   "sede": "Santiago - UTFSM",
+   "username": "degonzalez",
+   "user": "Denis Matías Gonzalez Espinoza",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 103,
+   "sede": "Santiago - UTFSM",
+   "username": "mcartagena",
+   "user": "Matilda Ignacia Cartagena Carrasco",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 104,
+   "sede": "Talca",
+   "username": "aalcayaga",
+   "user": "Andrés Fernando Alcayaga Madrid",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 105,
+   "sede": "Online",
+   "username": "pcampos",
+   "user": "Pablo Campos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 106,
+   "sede": "Online",
+   "username": "ranania",
+   "user": "Roberto Anania",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 107,
+   "sede": "Rancagua",
+   "username": "sguerrero",
+   "user": "Samuel Izrrael Guerrero Pizarro",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 108,
+   "sede": "Santiago - UGM",
+   "username": "farellano",
+   "user": "Fernanda Arellano",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 109,
+   "sede": "Santiago - UTFSM",
+   "username": "aacevedo",
+   "user": "Amaru Acevedo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 110,
+   "sede": "Rancagua",
+   "username": "dolivares",
+   "user": "David Andrés Olivares Mansilla",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 111,
+   "sede": "Santiago - UGM",
+   "username": "mzenteno",
+   "user": "Máximo Leonardo Zenteno Oyarzún",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 112,
+   "sede": "Santiago - UGM",
+   "username": "bperafan",
+   "user": "Brayan Esteban Perafan Padilla",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 113,
+   "sede": "Arica",
+   "username": "sberrios",
+   "user": "Sebastián Agustín Berríos Olivares",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 114,
+   "sede": "Online",
+   "username": "fcortes",
+   "user": "Fernanda Andrea Cortes Tomasevic",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 115,
+   "sede": "Chillán",
+   "username": "jcumilaf",
+   "user": "Juan Carlos Cumilaf Lagos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 116,
+   "sede": "Online",
+   "username": "tbarria",
+   "user": "Tulio Barria Aguila",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 117,
+   "sede": "Arica",
+   "username": "fortiz",
+   "user": "Franco Aramys Ortiz Astudillo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 118,
+   "sede": "Online",
+   "username": "sosses",
+   "user": "Sebastian Andres Osses Cofré",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 119,
+   "sede": "Santiago - UTFSM",
+   "username": "ahernandez",
+   "user": "Antonia Hernandez Quiñones",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 120,
+   "sede": "Chillán",
+   "username": "sbarrera",
+   "user": "Sebastián Ignacio Barrera Gonzalez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 121,
+   "sede": "Online",
+   "username": "jquispe",
+   "user": "Javiera Millaray Quispe Hualamán",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 122,
+   "sede": "Rancagua",
+   "username": "dcelis",
+   "user": "Daniel Alfonso Celis Loayza",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 123,
+   "sede": "Santiago - UGM",
+   "username": "ncontreras",
+   "user": "Natalia Contreras",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 124,
+   "sede": "Online",
+   "username": "msotelo",
+   "user": "Mariana Stephanie Sotelo Galea",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 125,
+   "sede": "Rancagua",
+   "username": "fahumada",
+   "user": "Fernanda Pilar Ahumada Pavez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 126,
+   "sede": "Online",
+   "username": "jcontreras",
+   "user": "Jhanara Beatriz Contreras Bórquez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 127,
+   "sede": "Rancagua",
+   "username": "htoaquiza",
+   "user": "Helen Luciel Toaquiza Olmedo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 128,
+   "sede": "Santiago - UGM",
+   "username": "nzuniga",
+   "user": "Nadine Josefina Zúñiga Castro",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 129,
+   "sede": "Rancagua",
+   "username": "jplaza",
+   "user": "Jhon Alejandro Plaza Silva",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 130,
+   "sede": "Santiago - UTFSM",
+   "username": "mriveros",
+   "user": "Mateo Riveros",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 131,
+   "sede": "Santiago - UGM",
+   "username": "pvargas",
+   "user": "Paloma Isidora Vargas Vargas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  }
+ ]
+}

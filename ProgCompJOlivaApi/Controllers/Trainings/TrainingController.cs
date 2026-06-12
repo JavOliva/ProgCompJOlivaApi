@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +16,11 @@ public class TrainingController(AppDbContext db) : ControllerBase
 {
     private const int MaxPageSize = 200;
 
-    /// <summary>Search trainings by name, paginated.</summary>
-    [Authorize]
+    /// <summary>
+    /// Search trainings by name, paginated. Public — anonymous callers only see public trainings;
+    /// authenticated callers see all.
+    /// </summary>
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<PagedResult<TrainingListItemDto>>> Search(
         [FromQuery] string? search,
@@ -31,6 +35,10 @@ public class TrainingController(AppDbContext db) : ControllerBase
         pageSize = Math.Clamp(pageSize, 1, MaxPageSize);
 
         var query = db.Trainings.AsNoTracking().AsQueryable();
+
+        // Anonymous callers may only see public trainings.
+        if (User.Identity?.IsAuthenticated != true)
+            query = query.Where(t => t.IsPublic);
 
         if (onlyActive == true)
             query = query.Where(t => t.IsActive);
@@ -75,7 +83,38 @@ public class TrainingController(AppDbContext db) : ControllerBase
         });
     }
 
+    /// <summary>The trainings the current user participates in (via the participant set).</summary>
     [Authorize]
+    [HttpGet("mine")]
+    public async Task<ActionResult<List<TrainingListItemDto>>> Mine(CancellationToken ct = default)
+    {
+        var raw = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!Guid.TryParse(raw, out var userId))
+            return Unauthorized();
+
+        var items = await db.Trainings
+            .AsNoTracking()
+            .Where(t => t.Participants.Any(p => p.UserId == userId))
+            .OrderBy(t => t.Name)
+            .Select(t => new TrainingListItemDto
+            {
+                Id = t.Id,
+                Name = t.Name,
+                Slug = t.Slug,
+                Description = t.Description,
+                IsPublic = t.IsPublic,
+                IsActive = t.IsActive,
+                ContestCount = t.TrainingContests.Count,
+                CreatedAtUtc = t.CreatedAtUtc,
+                UpdatedAtUtc = t.UpdatedAtUtc
+            })
+            .ToListAsync(ct);
+
+        return Ok(items);
+    }
+
+    /// <summary>Training detail. Public for public trainings; private ones need authentication.</summary>
+    [AllowAnonymous]
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<TrainingDetailDto>> GetById(Guid id, CancellationToken ct = default)
     {
@@ -109,6 +148,10 @@ public class TrainingController(AppDbContext db) : ControllerBase
         if (training is null)
             return NotFound(new { error = "Training not found." });
 
+        // Hide private trainings from anonymous callers (don't leak their existence).
+        if (!training.IsPublic && User.Identity?.IsAuthenticated != true)
+            return NotFound(new { error = "Training not found." });
+
         return Ok(training);
     }
 
@@ -140,6 +183,10 @@ public class TrainingController(AppDbContext db) : ControllerBase
                 return BadRequest(new { error = "Some contests do not exist.", missing });
         }
 
+        var (participants, missingNicknames) = await ResolveParticipantsAsync(request.ParticipantNicknames, ct);
+        if (missingNicknames.Count > 0)
+            return BadRequest(new { error = "Some participants do not exist.", missing = missingNicknames });
+
         var now = DateTime.UtcNow;
         var training = new Training
         {
@@ -161,6 +208,17 @@ public class TrainingController(AppDbContext db) : ControllerBase
                 TrainingId = training.Id,
                 ContestId = orderedContestIds[i],
                 Position = i + 1
+            });
+        }
+
+        foreach (var user in participants)
+        {
+            training.Participants.Add(new TrainingParticipant
+            {
+                Id = Guid.NewGuid(),
+                TrainingId = training.Id,
+                UserId = user.Id,
+                CreatedAtUtc = now
             });
         }
 
@@ -306,11 +364,49 @@ public class TrainingController(AppDbContext db) : ControllerBase
         return Ok(new { id = training.Id });
     }
 
+    /// <summary>Replaces a training's full participant set with the users matching the given nicknames.</summary>
+    [Authorize(Roles = Constants.AdminRole)]
+    [HttpPut("{id:guid}/participants")]
+    public async Task<IActionResult> SetParticipants(Guid id, [FromBody] SetTrainingParticipantsRequest request, CancellationToken ct = default)
+    {
+        var training = await db.Trainings
+            .Include(t => t.Participants)
+            .FirstOrDefaultAsync(t => t.Id == id, ct);
+
+        if (training is null)
+            return NotFound(new { error = "Training not found." });
+
+        var (participants, missingNicknames) = await ResolveParticipantsAsync(request.Nicknames, ct);
+        if (missingNicknames.Count > 0)
+            return BadRequest(new { error = "Some participants do not exist.", missing = missingNicknames });
+
+        db.TrainingParticipants.RemoveRange(training.Participants);
+        training.Participants.Clear();
+
+        var now = DateTime.UtcNow;
+        foreach (var user in participants)
+        {
+            var link = new TrainingParticipant
+            {
+                Id = Guid.NewGuid(),
+                TrainingId = training.Id,
+                UserId = user.Id,
+                CreatedAtUtc = now
+            };
+            db.TrainingParticipants.Add(link);
+            training.Participants.Add(link);
+        }
+
+        await db.SaveChangesAsync(ct);
+
+        return Ok(new { id = training.Id });
+    }
+
     /// <summary>
     /// Global training standings: for each active app user, how many problems they solved in
     /// each contest of the training, plus the overall total. Sorted by total desc, then nickname.
     /// </summary>
-    [Authorize]
+    [AllowAnonymous]
     [HttpGet("{id:guid}/standings")]
     public async Task<ActionResult<TrainingStandingsResponse>> GetStandings(Guid id, CancellationToken ct = default)
     {
@@ -321,6 +417,7 @@ public class TrainingController(AppDbContext db) : ControllerBase
             {
                 t.Id,
                 t.Name,
+                t.IsPublic,
                 Contests = t.TrainingContests
                     .OrderBy(tc => tc.Position)
                     .Select(tc => new { tc.ContestId, tc.Contest.Name, tc.Position })
@@ -329,6 +426,10 @@ public class TrainingController(AppDbContext db) : ControllerBase
             .FirstOrDefaultAsync(ct);
 
         if (training is null)
+            return NotFound(new { error = "Training not found." });
+
+        // Hide private trainings' standings from anonymous callers.
+        if (!training.IsPublic && User.Identity?.IsAuthenticated != true)
             return NotFound(new { error = "Training not found." });
 
         var contestIds = training.Contests.Select(c => c.ContestId).ToList();
@@ -418,6 +519,38 @@ public class TrainingController(AppDbContext db) : ControllerBase
     {
         for (var i = 0; i < ordered.Count; i++)
             ordered[i].Position = i + 1;
+    }
+
+    /// <summary>
+    /// Resolves distinct, trimmed, non-empty nicknames to active users (case-insensitive). Returns
+    /// the matched users and the list of nicknames that had no active user.
+    /// </summary>
+    private async Task<(List<User> Users, List<string> Missing)> ResolveParticipantsAsync(
+        List<string> nicknames, CancellationToken ct)
+    {
+        var requested = nicknames
+            .Where(n => !string.IsNullOrWhiteSpace(n))
+            .Select(n => n.Trim())
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+
+        if (requested.Count == 0)
+            return ([], []);
+
+        var lowered = requested.Select(n => n.ToLower()).ToList();
+
+        var users = await db.Users
+            .Where(u => u.IsActive && lowered.Contains(u.Nickname.ToLower()))
+            .ToListAsync(ct);
+
+        var foundByNickname = users
+            .ToDictionary(u => u.Nickname, StringComparer.OrdinalIgnoreCase);
+
+        var missing = requested
+            .Where(n => !foundByNickname.ContainsKey(n))
+            .ToList();
+
+        return (users, missing);
     }
 
     /// <summary>Builds a unique slug from the name, suffixing <c>-2</c>, <c>-3</c>… on collisions.</summary>

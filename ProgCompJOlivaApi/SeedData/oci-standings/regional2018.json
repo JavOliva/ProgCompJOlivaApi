@@ -1,0 +1,2369 @@
+{
+ "contest": "Puntajes Regional 2018",
+ "type": "regional",
+ "year": 2018,
+ "problems": [
+  {
+   "name": "bus",
+   "maxScore": 100
+  },
+  {
+   "name": "ocio",
+   "maxScore": 100
+  },
+  {
+   "name": "megawoman",
+   "maxScore": 100
+  },
+  {
+   "name": "reloj",
+   "maxScore": 100
+  },
+  {
+   "name": "sumas",
+   "maxScore": 100
+  }
+ ],
+ "rows": [
+  {
+   "rank": 1,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Katherine Mora",
+   "scores": [
+    100,
+    100,
+    25,
+    100,
+    0
+   ],
+   "global": 325,
+   "qualified": true
+  },
+  {
+   "rank": 2,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Mauricio Cari",
+   "scores": [
+    100,
+    100,
+    100,
+    0,
+    0
+   ],
+   "global": 300,
+   "qualified": true
+  },
+  {
+   "rank": 3,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Hans Kühn",
+   "scores": [
+    100,
+    100,
+    25,
+    50,
+    0
+   ],
+   "global": 275,
+   "qualified": true
+  },
+  {
+   "rank": 4,
+   "sede": "Valparaíso",
+   "username": "",
+   "user": "Jorge Bravo",
+   "scores": [
+    100,
+    100,
+    25,
+    50,
+    0
+   ],
+   "global": 275,
+   "qualified": true
+  },
+  {
+   "rank": 5,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Matias Domb",
+   "scores": [
+    100,
+    30,
+    65,
+    50,
+    0
+   ],
+   "global": 245,
+   "qualified": true
+  },
+  {
+   "rank": 6,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Maria Henriquez",
+   "scores": [
+    100,
+    30,
+    25,
+    50,
+    0
+   ],
+   "global": 205,
+   "qualified": true
+  },
+  {
+   "rank": 7,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Pau Rovira",
+   "scores": [
+    100,
+    30,
+    25,
+    50,
+    0
+   ],
+   "global": 205,
+   "qualified": true
+  },
+  {
+   "rank": 8,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Vicente Lineros",
+   "scores": [
+    100,
+    30,
+    25,
+    50,
+    0
+   ],
+   "global": 205,
+   "qualified": true
+  },
+  {
+   "rank": 9,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Vicente Opazo",
+   "scores": [
+    100,
+    30,
+    25,
+    50,
+    0
+   ],
+   "global": 205,
+   "qualified": true
+  },
+  {
+   "rank": 10,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Diego San Martín",
+   "scores": [
+    79,
+    30,
+    25,
+    50,
+    0
+   ],
+   "global": 184,
+   "qualified": true
+  },
+  {
+   "rank": 11,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Constanza Soto",
+   "scores": [
+    100,
+    30,
+    0,
+    50,
+    0
+   ],
+   "global": 180,
+   "qualified": true
+  },
+  {
+   "rank": 12,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Axel Rubén González Nanjarí",
+   "scores": [
+    100,
+    0,
+    25,
+    50,
+    0
+   ],
+   "global": 175,
+   "qualified": true
+  },
+  {
+   "rank": 13,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Ignacio Monardes",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 14,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Natalia Carrion",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 15,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Raimundo Barros",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 16,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Sebastián Águila",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 17,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Simon Ahumada",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 18,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Sebastián Muñoz",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 19,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Tomas Castillo",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 20,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Vicente Carrasco",
+   "scores": [
+    100,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 155,
+   "qualified": true
+  },
+  {
+   "rank": 21,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Pedro Paris",
+   "scores": [
+    100,
+    0,
+    0,
+    50,
+    0
+   ],
+   "global": 150,
+   "qualified": true
+  },
+  {
+   "rank": 22,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Sebastián Delano",
+   "scores": [
+    79,
+    30,
+    25,
+    0,
+    0
+   ],
+   "global": 134,
+   "qualified": true
+  },
+  {
+   "rank": 23,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Alondra Araya",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 24,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Bastian Marin",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 25,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Felipe Medina Rabello",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 26,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Jorge Cruces",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 27,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Javiera Vega",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 28,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Macarena Abarca",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 29,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Matias Moreno",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 30,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Matias Pineda",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 31,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Marcos Rodriguez",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 32,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Paula Carrion",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 33,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Tomas Espinoza",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 34,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Thomas Soto",
+   "scores": [
+    100,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 130,
+   "qualified": true
+  },
+  {
+   "rank": 35,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Jorge Gallardo",
+   "scores": [
+    100,
+    0,
+    25,
+    0,
+    0
+   ],
+   "global": 125,
+   "qualified": true
+  },
+  {
+   "rank": 36,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Manuel Hayden",
+   "scores": [
+    100,
+    0,
+    25,
+    0,
+    0
+   ],
+   "global": 125,
+   "qualified": true
+  },
+  {
+   "rank": 37,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Sebastián Morales",
+   "scores": [
+    100,
+    0,
+    25,
+    0,
+    0
+   ],
+   "global": 125,
+   "qualified": true
+  },
+  {
+   "rank": 38,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Raimundo Lorca",
+   "scores": [
+    86,
+    0,
+    25,
+    0,
+    0
+   ],
+   "global": 111,
+   "qualified": true
+  },
+  {
+   "rank": 39,
+   "sede": "Talca",
+   "username": "",
+   "user": "David Amaro",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": true
+  },
+  {
+   "rank": 40,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Amanda Campos",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 41,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Adamari Cortes",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 42,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Antonia Del Castillo Alvarez",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 43,
+   "sede": "Talca",
+   "username": "",
+   "user": "Benjamin Diaz",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 44,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Bruno Guevara",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 45,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Bayron Valenzuela",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 46,
+   "sede": "Valparaíso",
+   "username": "",
+   "user": "Catalina Pozo",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 47,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Emmanuel Ángel Blue Norambuena Sepúlveda",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 48,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Francisco Abarzúa",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 49,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Fabián Bravo",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 50,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Ignacio Ibarra",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 51,
+   "sede": "Talca",
+   "username": "",
+   "user": "Ignacio Muñoz",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 52,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Julieta Coloma",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 53,
+   "sede": "Concepción",
+   "username": "",
+   "user": "José Ignacio Gangas Inostroza",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 54,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Javier Soto",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 55,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Lorenzo Gonzalez",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 56,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Martina Gonzalez",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 57,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Randall Biermann",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 58,
+   "sede": "Talca",
+   "username": "",
+   "user": "Vicente Macaya",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 59,
+   "sede": "Talca",
+   "username": "",
+   "user": "Victor Muscat",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 60,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Vicente Torrejon",
+   "scores": [
+    100,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": false
+  },
+  {
+   "rank": 61,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Gabriel Venegas",
+   "scores": [
+    71,
+    0,
+    25,
+    0,
+    0
+   ],
+   "global": 96,
+   "qualified": false
+  },
+  {
+   "rank": 62,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Mateo Contenla",
+   "scores": [
+    86,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 86,
+   "qualified": false
+  },
+  {
+   "rank": 63,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Antia Consuegra",
+   "scores": [
+    50,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 80,
+   "qualified": false
+  },
+  {
+   "rank": 64,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Carla Alejandra Hernández Martínez",
+   "scores": [
+    50,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 80,
+   "qualified": false
+  },
+  {
+   "rank": 65,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Joaquín San Martín Vargas",
+   "scores": [
+    50,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 80,
+   "qualified": false
+  },
+  {
+   "rank": 66,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Rosa Jaque",
+   "scores": [
+    50,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 80,
+   "qualified": false
+  },
+  {
+   "rank": 67,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Sofia Dorta",
+   "scores": [
+    50,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 80,
+   "qualified": false
+  },
+  {
+   "rank": 68,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Noemi Bonta",
+   "scores": [
+    79,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 79,
+   "qualified": false
+  },
+  {
+   "rank": 69,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Fernanda Lawry",
+   "scores": [
+    43,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 73,
+   "qualified": false
+  },
+  {
+   "rank": 70,
+   "sede": "Talca",
+   "username": "",
+   "user": "Benjamin Cabello",
+   "scores": [
+    71,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 71,
+   "qualified": false
+  },
+  {
+   "rank": 71,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Luca Bozzi",
+   "scores": [
+    57,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 57,
+   "qualified": false
+  },
+  {
+   "rank": 72,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Ricardo Merino salgado",
+   "scores": [
+    57,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 57,
+   "qualified": false
+  },
+  {
+   "rank": 73,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Francesco Crivelli",
+   "scores": [
+    50,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 50,
+   "qualified": false
+  },
+  {
+   "rank": 74,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Maximiliano Morales Pacheco",
+   "scores": [
+    50,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 50,
+   "qualified": false
+  },
+  {
+   "rank": 75,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Felipe Ignacio Vega Gandolfo",
+   "scores": [
+    43,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 43,
+   "qualified": false
+  },
+  {
+   "rank": 76,
+   "sede": "Santiago",
+   "username": "",
+   "user": "ivanna zamora",
+   "scores": [
+    43,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 43,
+   "qualified": false
+  },
+  {
+   "rank": 77,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Beatriz Vasquez",
+   "scores": [
+    0,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 30,
+   "qualified": false
+  },
+  {
+   "rank": 78,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Ignacio Ordenes",
+   "scores": [
+    0,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 30,
+   "qualified": false
+  },
+  {
+   "rank": 79,
+   "sede": "Valparaíso",
+   "username": "",
+   "user": "Leonardo Pizarro",
+   "scores": [
+    0,
+    30,
+    0,
+    0,
+    0
+   ],
+   "global": 30,
+   "qualified": false
+  },
+  {
+   "rank": 80,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Karen Reyes",
+   "scores": [
+    29,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 29,
+   "qualified": false
+  },
+  {
+   "rank": 81,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Paz Casaretto",
+   "scores": [
+    21,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 21,
+   "qualified": false
+  },
+  {
+   "rank": 82,
+   "sede": "Santiago",
+   "username": "",
+   "user": "isaac orlando maldonado soto",
+   "scores": [
+    14,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 14,
+   "qualified": false
+  },
+  {
+   "rank": 83,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Eduardo Soto",
+   "scores": [
+    7,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 7,
+   "qualified": false
+  },
+  {
+   "rank": 84,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Amanda Allendes",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 85,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Anahi Figueroa",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 86,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Arantxa Catalina González Hermosilla",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 87,
+   "sede": "Talca",
+   "username": "",
+   "user": "Alvaro Morales",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 88,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Álvaro Pérez",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 89,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Alexis Riquelme",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 90,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Antonia Valenzuela",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 91,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Bastián García",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 92,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Benjamin Nuñez",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 93,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Bastián Rebolledo",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 94,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Bruno Torres",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 95,
+   "sede": "Talca",
+   "username": "",
+   "user": "Cristóbal Cáceres",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 96,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Claudio Estay",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 97,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Carla Estay Diaz",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 98,
+   "sede": "Talca",
+   "username": "",
+   "user": "Carlos Inostroza",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 99,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Catalina Platz",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 100,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Cristian Riffo",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 101,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Constanza Rojas",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 102,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Cristian Sanchez",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 103,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Constanza Sandoval",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 104,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Claudio Sanhueza",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 105,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Camila Sepulveda",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 106,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Daniel Castillo",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 107,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Diego Rivas",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 108,
+   "sede": "Temuco",
+   "username": "",
+   "user": "David Ruiz",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 109,
+   "sede": "Talca",
+   "username": "",
+   "user": "Diego Sandoval",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 110,
+   "sede": "Talca",
+   "username": "",
+   "user": "Dario Valenzuela",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 111,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Emilia Castro",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 112,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Fernanda Flores",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 113,
+   "sede": "Talca",
+   "username": "",
+   "user": "Fernando Gracia",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 114,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Francisca Alejandra Liliana Soledad Guajardo Navarrete",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 115,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Felipe Norambuena",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 116,
+   "sede": "Talca",
+   "username": "",
+   "user": "Fabian Sepulveda",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 117,
+   "sede": "Iquique",
+   "username": "",
+   "user": "Giovanna Aliaga huerta",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 118,
+   "sede": "Talca",
+   "username": "",
+   "user": "Gerardo Farias",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 119,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Gladys Varas",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 120,
+   "sede": "Talca",
+   "username": "",
+   "user": "Javier Contreras",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 121,
+   "sede": "Talca",
+   "username": "",
+   "user": "Jorge Gutierrez",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 122,
+   "sede": "Talca",
+   "username": "",
+   "user": "Javier Lazo",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 123,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Javiera Lobos",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 124,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Jonás Oviedo",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 125,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Juan Pablo Riquelme",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 126,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Kevin Becar",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 127,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Katalina Rojas",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 128,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Matias Aranda",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 129,
+   "sede": "Talca",
+   "username": "",
+   "user": "Matias Araya",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 130,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Magdalena Bulnes",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 131,
+   "sede": "Talca",
+   "username": "",
+   "user": "Matias Cardenas",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 132,
+   "sede": "Concepción",
+   "username": "",
+   "user": "Matías Córdova Carreño",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 133,
+   "sede": "Iquique",
+   "username": "",
+   "user": "Mario Cortes Rojas",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 134,
+   "sede": "Talca",
+   "username": "",
+   "user": "Marcelo Hernandez",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 135,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Matias Jaque",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 136,
+   "sede": "Talca",
+   "username": "",
+   "user": "Mateo Oyarzun",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 137,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Mauricio Rubio",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 138,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Mateo Wu Wang",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 139,
+   "sede": "Talca",
+   "username": "",
+   "user": "Nicolas Aravena",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 140,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Nicolas Bugueno",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 141,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Nicolas Navarro",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 142,
+   "sede": "Talca",
+   "username": "",
+   "user": "Nicolas Prieto",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 143,
+   "sede": "Talca",
+   "username": "",
+   "user": "Osvaldo Gonzalez",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 144,
+   "sede": "Valparaíso",
+   "username": "",
+   "user": "Paula Cerda",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 145,
+   "sede": "Temuco",
+   "username": "",
+   "user": "Patricio Riquelme",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 146,
+   "sede": "Talca",
+   "username": "",
+   "user": "Sandier Escalona",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 147,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Sofia Herrera",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 148,
+   "sede": "Talca",
+   "username": "",
+   "user": "Sebastian Manriquez",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 149,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Sebastián Toro",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 150,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Sofia Villaroeal",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 151,
+   "sede": "Iquique",
+   "username": "",
+   "user": "Valentina Calderon",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 152,
+   "sede": "Santiago",
+   "username": "",
+   "user": "Valentina Cortes",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 153,
+   "sede": "Chillán",
+   "username": "",
+   "user": "Vicente Espinoza",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 154,
+   "sede": "Talca",
+   "username": "",
+   "user": "Vicente Gonzales",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 155,
+   "sede": "Talca",
+   "username": "",
+   "user": "Vicente Tejos",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 156,
+   "sede": "Talca",
+   "username": "",
+   "user": "Yonathan Herrera",
+   "scores": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  }
+ ]
+}

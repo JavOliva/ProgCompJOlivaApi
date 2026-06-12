@@ -1,0 +1,1691 @@
+{
+ "contest": "Resultados Fase Regional - OCI 2025",
+ "type": "regional",
+ "year": 2025,
+ "problems": [
+  {
+   "name": "Camara",
+   "maxScore": 100
+  },
+  {
+   "name": "Cola",
+   "maxScore": 100
+  },
+  {
+   "name": "Fideos",
+   "maxScore": 100
+  },
+  {
+   "name": "Goles",
+   "maxScore": 100
+  }
+ ],
+ "rows": [
+  {
+   "rank": 1,
+   "sede": "Metropolitana de Santiago",
+   "username": "bpena",
+   "user": "Braulio Ismael Peña Sepúlveda",
+   "scores": [
+    100,
+    100,
+    0,
+    100
+   ],
+   "global": 300,
+   "qualified": true
+  },
+  {
+   "rank": 2,
+   "sede": "Metropolitana de Santiago",
+   "username": "fnocetti",
+   "user": "Franco Nocetti Lopez",
+   "scores": [
+    100,
+    100,
+    0,
+    30
+   ],
+   "global": 230,
+   "qualified": true
+  },
+  {
+   "rank": 3,
+   "sede": "Biobío",
+   "username": "malvarez",
+   "user": "Maximiliano Alexis Álvarez Dinamarca",
+   "scores": [
+    15,
+    100,
+    10,
+    100
+   ],
+   "global": 225,
+   "qualified": true
+  },
+  {
+   "rank": 4,
+   "sede": "Metropolitana de Santiago",
+   "username": "fquijano",
+   "user": "Frantz Esteban Quijano Rodriguez",
+   "scores": [
+    15,
+    100,
+    10,
+    100
+   ],
+   "global": 225,
+   "qualified": true
+  },
+  {
+   "rank": 5,
+   "sede": "Biobío",
+   "username": "fcurin",
+   "user": "Francisco Joaquín Curin Sobarzo",
+   "scores": [
+    100,
+    100,
+    0,
+    20
+   ],
+   "global": 220,
+   "qualified": true
+  },
+  {
+   "rank": 6,
+   "sede": "Libertador General Bernardo O'Higgins",
+   "username": "mgonzalez",
+   "user": "Marco Antonio González Murillo",
+   "scores": [
+    100,
+    92,
+    0,
+    20
+   ],
+   "global": 212,
+   "qualified": true
+  },
+  {
+   "rank": 7,
+   "sede": "Los Lagos",
+   "username": "pvasquez",
+   "user": "Pablo Oscar Ekaitz Vásquez Muñoz",
+   "scores": [
+    15,
+    4,
+    10,
+    100
+   ],
+   "global": 129,
+   "qualified": true
+  },
+  {
+   "rank": 8,
+   "sede": "Metropolitana de Santiago",
+   "username": "icorrea",
+   "user": "Isidora Antonia Correa Flores",
+   "scores": [
+    15,
+    84,
+    10,
+    20
+   ],
+   "global": 129,
+   "qualified": true
+  },
+  {
+   "rank": 9,
+   "sede": "Metropolitana de Santiago",
+   "username": "iandrades",
+   "user": "Isidora Scarleth Andrades Etchepare",
+   "scores": [
+    100,
+    0,
+    0,
+    20
+   ],
+   "global": 120,
+   "qualified": true
+  },
+  {
+   "rank": 10,
+   "sede": "Metropolitana de Santiago",
+   "username": "cvelasquez",
+   "user": "Carlos Ignacio Velásquez Portales",
+   "scores": [
+    15,
+    92,
+    10,
+    0
+   ],
+   "global": 117,
+   "qualified": true
+  },
+  {
+   "rank": 11,
+   "sede": "Metropolitana de Santiago",
+   "username": "acarbonell",
+   "user": "Amir Enrique Carbonell Soto",
+   "scores": [
+    15,
+    100,
+    0,
+    0
+   ],
+   "global": 115,
+   "qualified": true
+  },
+  {
+   "rank": 12,
+   "sede": "Los Lagos",
+   "username": "sniklitschek",
+   "user": "Sergio Pablo Niklitschek Osorio",
+   "scores": [
+    15,
+    100,
+    0,
+    0
+   ],
+   "global": 115,
+   "qualified": true
+  },
+  {
+   "rank": 13,
+   "sede": "Ñuble",
+   "username": "jborquez",
+   "user": "Joaquín Gustavo Bórquez Sepúlveda",
+   "scores": [
+    0,
+    0,
+    10,
+    100
+   ],
+   "global": 110,
+   "qualified": true
+  },
+  {
+   "rank": 14,
+   "sede": "Biobío",
+   "username": "vdiaz",
+   "user": "Vicente Alejandro Díaz",
+   "scores": [
+    0,
+    100,
+    10,
+    0
+   ],
+   "global": 110,
+   "qualified": true
+  },
+  {
+   "rank": 15,
+   "sede": "Metropolitana de Santiago",
+   "username": "dleon",
+   "user": "Diego Leon Perez",
+   "scores": [
+    0,
+    100,
+    0,
+    0
+   ],
+   "global": 100,
+   "qualified": true
+  },
+  {
+   "rank": 16,
+   "sede": "Metropolitana de Santiago",
+   "username": "augalde",
+   "user": "Angelo Ugalde",
+   "scores": [
+    15,
+    72,
+    0,
+    0
+   ],
+   "global": 87,
+   "qualified": true
+  },
+  {
+   "rank": 17,
+   "sede": "Valparaiso",
+   "username": "ssanzana",
+   "user": "Sergio Felipe Sanzana Tapia",
+   "scores": [
+    0,
+    84,
+    0,
+    0
+   ],
+   "global": 84,
+   "qualified": true
+  },
+  {
+   "rank": 18,
+   "sede": "Metropolitana de Santiago",
+   "username": "eperez",
+   "user": "Emilia Ignacia Pérez Vásquez",
+   "scores": [
+    0,
+    0,
+    45,
+    0
+   ],
+   "global": 45,
+   "qualified": true
+  },
+  {
+   "rank": 19,
+   "sede": "Metropolitana de Santiago",
+   "username": "jsan",
+   "user": "José Antonio San Martín Contreras",
+   "scores": [
+    15,
+    0,
+    10,
+    0
+   ],
+   "global": 25,
+   "qualified": true
+  },
+  {
+   "rank": 20,
+   "sede": "Ñuble",
+   "username": "bvenegas",
+   "user": "Benjamín Nicolás Venegas Cid",
+   "scores": [
+    0,
+    12,
+    10,
+    0
+   ],
+   "global": 22,
+   "qualified": true
+  },
+  {
+   "rank": 21,
+   "sede": "Los Rios",
+   "username": "asagardia",
+   "user": "Antuko Sagardia Millar",
+   "scores": [
+    0,
+    0,
+    0,
+    20
+   ],
+   "global": 20,
+   "qualified": true
+  },
+  {
+   "rank": 22,
+   "sede": "Valparaiso",
+   "username": "glucero",
+   "user": "Gabriela Lucero Barrueto",
+   "scores": [
+    15,
+    0,
+    0,
+    0
+   ],
+   "global": 15,
+   "qualified": true
+  },
+  {
+   "rank": 23,
+   "sede": "Metropolitana de Santiago",
+   "username": "aquijano",
+   "user": "Ailyn Ignacia Quijano Rodríguez",
+   "scores": [
+    15,
+    0,
+    0,
+    0
+   ],
+   "global": 15,
+   "qualified": true
+  },
+  {
+   "rank": 24,
+   "sede": "Metropolitana de Santiago",
+   "username": "amalaver",
+   "user": "Ángel Enrique Malaver Singer",
+   "scores": [
+    0,
+    8,
+    0,
+    0
+   ],
+   "global": 8,
+   "qualified": true
+  },
+  {
+   "rank": 25,
+   "sede": "Ñuble",
+   "username": "hlema",
+   "user": "Héctor Andres Lema Riquelme",
+   "scores": [
+    0,
+    8,
+    0,
+    0
+   ],
+   "global": 8,
+   "qualified": true
+  },
+  {
+   "rank": 26,
+   "sede": "Biobío",
+   "username": "shidalgo",
+   "user": "Salvador José Hidalgo Aguilar",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 27,
+   "sede": "Ñuble",
+   "username": "esobarzo",
+   "user": "Eduardo Marcel Sobarzo Riquelme",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 28,
+   "sede": "Ñuble",
+   "username": "cmendoza",
+   "user": "Cristóbal Eduardo Mendoza Arriagada",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 29,
+   "sede": "Metropolitana de Santiago",
+   "username": "mgaray",
+   "user": "Maite Consuelo Garay Arroyo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 30,
+   "sede": "Metropolitana de Santiago",
+   "username": "ggarcia",
+   "user": "Gabriel Andres García Rojas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 31,
+   "sede": "Ñuble",
+   "username": "clagos",
+   "user": "Cristian Ignacio Lagos Molina",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 32,
+   "sede": "Biobío",
+   "username": "acarrasco",
+   "user": "Axel Carrasco Cid",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 33,
+   "sede": "Arica y Parinacota",
+   "username": "ralfaro",
+   "user": "Renata Manuela Alfaro Gómez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 34,
+   "sede": "Ñuble",
+   "username": "fcontreras",
+   "user": "Florencia Valentina Contreras Urrutia",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 35,
+   "sede": "Ñuble",
+   "username": "rparra",
+   "user": "Rodrigo Nicolás Parra Vielma",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 36,
+   "sede": "Ñuble",
+   "username": "fzapata",
+   "user": "Fernando Manuel Zapata Umanzor",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 37,
+   "sede": "Los Lagos",
+   "username": "splacencio",
+   "user": "Sebastian Felipe Placencio Rodriguez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 38,
+   "sede": "de Santiago",
+   "username": "jvalenzuela",
+   "user": "José-Alberto Augusto Valenzuela AlarcónMetropolitana",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 39,
+   "sede": "Metropolitana de Santiago",
+   "username": "srodriguez",
+   "user": "Sofía Verónica Rodríguez Bastías",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 40,
+   "sede": "Valparaiso",
+   "username": "pvizcarra",
+   "user": "Piero Andrés Vizcarra Plaza",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 41,
+   "sede": "Valparaiso",
+   "username": "cpacheco",
+   "user": "Cristóbal Esteban Pacheco Cataldo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 42,
+   "sede": "Valparaiso",
+   "username": "mmperez",
+   "user": "Mía Martina Pérez Cepeda",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 43,
+   "sede": "Metropolitana de Santiago",
+   "username": "lojeda",
+   "user": "Luciana Mia Ojeda Vargas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 44,
+   "sede": "Metropolitana de Santiago",
+   "username": "amoraga",
+   "user": "Agustin Ignacio Moraga Acevedo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 45,
+   "sede": "Valparaiso",
+   "username": "fvaldebenito",
+   "user": "Franco Daniel Valdebenito O'kinggton",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 46,
+   "sede": "Ñuble",
+   "username": "jde",
+   "user": "José Emilio De la Fuente Figueroa",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 47,
+   "sede": "Metropolitana de Santiago",
+   "username": "icalma",
+   "user": "Isaac Calma",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 48,
+   "sede": "Metropolitana de Santiago",
+   "username": "tojeda",
+   "user": "Tomas Alberto Ojeda Perez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 49,
+   "sede": "Metropolitana de Santiago",
+   "username": "agatica",
+   "user": "Alonso Gabriel Gatica Mendez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 50,
+   "sede": "Antofagasta",
+   "username": "ccasas",
+   "user": "Constanza Isidora Casas Nuñez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 51,
+   "sede": "Metropolitana de Santiago",
+   "username": "jrubio",
+   "user": "Josefa Daniela Rubio Orellana",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 52,
+   "sede": "de Santiago",
+   "username": "vfuentes",
+   "user": "Victor Hugo de Jesus Fuentes Acevedo Metropolitana",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 53,
+   "sede": "Ñuble",
+   "username": "lvega",
+   "user": "Luis Abraham Vega Navarrete",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 54,
+   "sede": "Ñuble",
+   "username": "orivas",
+   "user": "Oscar Manuel Rivas Medina",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 55,
+   "sede": "Los Rios",
+   "username": "aduarte",
+   "user": "Antonia Ignacia Duarte Fuenzalida",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 56,
+   "sede": "Arica y Parinacota",
+   "username": "sberrios",
+   "user": "Sebastián Agustín Berríos Olivares",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 57,
+   "sede": "Metropolitana de Santiago",
+   "username": "mgrayde",
+   "user": "Maria ignacia Grayde jara",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 58,
+   "sede": "Ñuble",
+   "username": "aconstanzo",
+   "user": "Aleksander Killian Constanzo belmar",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 59,
+   "sede": "Metropolitana de Santiago",
+   "username": "jnavarro",
+   "user": "José Antonio Navarro Mardones",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 60,
+   "sede": "Metropolitana de Santiago",
+   "username": "rvelasquez",
+   "user": "Renato Agustín Velásquez Hernández",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 61,
+   "sede": "Valparaiso",
+   "username": "bmorales",
+   "user": "Benjamin Alexander Morales Montero",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 62,
+   "sede": "Maule",
+   "username": "rfuentes",
+   "user": "Renato alonso Fuentes Parada",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 63,
+   "sede": "Biobío",
+   "username": "gromero",
+   "user": "Gustavo Romero",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 64,
+   "sede": "Metropolitana de Santiago",
+   "username": "jnunez",
+   "user": "Joaquin Andres Nuñez Sanhueza",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 65,
+   "sede": "Libertador General Bernardo O'Higgins",
+   "username": "jconstenla",
+   "user": "Jeremías Isaac Constenla Guzmán",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 66,
+   "sede": "Metropolitana de Santiago",
+   "username": "fberenguela",
+   "user": "Felipe Agustín Berenguela Garay",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 67,
+   "sede": "Valparaiso",
+   "username": "byanez",
+   "user": "Boris Gustavo Yañez López",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 68,
+   "sede": "Valparaiso",
+   "username": "bretamal",
+   "user": "benjamin alfonso retamal frez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 69,
+   "sede": "Metropolitana de Santiago",
+   "username": "pvargas",
+   "user": "Paloma Vargas Vargas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 70,
+   "sede": "Araucanía",
+   "username": "rsepulveda",
+   "user": "Rocio Sepúlveda Godoy",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 71,
+   "sede": "Tarapaca",
+   "username": "lmoron",
+   "user": "Lucas Enrique Morón Romero",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 72,
+   "sede": "Biobío",
+   "username": "acastro",
+   "user": "Alexander Castro",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 73,
+   "sede": "Valparaiso",
+   "username": "rcarvajal",
+   "user": "Romina Belén Carvajal Quiñones",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 74,
+   "sede": "Ñuble",
+   "username": "bcofre",
+   "user": "Benjamin Ignacio Cofré Rosas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 75,
+   "sede": "Ñuble",
+   "username": "fferis",
+   "user": "Fernanda Amaral Feris Soto",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 76,
+   "sede": "Metropolitana de Santiago",
+   "username": "myunusic",
+   "user": "Milan Yunusic",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 77,
+   "sede": "Valparaiso",
+   "username": "mmedrano",
+   "user": "Mateo Antonino Medrano Bozzo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 78,
+   "sede": "Biobío",
+   "username": "fhenriquez",
+   "user": "Felipe Henríquez Santander",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 79,
+   "sede": "Valparaiso",
+   "username": "rjara",
+   "user": "Román Antonio Jara Soto",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 80,
+   "sede": "Araucanía",
+   "username": "favello",
+   "user": "Flavio Jeremías Avello Leiva",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 81,
+   "sede": "Biobío",
+   "username": "iurzua",
+   "user": "Isabella pascal Urzua González",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 82,
+   "sede": "Agustín Yeomans Nilo Coquimbo",
+   "username": "myeomans",
+   "user": "Maximiliano",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 83,
+   "sede": "Metropolitana de Santiago",
+   "username": "sfaican",
+   "user": "Skylar Faicán Yangua",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 84,
+   "sede": "Metropolitana de Santiago",
+   "username": "kbolivar",
+   "user": "Kevin Andrey Bolívar Socha",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 85,
+   "sede": "Metropolitana de Santiago",
+   "username": "dtrostel",
+   "user": "Derian Thomas Trostel Patiño",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 86,
+   "sede": "Metropolitana de Santiago",
+   "username": "dsteck",
+   "user": "David Ignacio Steck Peña",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 87,
+   "sede": "Metropolitana de Santiago",
+   "username": "fmolina",
+   "user": "Facundo nahuel Molina gomez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 88,
+   "sede": "Los Lagos",
+   "username": "shernandez",
+   "user": "Sofía Alejandra Hernández Paredes",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 89,
+   "sede": "Metropolitana de Santiago",
+   "username": "mruiz",
+   "user": "Martin Ruiz Moreno",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 90,
+   "sede": "Metropolitana de Santiago",
+   "username": "cperez",
+   "user": "Cristóbal Pérez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 91,
+   "sede": "Metropolitana de Santiago",
+   "username": "fpiter",
+   "user": "Fabián Ignacio Piter Paiva",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 92,
+   "sede": "Antofagasta",
+   "username": "gvega",
+   "user": "Gustavo Vega cortes",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 93,
+   "sede": "Metropolitana de Santiago",
+   "username": "derices",
+   "user": "Dominique Antonia Erices Gonzalez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 94,
+   "sede": "Biobío",
+   "username": "jlarenas",
+   "user": "Jorge Cristóbal Larenas Vásquez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 95,
+   "sede": "Metropolitana de Santiago",
+   "username": "msanzana",
+   "user": "Maximo Nicolás Sanzana Vega",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 96,
+   "sede": "Biobío",
+   "username": "dcid",
+   "user": "David Efraín Cid Zapata",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 97,
+   "sede": "Biobío",
+   "username": "vrojas",
+   "user": "Violeta Rojas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 98,
+   "sede": "Metropolitana de Santiago",
+   "username": "dabdala",
+   "user": "Daniela Sarai Abdala Marichales",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 99,
+   "sede": "Metropolitana de Santiago",
+   "username": "bfernandez",
+   "user": "Benjamín Fernández",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 100,
+   "sede": "Ñuble",
+   "username": "griquelme",
+   "user": "Gabriel Ignacio Riquelme Olivos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 101,
+   "sede": "Ñuble",
+   "username": "cespinaze",
+   "user": "Camilo Alonso Espinaze Fuentes",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 102,
+   "sede": "Metropolitana de Santiago",
+   "username": "ivalm",
+   "user": "Isaac Valm",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 103,
+   "sede": "Biobío",
+   "username": "ggonzalez",
+   "user": "Gianella Aurora González Rivera",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 104,
+   "sede": "Metropolitana de Santiago",
+   "username": "vverderau",
+   "user": "Vicente Verderau",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 105,
+   "sede": "Biobío",
+   "username": "mnino",
+   "user": "Manuel Arcángel Aâdil Niño Negron",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 106,
+   "sede": "Valparaiso",
+   "username": "mcespedes",
+   "user": "Martin Cespedes",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 107,
+   "sede": "Metropolitana de Santiago",
+   "username": "lcuevas",
+   "user": "Luz Tabita Cuevas Neculqueo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 108,
+   "sede": "Metropolitana de Santiago",
+   "username": "vmunoz",
+   "user": "Valentina paz Muñoz zuñiga",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 109,
+   "sede": "Metropolitana de Santiago",
+   "username": "jguajardo",
+   "user": "Jairo Alejandro Guajardo Soto",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 110,
+   "sede": "Metropolitana de Santiago",
+   "username": "jcottet",
+   "user": "Javiera Victoria Cottet Mosquera",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 111,
+   "sede": "Metropolitana de Santiago",
+   "username": "azuniga",
+   "user": "Alexis Rodrigo Zúñiga Barria",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 112,
+   "sede": "Metropolitana de Santiago",
+   "username": "efuentes",
+   "user": "Elías Ismael Fuentes Candia",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 113,
+   "sede": "Metropolitana de Santiago",
+   "username": "ruribe",
+   "user": "Ramiro Alonso Uribe Alvarez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 114,
+   "sede": "Araucanía",
+   "username": "fherrera",
+   "user": "Flavio Matias Herrera Rozas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 115,
+   "sede": "Biobío",
+   "username": "jconcha",
+   "user": "Juan Andres Concha San Martín",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 116,
+   "sede": "Metropolitana de Santiago",
+   "username": "maperez",
+   "user": "Martina Alejandra Perez Espinoza",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 117,
+   "sede": "Metropolitana de Santiago",
+   "username": "maraneda",
+   "user": "Mateo Silvestre Araneda Gonzalez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 118,
+   "sede": "Metropolitana de Santiago",
+   "username": "drobles",
+   "user": "Diego Franco Robles Ricaldi",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 119,
+   "sede": "Metropolitana de Santiago",
+   "username": "cvaldes",
+   "user": "Catalina Sofía Valdés Tapia",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  }
+ ]
+}

@@ -148,66 +148,6 @@ public class ProblemController(AppDbContext db, IWebHostEnvironment env) : Contr
         return Ok(problem);
     }
 
-    /// <summary>
-    /// Returns a problem's statement (HTML fragment with MathJax delimiters) by judge + external
-    /// id. Public — no authentication required.
-    /// </summary>
-    [AllowAnonymous]
-    [HttpGet("statement")]
-    public async Task<ActionResult<ProblemStatementDto>> GetStatement([FromQuery] string judge, [FromQuery] string externalId, CancellationToken ct = default)
-    {
-        if (string.IsNullOrWhiteSpace(judge) || string.IsNullOrWhiteSpace(externalId))
-            return BadRequest(new { error = "judge and externalId are required." });
-
-        var problem = await db.Problems
-            .AsNoTracking()
-            .Where(p => p.Judge == judge.Trim() && p.ExternalId == externalId.Trim())
-            .Select(p => new { p.Judge, p.ExternalId, p.Title, p.StatementPath })
-            .FirstOrDefaultAsync(ct);
-
-        if (problem is null)
-            return NotFound(new { error = "Problem not found." });
-
-        var html = await StatementStore.ReadAsync(env, problem.StatementPath, ct);
-        if (html is null)
-            return NotFound(new { error = "Statement not available for this problem yet." });
-
-        return Ok(new ProblemStatementDto
-        {
-            Judge = problem.Judge,
-            ExternalId = problem.ExternalId,
-            Title = problem.Title,
-            Html = html
-        });
-    }
-
-    /// <summary>Returns a problem's statement by its id. Public — no authentication required.</summary>
-    [AllowAnonymous]
-    [HttpGet("{id:guid}/statement")]
-    public async Task<ActionResult<ProblemStatementDto>> GetStatementById(Guid id, CancellationToken ct = default)
-    {
-        var problem = await db.Problems
-            .AsNoTracking()
-            .Where(p => p.Id == id)
-            .Select(p => new { p.Judge, p.ExternalId, p.Title, p.StatementPath })
-            .FirstOrDefaultAsync(ct);
-
-        if (problem is null)
-            return NotFound(new { error = "Problem not found." });
-
-        var html = await StatementStore.ReadAsync(env, problem.StatementPath, ct);
-        if (html is null)
-            return NotFound(new { error = "Statement not available for this problem yet." });
-
-        return Ok(new ProblemStatementDto
-        {
-            Judge = problem.Judge,
-            ExternalId = problem.ExternalId,
-            Title = problem.Title,
-            Html = html
-        });
-    }
-
     [Authorize(Roles = Constants.AdminRole)]
     [HttpPost("codeforces")]
     public async Task<IActionResult> CreateCodeforces([FromBody] CreateCodeforcesProblemRequest request, CancellationToken ct = default)
@@ -245,7 +185,7 @@ public class ProblemController(AppDbContext db, IWebHostEnvironment env) : Contr
             Url = url,
             Difficulty = request.Difficulty,
             TagsJson = request.TagsJson,
-            StatementPath = NormalizeOptional(request.StatementPath),
+            StatementPath = StatementStore.EnsureFolder(env, Judges.Codeforces, $"{request.ContestId}/problem/{contestProblemId}"),
             Keywords = NormalizeKeywords(request.Keywords),
             IsActive = true,
             CreatedAtUtc = DateTime.UtcNow,
@@ -302,7 +242,7 @@ public class ProblemController(AppDbContext db, IWebHostEnvironment env) : Contr
             Url = url,
             Difficulty = request.Difficulty,
             TagsJson = request.TagsJson,
-            StatementPath = NormalizeOptional(request.StatementPath),
+            StatementPath = StatementStore.EnsureFolder(env, Judges.AtCoder, taskId),
             Keywords = NormalizeKeywords(request.Keywords),
             IsActive = true,
             CreatedAtUtc = DateTime.UtcNow,
@@ -351,7 +291,7 @@ public class ProblemController(AppDbContext db, IWebHostEnvironment env) : Contr
             Url = url,
             Difficulty = request.Difficulty,
             TagsJson = request.TagsJson,
-            StatementPath = NormalizeOptional(request.StatementPath),
+            StatementPath = StatementStore.EnsureFolder(env, Judges.Cses, csesId),
             Keywords = NormalizeKeywords(request.Keywords),
             IsActive = true,
             CreatedAtUtc = DateTime.UtcNow,

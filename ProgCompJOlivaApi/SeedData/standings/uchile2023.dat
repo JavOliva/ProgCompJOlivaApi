@@ -1,0 +1,127 @@
+
+@contest "Interna UChile"
+@contlen 300
+@problems 11
+@teams 14
+@submissions 96
+@p A,Alaric Magic Partition,20,0
+@p B,Wally World,20,0
+@p C,cocktail with pony,20,0
+@p D,Everyone out of the Pool,20,0
+@p E,That's One Hanoi-ed Teacher,20,0
+@p F,Stampede!,20,0
+@p G,The Agency,20,0
+@p H,Condorcet Winners,20,0
+@p I,GPS I Love You,20,0
+@p J,Strings,20,0
+@p K,Black Vienna,20,0
+@t 1,0,1,daridius
+@t 2,0,1,Blaz
+@t 3,0,1,dariasc
+@t 4,0,1,vivivi
+@t 5,0,1,HolaSoyLamp
+@t 6,0,1,m1tu
+@t 7,0,1,curauma03
+@t 8,0,1,Davicom
+@t 9,0,1,lazyelekid
+@t 10,0,1,Jun_
+@t 11,0,1,vMaximo
+@t 12,0,1,hernan.poblete
+@t 13,0,1,AlePatata92
+@t 14,0,1,pauwu
+@s 3,C,1,7567,RJ
+@s 3,B,1,7581,RJ
+@s 4,C,1,7607,RJ
+@s 3,D,1,7623,RJ
+@s 4,C,2,7641,RJ
+@s 4,D,1,7680,OK
+@s 2,B,1,7711,OK
+@s 6,D,1,7714,CE
+@s 4,B,1,7726,RJ
+@s 9,H,1,7728,RJ
+@s 1,B,1,7729,RJ
+@s 6,D,2,7731,OK
+@s 2,D,1,7737,OK
+@s 6,B,1,7751,RJ
+@s 2,C,1,7757,RJ
+@s 14,J,1,7768,RJ
+@s 1,C,1,7800,OK
+@s 3,F,1,7805,RJ
+@s 6,B,2,7814,RJ
+@s 14,D,1,7816,RJ
+@s 8,B,1,7844,RJ
+@s 1,D,1,7912,RJ
+@s 1,D,2,7981,OK
+@s 12,B,1,7982,RJ
+@s 6,B,3,7996,OK
+@s 10,D,1,8029,RJ
+@s 1,B,2,8077,OK
+@s 9,H,2,8129,RJ
+@s 3,B,2,8177,RJ
+@s 2,C,2,8194,RJ
+@s 8,B,2,8331,RJ
+@s 7,A,1,8451,OK
+@s 1,A,1,8457,OK
+@s 2,C,3,8589,OK
+@s 2,A,1,8683,OK
+@s 2,H,1,8932,OK
+@s 4,C,3,8933,RJ
+@s 3,D,2,8957,OK
+@s 10,D,2,9070,RJ
+@s 4,B,2,9126,RJ
+@s 4,B,3,9248,RJ
+@s 3,B,3,9249,OK
+@s 10,B,1,9589,RJ
+@s 5,A,1,9611,OK
+@s 10,B,2,9688,RJ
+@s 10,C,1,9746,RJ
+@s 3,F,2,9779,RJ
+@s 1,H,1,9914,OK
+@s 4,A,1,9933,OK
+@s 11,D,1,10104,RJ
+@s 3,C,2,10210,RJ
+@s 11,D,2,10243,RJ
+@s 3,C,3,10252,OK
+@s 5,B,1,10255,OK
+@s 6,A,1,10547,RJ
+@s 6,A,2,10625,OK
+@s 11,D,3,10675,RJ
+@s 7,D,1,10683,OK
+@s 4,B,4,10927,RJ
+@s 14,H,1,10954,RJ
+@s 3,H,1,11007,RJ
+@s 3,H,2,11037,OK
+@s 10,C,2,11103,RJ
+@s 10,C,3,11290,RJ
+@s 3,A,1,11548,OK
+@s 4,H,1,11585,RJ
+@s 4,H,2,11614,OK
+@s 2,G,1,12654,OK
+@s 6,H,1,12686,RJ
+@s 6,H,2,12860,RJ
+@s 4,B,5,13143,RJ
+@s 14,D,2,13206,RJ
+@s 14,D,3,13544,RJ
+@s 4,B,6,13649,OK
+@s 11,H,1,13764,RJ
+@s 11,H,2,13922,RJ
+@s 14,D,4,14020,RJ
+@s 11,H,3,14043,RJ
+@s 9,D,1,14099,RJ
+@s 9,D,2,14116,RJ
+@s 14,D,5,14152,RJ
+@s 5,D,1,14499,OK
+@s 1,E,1,14507,OK
+@s 12,B,2,14664,RJ
+@s 12,B,3,14874,RJ
+@s 4,C,4,14926,RJ
+@s 5,H,1,16041,RJ
+@s 1,G,1,16618,RJ
+@s 1,G,2,16688,OK
+@s 6,C,1,16805,RJ
+@s 3,F,3,16869,RJ
+@s 8,I,1,17353,RJ
+@s 12,D,1,17685,RJ
+@s 8,I,2,17839,RJ
+@s 13,H,1,17908,RJ
+@s 5,C,1,17927,OK
