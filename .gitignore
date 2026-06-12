@@ -19,3 +19,17 @@ obj/
 # OS files
 .DS_Store
 Thumbs.db
+# Claude Code personal settings
+.claude/settings.local.json
+
+# Runtime-generated / seeded static assets (organization logos copied into wwwroot on startup)
+ProgCompJOlivaApi/wwwroot/organizations/
+
+# Scraped problem statements (fetched at runtime into wwwroot)
+ProgCompJOlivaApi/wwwroot/statements/
+
+# ICPC standings JSON generated from .dat seeds/uploads at runtime
+ProgCompJOlivaApi/wwwroot/standings/
+
+# OCI standings JSON seeded/uploaded at runtime
+ProgCompJOlivaApi/wwwroot/oci-standings/

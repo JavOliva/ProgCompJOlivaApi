@@ -8,7 +8,12 @@ services:
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: postgres
     ports:
-      - "5432:5432"
+      # Host port 15432 -> container 5432. Avoids clashing with a local Postgres on 5432, and
+      # stays below ~49000 so it can't fall inside a Hyper-V/WinNAT reserved port range on Windows
+      # (which dynamically reserves high ports and was blocking 55432).
+      # The API and reset job reach Postgres over the compose network (host "postgres":5432), so
+      # this host mapping only affects external access (e.g. a DB GUI on localhost:15432).
+      - "15432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
     healthcheck:
@@ -48,6 +53,12 @@ services:
       ASPNETCORE_ENVIRONMENT: Docker
       ASPNETCORE_URLS: http://+:8080
       ConnectionStrings_DefaultConnection: Host=postgres;Port=5432;Database=progcomp_backend;Username=progcomp_user;Password=prograbonita;GSS Encryption Mode=Disable
+      # Optional integrations, passed through from the host environment (empty if unset).
+      Codeforces__Key: ${Codeforces__Key:-}
+      Codeforces__Secret: ${Codeforces__Secret:-}
+      Cses__SessionCookie: ${Cses__SessionCookie:-}
+      # Set ADDCODEFORCES=true to run the one-shot gym import on this startup.
+      ADDCODEFORCES: ${ADDCODEFORCES:-}
     ports:
       - "5029:8080"
     restart: unless-stopped

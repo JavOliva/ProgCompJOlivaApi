@@ -13,4 +13,13 @@ public class CreateCodeforcesProblemRequest
     public int? Difficulty { get; set; }
 
     public string? TagsJson { get; set; }
+
+    /// <summary>Free-form search keywords.</summary>
+    public List<string> Keywords { get; set; } = [];
+
+    /// <summary>Topic names this problem belongs to (created on demand).</summary>
+    public List<string> Topics { get; set; } = [];
+
+    /// <summary>Relative path to the locally-stored statement folder.</summary>
+    public string? StatementPath { get; set; }
 }

@@ -1,0 +1,4 @@
+# Shell scripts must always check out with LF, even on Windows with core.autocrlf=true.
+# Otherwise they are written with CRLF and fail inside the Linux containers
+# (e.g. docker/postgres/reset-db.sh -> "$'\r': command not found", db-reset exits 2).
+*.sh text eol=lf

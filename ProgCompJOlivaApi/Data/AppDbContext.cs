@@ -13,7 +13,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<ContestProblem> ContestProblems => Set<ContestProblem>();
     public DbSet<Training> Trainings => Set<Training>();
     public DbSet<TrainingContest> TrainingContests => Set<TrainingContest>();
+    public DbSet<TrainingParticipant> TrainingParticipants => Set<TrainingParticipant>();
     public DbSet<UserProblemStatus> UserProblemStatuses => Set<UserProblemStatus>();
+    public DbSet<Topic> Topics => Set<Topic>();
+    public DbSet<CodeforcesGym> CodeforcesGyms => Set<CodeforcesGym>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -98,6 +101,33 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.Property(x => x.Judge)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            // PostgreSQL text[] for free-form search keywords.
+            entity.Property(x => x.Keywords)
+                .HasColumnType("text[]");
+
+            // Speeds up the common filters used by task search.
+            entity.HasIndex(x => x.Judge);
+            entity.HasIndex(x => x.Difficulty);
+            entity.HasIndex(x => x.ExternalId);
+
+            entity.HasMany(x => x.Topics)
+                .WithMany(x => x.Problems)
+                .UsingEntity(join => join.ToTable("problem_topics"));
+        });
+
+        modelBuilder.Entity<Topic>(entity =>
+        {
+            entity.ToTable("topics");
+
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            entity.HasIndex(x => x.Name)
+                .IsUnique();
         });
 
         modelBuilder.Entity<Contest>(entity =>
@@ -105,6 +135,13 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.ToTable("contests");
 
             entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            entity.HasIndex(x => x.Name)
+                .IsUnique();
         });
 
         modelBuilder.Entity<ContestProblem>(entity =>
@@ -112,6 +149,20 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.ToTable("contest_problems");
 
             entity.HasKey(x => x.Id);
+
+            entity.HasOne(x => x.Contest)
+                .WithMany(x => x.ContestProblems)
+                .HasForeignKey(x => x.ContestId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.Problem)
+                .WithMany()
+                .HasForeignKey(x => x.ProblemId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A problem appears at most once per contest.
+            entity.HasIndex(x => new { x.ContestId, x.ProblemId })
+                .IsUnique();
         });
 
         modelBuilder.Entity<Training>(entity =>
@@ -119,6 +170,20 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.ToTable("trainings");
 
             entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Name)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            entity.Property(x => x.Slug)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            entity.HasIndex(x => x.Name)
+                .IsUnique();
+
+            entity.HasIndex(x => x.Slug)
+                .IsUnique();
         });
 
         modelBuilder.Entity<TrainingContest>(entity =>
@@ -126,6 +191,60 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.ToTable("training_contests");
 
             entity.HasKey(x => x.Id);
+
+            entity.HasOne(x => x.Training)
+                .WithMany(x => x.TrainingContests)
+                .HasForeignKey(x => x.TrainingId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.Contest)
+                .WithMany()
+                .HasForeignKey(x => x.ContestId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // A contest appears at most once per training.
+            entity.HasIndex(x => new { x.TrainingId, x.ContestId })
+                .IsUnique();
+        });
+
+        modelBuilder.Entity<TrainingParticipant>(entity =>
+        {
+            entity.ToTable("training_participants");
+
+            entity.HasKey(x => x.Id);
+
+            entity.HasOne(x => x.Training)
+                .WithMany(t => t.Participants)
+                .HasForeignKey(x => x.TrainingId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // A user participates at most once per training.
+            entity.HasIndex(x => new { x.TrainingId, x.UserId })
+                .IsUnique();
+        });
+
+        modelBuilder.Entity<CodeforcesGym>(entity =>
+        {
+            entity.ToTable("codeforces_gyms");
+
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Name)
+                .HasMaxLength(200);
+
+            // Stored as the enum name (e.g. "Standings") rather than an int.
+            entity.Property(x => x.FetchMethod)
+                .HasConversion<string>()
+                .HasMaxLength(50)
+                .IsRequired();
+
+            entity.HasIndex(x => x.GymContestId)
+                .IsUnique();
         });
 
         modelBuilder.Entity<UserProblemStatus>(entity =>
@@ -133,6 +252,20 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.ToTable("user_problem_statuses");
 
             entity.HasKey(x => x.Id);
+
+            entity.HasOne(x => x.User)
+                .WithMany()
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(x => x.Problem)
+                .WithMany()
+                .HasForeignKey(x => x.ProblemId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // One status row per (user, problem).
+            entity.HasIndex(x => new { x.UserId, x.ProblemId })
+                .IsUnique();
         });
     }
 }

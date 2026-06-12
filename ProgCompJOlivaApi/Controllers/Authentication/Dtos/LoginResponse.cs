@@ -6,5 +6,9 @@ public class LoginResponse
 
     public DateTime AccessTokenExpiresAtUtc { get; set; }
 
+    public string RefreshToken { get; set; } = null!;
+
+    public DateTime RefreshTokenExpiresAtUtc { get; set; }
+
     public List<string> Roles { get; set; } = [];
 }

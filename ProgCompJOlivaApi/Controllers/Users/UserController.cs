@@ -130,7 +130,11 @@ public class UserController(AppDbContext db, PasswordService passwordService) : 
             user.Nickname = request.Nickname;
         }
 
-        if (request.Email != null) 
+        // Admins can reset a user's password here. Ignore blank values so the field is optional.
+        if (!string.IsNullOrWhiteSpace(request.Password))
+            user.PasswordHash = passwordService.HashPassword(user, request.Password);
+
+        if (request.Email != null)
             user.Email = request.Email;
 
         if (request.Names != null) 

@@ -1,0 +1,1383 @@
+{
+ "contest": "Clasificatoria Regional 2022",
+ "type": "regional",
+ "year": 2022,
+ "problems": [
+  {
+   "name": "multiplos",
+   "maxScore": 100
+  },
+  {
+   "name": "contrasena",
+   "maxScore": 100
+  },
+  {
+   "name": "lokomones",
+   "maxScore": 100
+  },
+  {
+   "name": "pajaros",
+   "maxScore": 100
+  }
+ ],
+ "rows": [
+  {
+   "rank": 1,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "mnova",
+   "user": "Matias Nova Baza",
+   "scores": [
+    100,
+    100,
+    100,
+    100
+   ],
+   "global": 400,
+   "qualified": true
+  },
+  {
+   "rank": 2,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "gcampos",
+   "user": "Guillermo Andrés Campos Fuentes",
+   "scores": [
+    100,
+    100,
+    100,
+    100
+   ],
+   "global": 400,
+   "qualified": true
+  },
+  {
+   "rank": 3,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "bjimenez",
+   "user": "Bastián Gonzalo Jiménez Sepúlveda",
+   "scores": [
+    100,
+    50,
+    76,
+    100
+   ],
+   "global": 326,
+   "qualified": true
+  },
+  {
+   "rank": 4,
+   "sede": "Rancagua - Universidad de O'Higgins",
+   "username": "lparada",
+   "user": "Leandro Manuel Parada Contreras",
+   "scores": [
+    100,
+    50,
+    24,
+    100
+   ],
+   "global": 274,
+   "qualified": true
+  },
+  {
+   "rank": 5,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "cdiaz",
+   "user": "Catalina Monserrat Isabel Díaz Cofré",
+   "scores": [
+    100,
+    50,
+    0,
+    100
+   ],
+   "global": 250,
+   "qualified": true
+  },
+  {
+   "rank": 6,
+   "sede": "Online",
+   "username": "amontenegro",
+   "user": "Alan Vicente Montenegro Donoso",
+   "scores": [
+    100,
+    50,
+    0,
+    100
+   ],
+   "global": 250,
+   "qualified": true
+  },
+  {
+   "rank": 7,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "hbonilla",
+   "user": "Hector Bonilla Vargas",
+   "scores": [
+    56,
+    50,
+    76,
+    60
+   ],
+   "global": 242,
+   "qualified": true
+  },
+  {
+   "rank": 8,
+   "sede": "Online",
+   "username": "jcalfuala",
+   "user": "Javier Ignacio Calfuala Villa",
+   "scores": [
+    78,
+    15,
+    0,
+    100
+   ],
+   "global": 193,
+   "qualified": true
+  },
+  {
+   "rank": 9,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "bguevara",
+   "user": "Bruno Andrés Guevara Nuñez",
+   "scores": [
+    94,
+    0,
+    0,
+    80
+   ],
+   "global": 174,
+   "qualified": true
+  },
+  {
+   "rank": 10,
+   "sede": "",
+   "username": "mgodoy",
+   "user": "Martín Felipe Godoy Vergara",
+   "scores": [
+    61,
+    0,
+    0,
+    100
+   ],
+   "global": 161,
+   "qualified": true
+  },
+  {
+   "rank": 11,
+   "sede": "Temuco - Universidad Católica de Temuco",
+   "username": "lbarra",
+   "user": "lsidora Barra Torres",
+   "scores": [
+    100,
+    0,
+    0,
+    60
+   ],
+   "global": 160,
+   "qualified": true
+  },
+  {
+   "rank": 12,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "afernandez",
+   "user": "Amelia Sofia Fernandez Seguel",
+   "scores": [
+    72,
+    0,
+    18,
+    60
+   ],
+   "global": 150,
+   "qualified": true
+  },
+  {
+   "rank": 13,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "ilemunao",
+   "user": "Isidora Belén Lemunao Riquelme",
+   "scores": [
+    83,
+    0,
+    0,
+    60
+   ],
+   "global": 143,
+   "qualified": true
+  },
+  {
+   "rank": 14,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "moteiza",
+   "user": "Matias Felipe Oteiza Vargas",
+   "scores": [
+    100,
+    0,
+    35,
+    0
+   ],
+   "global": 135,
+   "qualified": true
+  },
+  {
+   "rank": 15,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "jpenafiel",
+   "user": "Juan Pablo Peñafiel Aguilera",
+   "scores": [
+    72,
+    0,
+    0,
+    60
+   ],
+   "global": 132,
+   "qualified": true
+  },
+  {
+   "rank": 16,
+   "sede": "Online",
+   "username": "smunoz",
+   "user": "Sofía Alejandra Muñoz Cordero",
+   "scores": [
+    17,
+    50,
+    0,
+    60
+   ],
+   "global": 127,
+   "qualified": true
+  },
+  {
+   "rank": 17,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "fmunoz",
+   "user": "Francisco Mateo Muñoz Montecino",
+   "scores": [
+    17,
+    15,
+    0,
+    93
+   ],
+   "global": 125,
+   "qualified": true
+  },
+  {
+   "rank": 18,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "anavarro",
+   "user": "Antonio Navarro Aragón",
+   "scores": [
+    72,
+    35,
+    0,
+    0
+   ],
+   "global": 107,
+   "qualified": true
+  },
+  {
+   "rank": 19,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "ftorres",
+   "user": "Francisco Torres Palacios",
+   "scores": [
+    11,
+    0,
+    35,
+    60
+   ],
+   "global": 106,
+   "qualified": true
+  },
+  {
+   "rank": 20,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "aortega",
+   "user": "Anastasia Carolina Ortega Villarroel",
+   "scores": [
+    0,
+    0,
+    0,
+    100
+   ],
+   "global": 100,
+   "qualified": true
+  },
+  {
+   "rank": 21,
+   "sede": "Puerto Montt - Universidad Austral de Chile",
+   "username": "eflores",
+   "user": "Emilia Constanza Flores Villalobos",
+   "scores": [
+    39,
+    0,
+    0,
+    60
+   ],
+   "global": 99,
+   "qualified": true
+  },
+  {
+   "rank": 22,
+   "sede": "Online",
+   "username": "fparedes",
+   "user": "Franco Jose Paredes Romero",
+   "scores": [
+    50,
+    0,
+    0,
+    33
+   ],
+   "global": 83,
+   "qualified": false
+  },
+  {
+   "rank": 23,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "soyarzun",
+   "user": "Sebastián Marcelo Oyarzún Muñoz",
+   "scores": [
+    17,
+    0,
+    0,
+    60
+   ],
+   "global": 77,
+   "qualified": false
+  },
+  {
+   "rank": 24,
+   "sede": "Puerto Montt - Universidad Austral de Chile",
+   "username": "gavendano",
+   "user": "Gabriela Catalina Avendaño Balbontín",
+   "scores": [
+    17,
+    0,
+    0,
+    60
+   ],
+   "global": 77,
+   "qualified": false
+  },
+  {
+   "rank": 25,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "msalgado",
+   "user": "Mario Andrés Salgado Jaque",
+   "scores": [
+    28,
+    0,
+    0,
+    33
+   ],
+   "global": 61,
+   "qualified": false
+  },
+  {
+   "rank": 26,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "lcatalan",
+   "user": "Luciano Nicolas Catalan Palma",
+   "scores": [
+    61,
+    0,
+    0,
+    0
+   ],
+   "global": 61,
+   "qualified": false
+  },
+  {
+   "rank": 27,
+   "sede": "Rancagua - Universidad de O'Higgins",
+   "username": "criquelme",
+   "user": "Camila Andrea Riquelme Araneda",
+   "scores": [
+    0,
+    0,
+    0,
+    60
+   ],
+   "global": 60,
+   "qualified": false
+  },
+  {
+   "rank": 28,
+   "sede": "Temuco - Universidad Católica de Temuco",
+   "username": "acornejo",
+   "user": "Asunción Cornejo Burgos",
+   "scores": [
+    0,
+    0,
+    0,
+    60
+   ],
+   "global": 60,
+   "qualified": false
+  },
+  {
+   "rank": 29,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "eoliva",
+   "user": "Ema Oliva silva",
+   "scores": [
+    0,
+    0,
+    0,
+    60
+   ],
+   "global": 60,
+   "qualified": false
+  },
+  {
+   "rank": 30,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "iarias",
+   "user": "isaac Joaquín Arias Saavedra",
+   "scores": [
+    0,
+    0,
+    0,
+    60
+   ],
+   "global": 60,
+   "qualified": false
+  },
+  {
+   "rank": 31,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "cyuras",
+   "user": "Candela Guadalupe Yuras Malbrich",
+   "scores": [
+    0,
+    0,
+    0,
+    60
+   ],
+   "global": 60,
+   "qualified": false
+  },
+  {
+   "rank": 32,
+   "sede": "Osorno - Universidad de Los Lagos",
+   "username": "rguarda",
+   "user": "Rafael Andrés Guarda Jiménez",
+   "scores": [
+    11,
+    0,
+    0,
+    40
+   ],
+   "global": 51,
+   "qualified": true
+  },
+  {
+   "rank": 33,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "dbugueno",
+   "user": "Damaris Bugueño Cornejo",
+   "scores": [
+    17,
+    0,
+    0,
+    33
+   ],
+   "global": 50,
+   "qualified": false
+  },
+  {
+   "rank": 34,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "cocampo",
+   "user": "Cristobal Ocampo",
+   "scores": [
+    11,
+    0,
+    0,
+    13
+   ],
+   "global": 24,
+   "qualified": false
+  },
+  {
+   "rank": 35,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "erodriguez",
+   "user": "Emilio Jesús Rodríguez Godoy",
+   "scores": [
+    0,
+    0,
+    0,
+    13
+   ],
+   "global": 13,
+   "qualified": false
+  },
+  {
+   "rank": 36,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "frojas",
+   "user": "Facundo Emilio Rojas Luengo",
+   "scores": [
+    0,
+    0,
+    0,
+    7
+   ],
+   "global": 7,
+   "qualified": false
+  },
+  {
+   "rank": 37,
+   "sede": "Santiago - Universidad Gabriela Mistral",
+   "username": "pleon",
+   "user": "Pedro Roberto León González",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 38,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "eperez",
+   "user": "Emilia Ignacia Pérez Vásquez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 39,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "venero",
+   "user": "Victoria Enero",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 40,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "cmoya",
+   "user": "Claudio Benjamin Moya Casanova",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 41,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "jsantibanez",
+   "user": "Javier Alonso Santibañez Carrasco",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 42,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "bfaican",
+   "user": "Brithany Scarleth Faicán Yangua",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 43,
+   "sede": "Rancagua - Universidad de O'Higgins",
+   "username": "mgonzalez",
+   "user": "Marco Antonio González Murillo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 44,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "dpanes",
+   "user": "Damian Alberto Panes Lobos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 45,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "mallendes",
+   "user": "María Paz Allendes Álvarez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 46,
+   "sede": "Temuco - Universidad Católica de Temuco",
+   "username": "mniedmann",
+   "user": "Margarita Onet Niedmann Rivas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 47,
+   "sede": "Rancagua - Universidad de O'Higgins",
+   "username": "vpua",
+   "user": "Vicente Antonio Púa Riquelme",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 48,
+   "sede": "Osorno - Universidad de Los Lagos",
+   "username": "fopazo",
+   "user": "Felipe Andres Opazo San Martin",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 49,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "mvega",
+   "user": "Marco Antonio Vega Victoriano",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 50,
+   "sede": "Santiago - Universidad Gabriela Mistral",
+   "username": "ecleon",
+   "user": "Elena Carolina León González",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 51,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "idelgado",
+   "user": "Ignacio Antonio Delgado Correa",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 52,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "dcorrea",
+   "user": "Damián Alonso Correa Parra",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 53,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "lsanhueza",
+   "user": "Lucas Augusto Sanhueza Vent",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 54,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "crodriguez",
+   "user": "Cristobal ignacio Rodriguez ulloa",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 55,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "vcid",
+   "user": "Valeria Cid",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 56,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "ewang",
+   "user": "Emily Wang Lo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 57,
+   "sede": "Osorno - Universidad de Los Lagos",
+   "username": "jalvarez",
+   "user": "Juan Esteban Álvarez Uribe",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 58,
+   "sede": "Santiago - Universidad Gabriela Mistral",
+   "username": "bpando",
+   "user": "Benjamín Vicente Pando Matte",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 59,
+   "sede": "Osorno - Universidad de Los Lagos",
+   "username": "pcalderon",
+   "user": "Pedro Humberto Calderón Alvarado",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 60,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "lhidalgo",
+   "user": "Lissette Andrea Hidalgo Soto",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 61,
+   "sede": "Osorno - Universidad de Los Lagos",
+   "username": "dperez",
+   "user": "David Alejandro Pérez Catalán",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 62,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "mrivas",
+   "user": "Macarena Anaís Rivas Pérez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 63,
+   "sede": "Puerto Montt - Universidad Austral de Chile",
+   "username": "pvasquez",
+   "user": "Pablo Oscar Ekaitz Vásquez Muñoz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 64,
+   "sede": "Santiago - Universidad Gabriela Mistral",
+   "username": "emadariaga",
+   "user": "Esteban Alejandro Madariaga Neculqueo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 65,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "apareja",
+   "user": "Antonia Camila Pareja Urzúa",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 66,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "enperez",
+   "user": "Elizabeth Nathalia Pérez López",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 67,
+   "sede": "Online",
+   "username": "mdiaz",
+   "user": "Maximiliano Antonio Diaz Hervia",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 68,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "egarfe",
+   "user": "Eduardo Eid Garfe Navarro",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 69,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "esolis",
+   "user": "Esperanza Solis",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 70,
+   "sede": "Osorno - Universidad de Los Lagos",
+   "username": "agonzalez",
+   "user": "Alexander Alfredo González Guzmán",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 71,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "clara",
+   "user": "Camila Alessandra Lara Medina",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 72,
+   "sede": "Osorno - Universidad de Los Lagos",
+   "username": "bbracho",
+   "user": "Benjamin Ignacio Bracho Coronado",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 73,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "lyovera",
+   "user": "Lucero Esmeralda Yovera Campos",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 74,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "jborquez",
+   "user": "Joaquín Gustavo Bórquez Sepúlveda",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 75,
+   "sede": "Rancagua - Universidad de O'Higgins",
+   "username": "aubilla",
+   "user": "Alonso Javier Ubilla Mussa",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 76,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "nzuniga",
+   "user": "Nadine Josefina Zúñiga Castro",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 77,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "briquelme",
+   "user": "Belén Anahis Riquelme Cisternas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 78,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "srios",
+   "user": "Sofía Cristina Ríos Corvalán",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 79,
+   "sede": "Talca - Universidad Católica del Maule",
+   "username": "gsobarzo",
+   "user": "Gabriela Antonia Beatriz Sobarzo Melo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 80,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "mpoblete",
+   "user": "Maria Isabel Poblete Medina",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 81,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "dgonzalez",
+   "user": "Denis Matías Gonzalez Espinoza",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 82,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "mtroncoso",
+   "user": "María Ignacia Troncoso Santis",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 83,
+   "sede": "Chillán - Universidad del Bío-Bío",
+   "username": "sparra",
+   "user": "Siboney Isidora Parra Ruiz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 84,
+   "sede": "Santiago - Universidad Técnica Federico Santa María",
+   "username": "cestay",
+   "user": "Cristobal Kabir Estay Diaz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 85,
+   "sede": "Online",
+   "username": "niriarte",
+   "user": "Nacir carlos Iriarte buhadla",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 86,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "ggissi",
+   "user": "giorgio salvatore gissi munoz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 87,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "mibanez",
+   "user": "Matias Ignacio Ibañez Muñoz",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 88,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "spacheco",
+   "user": "Simon Pacheco Antunez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 89,
+   "sede": "Valparaíso - Universidad Técnica Federico Santa María",
+   "username": "jbernal",
+   "user": "Javiera Bernal",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 90,
+   "sede": "Rancagua - Universidad de O'Higgins",
+   "username": "rgalaz",
+   "user": "Rodolfo Ignacio Galaz Lembach",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 91,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "jfontaine",
+   "user": "Joaquin Ignacio Fontaine Marchant",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 92,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "agaray",
+   "user": "Aleshka Amithy Garay Vilchez",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 93,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "avargas",
+   "user": "Amaro Vargas",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 94,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "fwirth",
+   "user": "Florencia Agustina Wirth Torres",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 95,
+   "sede": "Santiago - Pontificia Universidad Católica de Chile",
+   "username": "morellana",
+   "user": "Millaray Michelle Orellana Cortés",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 96,
+   "sede": "Rancagua - Universidad de O'Higgins",
+   "username": "cmunoz",
+   "user": "Cristián Octavio Muñoz Cantillana",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  },
+  {
+   "rank": 97,
+   "sede": "Concepción - Universidad Católica de la Santísima Concepción",
+   "username": "vcormack",
+   "user": "Vicente Andrés Cormack Suazo",
+   "scores": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "global": 0,
+   "qualified": false
+  }
+ ]
+}
