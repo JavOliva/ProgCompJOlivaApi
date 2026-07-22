@@ -3,8 +3,9 @@ using HtmlAgilityPack;
 
 namespace ProgCompJOlivaApi.JudgeClients.CsesClient;
 
-/// <summary>One task in the CSES problemset.</summary>
-public record CsesProblemInfo(string TaskId, string Title, string Url);
+/// <summary>One task in the CSES problemset. <paramref name="Category"/> is the section
+/// heading it appears under (e.g. "Introductory Problems").</summary>
+public record CsesProblemInfo(string TaskId, string Title, string Url, string Category);
 
 /// <summary>
 /// Scrapes the full CSES problemset list. This page is public (unlike per-user statistics), so
@@ -55,7 +56,13 @@ public static partial class CsesProblemsetScraper
             if (string.IsNullOrWhiteSpace(title))
                 continue;
 
-            result.Add(new CsesProblemInfo(taskId, title, $"https://cses.fi/problemset/task/{taskId}/"));
+            // The section heading (h2) the task list sits under, e.g. "Sorting and Searching".
+            var heading = anchor.SelectSingleNode("preceding::h2[1]");
+            var category = heading is null ? "Otros" : HtmlEntity.DeEntitize(heading.InnerText).Trim();
+            if (string.IsNullOrWhiteSpace(category))
+                category = "Otros";
+
+            result.Add(new CsesProblemInfo(taskId, title, $"https://cses.fi/problemset/task/{taskId}/", category));
         }
 
         return result;

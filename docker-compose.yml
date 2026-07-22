@@ -61,7 +61,13 @@ services:
       ADDCODEFORCES: ${ADDCODEFORCES:-}
     ports:
       - "5029:8080"
+    volumes:
+      # Persist runtime-written content (uploaded/imported standings, admin-edited team members,
+      # uploaded org logos) across container rebuilds. Seed services only fill in missing keys,
+      # so new seeds still land; delete a key's JSON inside the volume to re-seed it.
+      - api_wwwroot:/app/wwwroot
     restart: unless-stopped
 
 volumes:
   postgres_data:
+  api_wwwroot:

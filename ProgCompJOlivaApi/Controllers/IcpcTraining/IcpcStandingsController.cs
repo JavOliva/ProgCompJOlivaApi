@@ -155,10 +155,11 @@ public class IcpcStandingsController(IWebHostEnvironment env, AppDbContext db) :
     }
 
     /// <summary>
-    /// Matches each row's team name against active users (by Codeforces handle, nickname, or real
+    /// Matches each row's team name against registered users (by Codeforces handle, nickname, or real
     /// "Names Surnames", case-insensitive) and fills in the real name, nickname and Codeforces rating
     /// so the frontend can display the real name and color it by rating. The real-name match matters
-    /// for sources like Kattis that show full names instead of handles.
+    /// for sources like Kattis that show full names instead of handles. Inactive users are matched
+    /// too: standings are historical, and a deactivated user still played that contest.
     /// </summary>
     private async Task EnrichWithUsersAsync(IcpcStandings standings, CancellationToken ct)
     {
@@ -172,10 +173,10 @@ public class IcpcStandingsController(IWebHostEnvironment env, AppDbContext db) :
             return;
 
         var users = await db.Users
-            .Where(u => u.IsActive &&
-                ((u.CodeforcesHandle != null && names.Contains(u.CodeforcesHandle.ToLower()))
+            .Where(u =>
+                (u.CodeforcesHandle != null && names.Contains(u.CodeforcesHandle.ToLower()))
                  || names.Contains(u.Nickname.ToLower())
-                 || names.Contains((u.Names + " " + u.Surnames).ToLower())))
+                 || names.Contains((u.Names + " " + u.Surnames).ToLower()))
             .Select(u => new { u.Nickname, u.CodeforcesHandle, u.Names, u.Surnames, u.CodeforcesRating })
             .ToListAsync(ct);
 

@@ -69,11 +69,13 @@ public class OciStandingsRow
     /// <summary>The participant's full real name as printed in the document.</summary>
     public string User { get; set; } = "";
 
-    /// <summary>Per-task scores, aligned with <see cref="OciStandings.Problems"/>.</summary>
-    public List<int> Scores { get; set; } = [];
+    /// <summary>Per-task scores, aligned with <see cref="OciStandings.Problems"/>. May be
+    /// fractional (e.g. the weighted columns of a clasificatoria aggregate).</summary>
+    public List<double> Scores { get; set; } = [];
 
-    /// <summary>Total score: sum of <see cref="Scores"/>, or the weighted total on a weighted aggregate.</summary>
-    public int Global { get; set; }
+    /// <summary>Total score: sum of <see cref="Scores"/>, or the weighted total on a weighted
+    /// aggregate. May be fractional (e.g. 214.7).</summary>
+    public double Global { get; set; }
 
     /// <summary>
     /// Whether the participant advanced to the next stage. Meaning depends on the standings: regional →

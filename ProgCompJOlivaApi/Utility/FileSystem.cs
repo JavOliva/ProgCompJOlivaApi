@@ -9,12 +9,13 @@ public static class FileSystem
 
         Directory.CreateDirectory(destDir);
 
-        // Copiar archivos
+        // Copiar archivos (con overwrite=false, los existentes se conservan en vez de lanzar excepción)
         foreach (var file in Directory.GetFiles(sourceDir))
         {
             var fileName = Path.GetFileName(file);
             var destFile = Path.Combine(destDir, fileName);
-            File.Copy(file, destFile, overwrite);
+            if (overwrite || !File.Exists(destFile))
+                File.Copy(file, destFile, overwrite);
         }
 
         // Copiar subdirectorios recursivamente

@@ -336,18 +336,20 @@ public class ContestController(AppDbContext db) : ControllerBase
             .GroupBy(s => s.UserId)
             .ToDictionary(g => g.Key, g => g.Select(x => x.ProblemId).ToList());
 
-        // Only active users who solved at least one problem of this contest.
+        // Users who solved at least one problem of this contest. Inactive users are included:
+        // standings are historical, and a deactivated user's solves still happened.
         var solverIds = solvedByUser.Keys.ToList();
 
         var users = await db.Users
             .AsNoTracking()
-            .Where(u => u.IsActive && solverIds.Contains(u.Id))
+            .Where(u => solverIds.Contains(u.Id))
             .Select(u => new
             {
                 u.Id,
                 u.Nickname,
                 FullName = (u.Names + " " + u.Surnames).Trim(),
-                University = u.Organization != null ? u.Organization.ShortName : null
+                University = u.Organization != null ? u.Organization.ShortName : null,
+                u.CodeforcesRating
             })
             .ToListAsync(ct);
 
@@ -360,6 +362,7 @@ public class ContestController(AppDbContext db) : ControllerBase
                     Nickname = u.Nickname,
                     FullName = u.FullName,
                     University = u.University,
+                    Rating = u.CodeforcesRating,
                     SolvedCount = solvedIds.Count,
                     SolvedProblemIds = solvedIds
                 };
