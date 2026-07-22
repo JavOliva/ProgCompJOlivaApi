@@ -24,18 +24,18 @@ END
 \$\$;
 EOF
 
-echo "Terminating existing connections to ${APP_DB_NAME}..."
-psql -h "${DB_HOST}" -p "${DB_PORT}" -U "${DB_ADMIN_USER}" -d postgres -v ON_ERROR_STOP=1 -c "
-SELECT pg_terminate_backend(pid)
-FROM pg_stat_activity
-WHERE datname = '${APP_DB_NAME}'
-  AND pid <> pg_backend_pid();
-"
+# Create the database only when it doesn't exist yet. Dropping it here would wipe all data
+# (users, contests, trainings, synced solves) on EVERY `docker compose up` — to reset the DB
+# on purpose, run `docker compose down -v` (drops the postgres volume) and start again.
+echo "Ensuring database exists..."
+DB_EXISTS=$(psql -h "${DB_HOST}" -p "${DB_PORT}" -U "${DB_ADMIN_USER}" -d postgres -tAc \
+  "SELECT 1 FROM pg_database WHERE datname = '${APP_DB_NAME}';")
 
-echo "Dropping database if it exists..."
-psql -h "${DB_HOST}" -p "${DB_PORT}" -U "${DB_ADMIN_USER}" -d postgres -v ON_ERROR_STOP=1 -c "DROP DATABASE IF EXISTS ${APP_DB_NAME};"
+if [ "${DB_EXISTS}" != "1" ]; then
+  echo "Creating database..."
+  psql -h "${DB_HOST}" -p "${DB_PORT}" -U "${DB_ADMIN_USER}" -d postgres -v ON_ERROR_STOP=1 -c "CREATE DATABASE ${APP_DB_NAME} OWNER ${APP_DB_USER};"
+else
+  echo "Database already exists; leaving data intact."
+fi
 
-echo "Creating database..."
-psql -h "${DB_HOST}" -p "${DB_PORT}" -U "${DB_ADMIN_USER}" -d postgres -v ON_ERROR_STOP=1 -c "CREATE DATABASE ${APP_DB_NAME} OWNER ${APP_DB_USER};"
-
-echo "Database reset complete."
+echo "Database check complete."

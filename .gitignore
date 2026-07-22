@@ -33,3 +33,10 @@ ProgCompJOlivaApi/wwwroot/standings/
 
 # OCI standings JSON seeded/uploaded at runtime
 ProgCompJOlivaApi/wwwroot/oci-standings/
+
+# ICPC event standings JSON seeded/imported at runtime
+ProgCompJOlivaApi/wwwroot/icpc-events/
+
+# Fuente descargada del MFP (17 MB de HTML guardado); el standings derivado
+# vive versionado en SeedData/icpc-events/mfpfase2026.json
+mfp2026fase1/

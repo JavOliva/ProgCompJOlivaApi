@@ -239,6 +239,7 @@ public class UserController(AppDbContext db, PasswordService passwordService) : 
             {
                 FemTeamEligible = x.FemTeamEligible,
                 IsActive = x.IsActive,
+                IsCompetitiveProgrammingActive = x.IsCompetitiveProgrammingActive,
                 IcpcEligible = true,
                 Nickname = x.Nickname,
                 FullName = $"{x.Names} {x.Surnames}".Trim(),

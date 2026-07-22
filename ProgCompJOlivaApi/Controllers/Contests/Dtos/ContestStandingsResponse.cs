@@ -42,6 +42,9 @@ public class ContestStandingRowDto
 
     public string? University { get; set; }
 
+    /// <summary>Codeforces rating (0 if none) so the frontend can color the name.</summary>
+    public int Rating { get; set; }
+
     public int SolvedCount { get; set; }
 
     /// <summary>Ids (referencing <see cref="ContestStandingsResponse.Problems"/>) this user solved.</summary>

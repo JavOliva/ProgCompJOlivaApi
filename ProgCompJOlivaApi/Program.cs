@@ -22,7 +22,10 @@ public class Program
         var builder = WebApplication.CreateBuilder(builderArgs);
 
         // Also honour the toggle via env/config (e.g. ADDCODEFORCES=true), e.g. for Docker.
-        var addCodeforces = addCodeforcesFlag || builder.Configuration.GetValue<bool>("ADDCODEFORCES");
+        // Parsed leniently: docker-compose passes an empty string when the host var is unset,
+        // which GetValue<bool> would reject with an unhandled exception.
+        var addCodeforces = addCodeforcesFlag
+            || (bool.TryParse(builder.Configuration["ADDCODEFORCES"], out var addCfFlag) && addCfFlag);
 
         builder.Services.AddControllers();
 
@@ -49,6 +52,9 @@ public class Program
 
         // Load SeedData/oci-standings/*.json into stored OCI standings at startup.
         builder.Services.AddHostedService<OciStandingsSeedService>();
+
+        // Load SeedData/icpc-events/*.json (LATAM regional, PdA, …) into stored standings at startup.
+        builder.Services.AddHostedService<IcpcEventsSeedService>();
 
         // Single owner of all Codeforces API access (ratings + gym solve sync, and the one-shot
         // ADDCODEFORCES import) so calls from this server's IP share one coordinated rate budget.

@@ -116,11 +116,25 @@ public class TrainingController(AppDbContext db) : ControllerBase
     /// <summary>Training detail. Public for public trainings; private ones need authentication.</summary>
     [AllowAnonymous]
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<TrainingDetailDto>> GetById(Guid id, CancellationToken ct = default)
+    public Task<ActionResult<TrainingDetailDto>> GetById(Guid id, CancellationToken ct = default)
+        => GetDetailAsync(t => t.Id == id, ct);
+
+    /// <summary>
+    /// Training detail by slug — e.g. the auto-managed <c>cses</c> training the frontend's CSES
+    /// section renders. Same visibility rules as <see cref="GetById"/>.
+    /// </summary>
+    [AllowAnonymous]
+    [HttpGet("slug/{slug}")]
+    public Task<ActionResult<TrainingDetailDto>> GetBySlug(string slug, CancellationToken ct = default)
+        => GetDetailAsync(t => t.Slug == slug.Trim().ToLower(), ct);
+
+    private async Task<ActionResult<TrainingDetailDto>> GetDetailAsync(
+        System.Linq.Expressions.Expression<Func<Training, bool>> predicate,
+        CancellationToken ct)
     {
         var training = await db.Trainings
             .AsNoTracking()
-            .Where(t => t.Id == id)
+            .Where(predicate)
             .Select(t => new TrainingDetailDto
             {
                 Id = t.Id,
